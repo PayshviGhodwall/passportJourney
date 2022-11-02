@@ -16,39 +16,39 @@ function WebHeader() {
                     </a>
                   </li>
                   <li>
-                    <a href="javascript:;">
+                    <a
+                      href="https://www.facebook.com/passportjourneysapp"
+                      target="_blank"
+                    >
                       <img src="assets/img/facebook_icon.png" alt="" />
                     </a>
                   </li>
                   <li>
-                    <a href="javascript:;">
+                    <a
+                      href="https://www.instagram.com/passportjourneys/?hl=en"
+                      target="_blank"
+                    >
                       <img src="assets/img/instagram_icon.png" alt="" />
                     </a>
                   </li>
                   <li>
-                    <a href="javascript:;">
+                    <a
+                      href="https://www.linkedin.com/company/passport-journeys-app/"
+                      target="_blank"
+                      header
+                    >
                       <img src="assets/img/linkedin_icon.png" alt="" />
                     </a>
                   </li>
-                </ul>
-                <div id="search_header" class="search_header position-relative">
-                  <div class="search-button">
+                  <li>
                     <a
-                      class="search_btn search-toggle"
-                      data-selector="#search_header"
-                      href="javascript:;"
+                      href="https://www.tiktok.com/@passportjourneysapp"
+                      target="_blank"
                     >
-                      <img src="assets/img/search_icon.png" alt="" />
+                      <img src="assets/img/tik-tok (1).png" alt="" />
                     </a>
-                  </div>
-                  <form action="" class="search-box">
-                    <input
-                      type="text"
-                      class="text search-input"
-                      placeholder="Type here to search..."
-                    />
-                  </form>
-                </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

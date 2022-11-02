@@ -52,20 +52,33 @@ function WebFooter() {
                   Houston, TX 77096
                 </p>
                 <div class="social_icon">
-                  <a href="javascript:;" target="_blank">
+                  <a href="" target="_blank">
                     <img src="assets/img/main_icon.png" alt="" />
                   </a>
-                  <a href="javascript:;" target="_blank">
+                  <a
+                    href="https://www.facebook.com/passportjourneysapp"
+                    target="_blank"
+                  >
                     <img src="assets/img/facebook_icon.png" alt="" />
                   </a>
-                  <a href="javascript:;" target="_blank">
+                  <a
+                    href="https://www.instagram.com/passportjourneys/?hl=en"
+                    target="_blank"
+                  >
                     <img src="assets/img/instagram_icon.png" alt="" />
                   </a>
-                  <a href="javascript:;" target="_blank">
+                  <a
+                    href="https://www.linkedin.com/company/passport-journeys-app/"
+                    target="_blank"
+                    header
+                  >
                     <img src="assets/img/linkedin_icon.png" alt="" />
                   </a>
-                  <a href="javascript:;" target="_blank">
-                    <img src="assets/img/search_icon.png" alt="" />
+                  <a
+                    href="https://www.tiktok.com/@passportjourneysapp"
+                    target="_blank"
+                  >
+                    <img src="assets/img/tik-tok.png" alt="" />
                   </a>
                 </div>
               </div>
