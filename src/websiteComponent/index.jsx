@@ -24,6 +24,7 @@ function Index() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -32,10 +33,11 @@ function Index() {
 
     const response = await subscribeUs(data);
     if (!response.data.error) {
+      document.getElementById("email").value = "";
+      document.getElementById("first_name").value = "";
+      document.getElementById("last_name").value = "";
+      reset();
     }
-    document.getElementById("email").value = "";
-    document.getElementById("first_name").value = "";
-    document.getElementById("last_name").value = "";
   };
 
   return (
@@ -107,6 +109,9 @@ function Index() {
                     by licensed clinicians to support your journey to a more
                     beautiful bond.{" "}
                   </p>
+                  <div className="soon-banner">
+                    <img src="assets/img/soon.png" alt="" />
+                  </div>
                   <div class="download_btn">
                     <a
                       class="Buttn_comman Buttn-bg1 mx-md-2 mb-2"

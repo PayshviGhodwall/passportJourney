@@ -11,6 +11,7 @@ function ContactUs() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -26,6 +27,7 @@ function ContactUs() {
       document.querySelector('input[name="v3"]:checked').checked = "";
 
       setInt("");
+      reset();
     }
   };
 

@@ -3649,7 +3649,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 500;
   color: #000;
   max-width: 470px;
-  margin: 0 auto 50px;
+  margin: 0 auto 30px;
 }
 .adjust_height img {
   height: 478px;
@@ -6192,4 +6192,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .rmdp-panel-body span {
   font-size: 14px !important;
+}
+.soon-banner img {
+  width: 300px;
+  margin-bottom: 15px;
 }
