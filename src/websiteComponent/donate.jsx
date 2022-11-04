@@ -35,7 +35,7 @@ function Donate() {
               <div class="col-12 innetiative_top">
                 <div class="row">
                   <div class="col-12">
-                    <h2>Our To 3 Innetiative</h2>
+                    <h2>Our Top 3 Initiatives </h2>
                   </div>
                   <div class="col-md-4 mb-md-0 mb-4">
                     <div class="innetiative_box">
