@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { contactUs } from "../apiServices/adminHttpService/adminLoginHttpService";
 
 function ContactUs() {
-  const [int, setInt] = useState(true);
+  const [int, setInt] = useState("");
 
   const {
     register,
@@ -23,7 +23,7 @@ function ContactUs() {
       document.getElementById("email").value = "";
       document.getElementById("first_name").value = "";
       document.getElementById("last_name").value = "";
-      document.querySelector('input[name="v3"]:checked').checked = false;
+      document.querySelector('input[name="v3"]:checked').checked = "";
 
       setInt("");
     }
