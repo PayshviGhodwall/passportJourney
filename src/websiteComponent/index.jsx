@@ -102,9 +102,10 @@ function Index() {
                 <div class="pj-appdownload-heading text-center">
                   <h2>Passport Journeys</h2>
                   <p>
-                    a fully featured app with licensed teletherapy and monthly
-                    activities specific to the mother-daughter relationship to
-                    promote
+                    a teletherapy app specific to the mother-daughter
+                    relationship with video sessions and monthly activities led
+                    by licensed clinicians to support your journey to a more
+                    beautiful bond.{" "}
                   </p>
                   <div class="download_btn">
                     <a
@@ -243,7 +244,7 @@ function Index() {
           <div class="container">
             <div class="row mx-md-0">
               <div class="col-12 therepy_launch_heading">
-                <h2>Teletherapy Will Launch Fall Of 2022</h2>
+                <h2>How do you and your mother/daughter get started?</h2>
               </div>
               <div class="col-12">
                 <div class="therepy_launch_outter">

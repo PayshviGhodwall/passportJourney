@@ -158,11 +158,29 @@ function ContactUs() {
             <div class="row mx-md-0">
               <div class="col-12">
                 <div class="contact_team_content">
-                  <h2>Perspiciatis Unde Omnis</h2>
+                  <h2>Opportunities </h2>
                   <p>
-                    Perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudantium, totam rem aperiam, eaque
-                    ipsa quae ab illo inventore.
+                    Actively Recruiting Licensed Clinicians who meet the
+                    following criteria:{" "}
+                    <ul>
+                      <li>
+                        Masters Level Clinicians (LCSW, LPC, LMFT) or
+                        Psychologists
+                      </li>
+                      <li>Independently licensed in the state of Texas </li>
+                      <li>
+                        Versed in Systems Theory, Attachment Theory, and Trauma
+                        Informed care{" "}
+                      </li>
+                      <li>
+                        Experience working with diverse patient populations{" "}
+                      </li>
+                      <li>Special interests: additional LCDC certification </li>
+
+                      <li>
+                        Years in practice: 2 years independently licensed{" "}
+                      </li>
+                    </ul>
                   </p>
                   <Link class="Buttn_comman Buttn-bg1" to="/team">
                     Join Our Team

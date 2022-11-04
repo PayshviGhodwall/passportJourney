@@ -27,29 +27,39 @@ function ContentManagement() {
           <AdminHeader />{" "}
           <div className="admin_panel_data height_adjust">
             <div className="row content_management justify-content-center">
-              {content.map((item, index) => (
-                <div className="col-12 mb-5">
-                  <div className="row content_management_box">
-                    {item.type === "Policy" ? (
-                      <h2>Privacy Policies</h2>
-                    ) : item.type === "Condition" ? (
-                      <h2>Terms & Condition</h2>
-                    ) : item.type === "About Us" ? (
-                      <h2>About Us</h2>
-                    ) : (
-                      ""
-                    )}
-                    <Link
-                      className="edit_content_btn comman_btn"
-                      to="/admin/edit-content-management"
-                    >
-                      <i className="far fa-edit me-2"></i>Edit
-                    </Link>
+              {content.map((item, index) => {
+                item.content = item.content.replace(
+                  /(?:\r\n|\r|\n)/g,
+                  "<br />"
+                );
+                return (
+                  <div className="col-12 mb-5">
+                    <div className="row content_management_box">
+                      {item.type === "Policy" ? (
+                        <h2>Privacy Policies</h2>
+                      ) : item.type === "Condition" ? (
+                        <h2>Terms & Condition</h2>
+                      ) : item.type === "About Us" ? (
+                        <h2>About Us</h2>
+                      ) : (
+                        ""
+                      )}
+                      <Link
+                        className="edit_content_btn comman_btn"
+                        to="/admin/edit-content-management"
+                      >
+                        <i className="far fa-edit me-2"></i>Edit
+                      </Link>
 
-                    <p>{item.content}</p>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: item.content.replace(/\n/g, "<br/>"),
+                        }}
+                      ></p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

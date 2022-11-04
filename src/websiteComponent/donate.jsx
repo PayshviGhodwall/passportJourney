@@ -46,10 +46,10 @@ function Donate() {
                       <span class="innetiative_icon">
                         <img src="assets/img/live-video-sessions.png" alt="" />
                       </span>
-                      <h3>Perspiciatis Unde Omnis</h3>
+                      <h3>Support</h3>
                       <p>
-                        perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium, totam rem aperiam
+                        mother-daughter pairs who are ready for teletherapy
+                        services and need financial help with payments.{" "}
                       </p>
                     </div>
                   </div>
@@ -61,10 +61,10 @@ function Donate() {
                           alt=""
                         />
                       </span>
-                      <h3>Perspiciatis Unde Omnis</h3>
+                      <h3>Education</h3>
                       <p>
-                        perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium, totam rem aperiam
+                        mother-daughter pairs on how to communicate, bond and
+                        heal through quality learning materials.
                       </p>
                     </div>
                   </div>
@@ -73,10 +73,10 @@ function Donate() {
                       <span class="innetiative_icon">
                         <img src="assets/img/journal-promotion.png" alt="" />
                       </span>
-                      <h3>Perspiciatis Unde Omnis</h3>
+                      <h3>Create</h3>
                       <p>
-                        perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium, totam rem aperiam
+                        safe and unique spaces for mother-daughter pairs to come
+                        together and focus on the beauty of their relationship.{" "}
                       </p>
                     </div>
                   </div>
