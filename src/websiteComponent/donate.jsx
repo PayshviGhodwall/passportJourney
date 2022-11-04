@@ -19,13 +19,9 @@ function Donate() {
                     To expand access to Teletherapy <br /> services for
                     mother-Daughter <br /> pairs who want help{" "}
                   </h2>
-                  <a
-                    target="_blank"
-                    class="Buttn_comman Buttn-bg3"
-                    href="https://www.passportjourneysapp.com/checkout/donate?donatePageId=62e21245f558fa6e59fba9fe"
-                  >
+                  <Link class="Buttn_comman Buttn-bg3" to="/payment">
                     Give Today
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="col-4 d-lg-block d-md-none d-none"></div>

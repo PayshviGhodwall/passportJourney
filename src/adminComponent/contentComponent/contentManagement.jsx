@@ -28,10 +28,10 @@ function ContentManagement() {
           <div className="admin_panel_data height_adjust">
             <div className="row content_management justify-content-center">
               {content.map((item, index) => {
-                item.content = item.content.replace(
-                  /(?:\r\n|\r|\n)/g,
-                  "<br />"
-                );
+                item.content = item.content.split("\\n").join("");
+                {
+                  console.log(item.content);
+                }
                 return (
                   <div className="col-12 mb-5">
                     <div className="row content_management_box">
@@ -53,7 +53,10 @@ function ContentManagement() {
 
                       <p
                         dangerouslySetInnerHTML={{
-                          __html: item.content.replace(/\n/g, "<br/>"),
+                          __html: item.content.slice(
+                            1,
+                            item.content.length - 1
+                          ),
                         }}
                       ></p>
                     </div>

@@ -13,7 +13,7 @@ function ClinicianAboutUs() {
   const getContentInfo = async () => {
     const { data } = await getContents({ type: "About Us" });
     if (!data.error) {
-      setContent(data.results.contents);
+      setContent(data.results.contents[0].content.split("\\n").join(""));
     }
   };
   return (
@@ -32,9 +32,11 @@ function ClinicianAboutUs() {
                 </div>
                 <div className="row mx-1">
                   <div className="col-12 all_page_text py-4">
-                    {content.map((item, index) => (
-                      <p>{item.content}</p>
-                    ))}
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: content.slice(1, content.length - 1),
+                      }}
+                    ></p>
                   </div>
                 </div>
               </div>
