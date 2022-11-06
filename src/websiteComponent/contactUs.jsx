@@ -4,6 +4,7 @@ import WebHeader from "./commonComponent/webHeader";
 import WebFooter from "./commonComponent/webFooter";
 import { useForm } from "react-hook-form";
 import { contactUs } from "../apiServices/adminHttpService/adminLoginHttpService";
+import JoinOuTeam from "./joinOurTeam";
 
 function ContactUs() {
   const [int, setInt] = useState("");
@@ -184,7 +185,12 @@ function ContactUs() {
                       </li>
                     </ul>
                   </p>
-                  <Link class="Buttn_comman Buttn-bg1" to="/team">
+                  <Link
+                    class="Buttn_comman Buttn-bg1"
+                    to=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                  >
                     Join Our Team
                   </Link>
                 </div>
@@ -194,6 +200,34 @@ function ContactUs() {
         </section>
 
         <WebFooter />
+      </div>
+      <div
+        class="modal fade comman_modal"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Join Our Team
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body py-4 px-4">
+              <JoinOuTeam />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

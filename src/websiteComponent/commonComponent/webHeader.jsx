@@ -162,7 +162,7 @@ function WebHeader() {
             <Link to="/team">Our Team</Link>
             <Link to="/contact-us">Contact</Link>
           </div>
-          <Link class="Buttn_comman Buttn-bg1 mt-4" to="">
+          <Link class="Buttn_comman Buttn-bg1 mt-4" to="/contact-us">
             Join The Wait List
           </Link>
         </div>

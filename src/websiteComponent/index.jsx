@@ -90,7 +90,7 @@ function Index() {
                   </p>
                   <span>This is why we created Passport Journeys.</span>
                   <Link class="Buttn_comman Buttn-bg2" to="/contact-us">
-                    Join Our Teletherapy Wishlists
+                    Join Our Teletherapy Waitlist
                   </Link>
                 </div>
               </div>
@@ -113,18 +113,12 @@ function Index() {
                     <img src="assets/img/soon.png" alt="" />
                   </div>
                   <div class="download_btn">
-                    <a
-                      class="Buttn_comman Buttn-bg1 mx-md-2 mb-2"
-                      href="javscript:;"
-                    >
+                    <Link class="Buttn_comman Buttn-bg1 mx-md-2 mb-2" to="">
                       Download iOS App
-                    </a>
-                    <a
-                      class="Buttn_comman Buttn-bg3 mx-md-2 mb-2"
-                      href="javscript:;"
-                    >
+                    </Link>
+                    <Link class="Buttn_comman Buttn-bg3 mx-md-2 mb-2" to="">
                       Download Android App
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -259,11 +253,10 @@ function Index() {
                       <span>01</span>
                     </div>
                     <div class="therepy_content">
-                      <p>
-                        Mother and daughter both fill out a personal
-                        questionnaire to help with therapist matching,
-                        preferences and goals
-                      </p>
+                      <p>Pay for month 1 of our intake process here </p>
+                      <Link class="Buttn_comman Buttn-bg1" to="/contact-us">
+                        Pay now
+                      </Link>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
@@ -272,10 +265,7 @@ function Index() {
                       <span>02</span>
                     </div>
                     <div class="therepy_content">
-                      <p>
-                        A relationship assistant will review the questionnaire
-                        and connect with the pair to begin the journey
-                      </p>
+                      <p>Complete our intake questionnaire here </p>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
@@ -285,8 +275,8 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>
-                        A licensed clinician is assigned to the mother daughter
-                        journey based on best fit
+                        Your clinician will schedule 4 total appointments for
+                        month 1{" "}
                       </p>
                     </div>
                   </div>
@@ -297,9 +287,16 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>
-                        Each therapy appointment is scheduled and conducted from
-                        the app calendar & video platform (no in person
-                        sessions)
+                        Mother-Daughter pairs who are a good fit for our app
+                        model will be instructed to begin their monthly
+                        subscription in the app...
+                        <span
+                          style={{ color: "#86c7c3", cursor: "pointer" }}
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
+                        >
+                          Read More
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -407,6 +404,86 @@ function Index() {
           </div>
         </section>
         <WebFooter />
+      </div>
+      <div
+        class="modal fade comman_modal"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                How do you and your mother/daughter get started?
+              </h5>
+            </div>
+            <div class="modal-body py-4 px-4">
+              <div class="therepy_content">
+                <span className="read-more3">
+                  Your clinician will schedule 4 total appointments for month 1
+                </span>
+                <ol>
+                  <li>
+                    <p className="read-more mt-0">
+                      Introductory Meeting and Co-Intake- 30 minutes
+                    </p>{" "}
+                    <span className="read-more3">
+                      Joint introduction meeting between mother, daughter and
+                      newly matched clinician.
+                    </span>
+                  </li>
+                  <li>
+                    <p className="read-more">
+                      Individual Intake – Mother- 60 minutes
+                    </p>{" "}
+                    <span className="read-more3">
+                      One-on-One session with clinician and mother to assess
+                      their perspective for current state of the relationship
+                      and to learn more about mother as an individual.
+                    </span>
+                  </li>
+                  <li>
+                    <p className="read-more">
+                      Individual Intake – Daughter- 60 minutes
+                    </p>{" "}
+                    <span className="read-more3">
+                      One-on-One session with clinician and daughter to assess
+                      their perspective for current state of the relationship
+                      and to learn more about mother as an individual.
+                    </span>
+                  </li>
+                  <li>
+                    <p className="read-more">
+                      Intake Treatment Planning Session- 30 minutes
+                    </p>{" "}
+                    <span className="read-more3">
+                      Joint summary meeting to confirm if the Passport Journeys
+                      app will be a good fit for the mother-daughter pair and
+                      next steps.{" "}
+                    </span>
+                  </li>
+                </ol>
+                <p className="read-more2">
+                  *All sessions will happen through Zoom video appointments, no
+                  in person meetings. 
+                </p>
+              </div>
+              <div class="form-group mb-0 mt-3 col-12 text-center">
+                <button
+                  class="comman_btn"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

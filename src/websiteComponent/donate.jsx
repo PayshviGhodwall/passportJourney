@@ -17,7 +17,7 @@ function Donate() {
                   <span>Our Mission</span>
                   <h2>
                     To expand access to Teletherapy <br /> services for
-                    mother-Daughter <br /> pairs who want help{" "}
+                    Mother-Daughter <br /> pairs who want help{" "}
                   </h2>
                   <Link class="Buttn_comman Buttn-bg3" to="/payment">
                     Give Today

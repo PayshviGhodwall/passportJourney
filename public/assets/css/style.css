@@ -3084,6 +3084,12 @@ li.select2-search.select2-search--inline {
   font-size: 14px;
   text-align: start;
 }
+.form-error_modal {
+  color: red !important;
+  font-size: 15px !important;
+  text-align: start;
+  font-weight: 400 !important;
+}
 
 .Toastify__toast--error {
   border: 2px solid #eb5757;
@@ -3921,6 +3927,16 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 2;
   margin-bottom: -130px;
 }
+.form_design_modal {
+  background-color: transparent !important;
+  border-radius: 0px;
+  margin: 0;
+  padding: 0px !important;
+  box-shadow: none !important;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0px !important;
+}
 .comman_heading_box span {
   display: block;
   font-weight: 700;
@@ -3947,6 +3963,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .form_design .form-group {
   margin-bottom: 30px;
 }
+
 .form_design .form-control {
   height: 60px;
   border-radius: 10px;
@@ -5158,6 +5175,14 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media (max-width: 767px) {
+  .soon-banner img {
+    width: 250px !important;
+    margin-bottom: 15px;
+  }
+  .contact_team_content ul {
+    text-align: left;
+    padding: 15px 0px 0px 25px;
+  }
   .top_header_inner {
     justify-content: center;
   }
@@ -6196,4 +6221,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .soon-banner img {
   width: 300px;
   margin-bottom: 15px;
+}
+.read-more {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+.read-more2 {
+  font-size: 15px;
+  font-weight: 400 !important;
+}
+.read-more3 {
+  font-size: 15px;
 }
