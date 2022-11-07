@@ -14,6 +14,31 @@ function Index() {
     getSubscriptionInfo();
   }, []);
 
+  const state = {
+    responsive: {
+      0: {
+        items: 1,
+        dots: true,
+        autoplay: true,
+        margin: 0,
+        autoHeight: true,
+      },
+      768: {
+        items: 3,
+        dots: true,
+        autoplay: true,
+      },
+      1024: {
+        items: 4,
+        dots: true,
+        autoplay: true,
+      },
+      1200: {
+        items: 5,
+      },
+    },
+  };
+
   const getSubscriptionInfo = async () => {
     const { data } = await getSubscriptionList();
     if (!data.error) {
@@ -123,7 +148,20 @@ function Index() {
                 </div>
               </div>
               <div class="col-12 mb-lg-5  mb-0 pb-5">
-                <OwlCarousel className="appdownload_slider owl-carousel">
+                <OwlCarousel
+                  className="appdownload_slider owl-carousel"
+                  autoplay={false}
+                  autoplayHoverPause={false}
+                  autoplayTimeout={5000}
+                  dots={false}
+                  autoHeight={true}
+                  loop={false}
+                  nav={false}
+                  fade={false}
+                  margin={23}
+                  items={5}
+                  responsive={state.responsive} // add this line
+                >
                   <div class="item">
                     <img src="assets/img/Home Screen.png" alt="" />
                   </div>
@@ -191,7 +229,7 @@ function Index() {
                               alt=""
                             />
                           </span>
-                          <h3>Journal Promots</h3>
+                          <h3>Journal Promote</h3>
                           <p>
                             Intimate journal prompts curated to pull out deep
                             throught to simulate growth and healing through

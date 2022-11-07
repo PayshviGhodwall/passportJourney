@@ -3336,10 +3336,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 /* web css */
 
-.owl-item {
+/* .owl-item {
   width: 212px !important;
   margin-right: 23px !important;
-}
+} */
 
 .bg-1 {
   background-color: #86c7c3 !important;
