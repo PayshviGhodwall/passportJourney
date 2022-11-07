@@ -172,6 +172,24 @@ export async function contactUs(formData) {
   }
 }
 
+export async function joinUs(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/joinUs`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
 export async function subscribeUs(formData) {
   try {
     const { data } = await adminhttpService.post(
@@ -209,6 +227,20 @@ export async function getSubscribeList(formData) {
   try {
     const { data } = await adminhttpService.post(
       `${process.env.REACT_APP_APIENDPOINT}/admin/getSubscribeList`,
+      formData
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+export async function getJoinList(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getJoinList`,
       formData
     );
     console.log(data);

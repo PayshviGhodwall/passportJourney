@@ -221,10 +221,13 @@ function ContactUs() {
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                id="close"
               ></button>
             </div>
             <div class="modal-body py-4 px-4">
-              <JoinOuTeam />
+              <JoinOuTeam
+                modalClose={() => document.getElementById("close").click()}
+              />
             </div>
           </div>
         </div>

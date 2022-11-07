@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
+import OurTeam from "./ourTeam";
 import Query from "./query";
 import Subscribe from "./subscribe";
 
@@ -35,7 +36,7 @@ function QuerySubscribe() {
                   </div>
                 </div>
                 <div className="row p-4">
-                  <div className="col-12 p-0 help-support-table border border-2 border-bottom-0 rounded overflow-hidden border-light">
+                  <div className="col-12 p-0 help-support-table2 border border-2 border-bottom-0 rounded overflow-hidden border-light">
                     <nav>
                       <div
                         className="nav nav-tabs justify-content-center border-0"
@@ -66,6 +67,18 @@ function QuerySubscribe() {
                         >
                           Subscribe
                         </button>
+                        <button
+                          className="nav-link"
+                          id="nav-profile-tab2"
+                          data-bs-toggle="tab"
+                          data-bs-target="#nav-profile2"
+                          type="button"
+                          role="tab"
+                          aria-controls="nav-profile2"
+                          aria-selected="false"
+                        >
+                          Our Team
+                        </button>
                       </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">
@@ -84,6 +97,14 @@ function QuerySubscribe() {
                         aria-labelledby="nav-profile-tab"
                       >
                         <Subscribe />
+                      </div>
+                      <div
+                        className="tab-pane fade"
+                        id="nav-profile2"
+                        role="tabpanel"
+                        aria-labelledby="nav-profile-tab2"
+                      >
+                        <OurTeam />
                       </div>
                     </div>
                   </div>

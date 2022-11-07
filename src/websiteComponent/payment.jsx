@@ -41,7 +41,7 @@ function Payment() {
             </div>
           </nav>
         </header>
-        <div class="payment__card my-4">
+        <div class="payment__card mt-4">
           <div class="payment__body">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div class="form-group payment_group">
@@ -156,6 +156,9 @@ function Payment() {
                       </div>
                     </label>
                   </p>
+                  {errors?.amount && (
+                    <p className="form-error">This field is required</p>
+                  )}
                 </div>
                 <div class="row">
                   <div class="form-group col-12 text-center my-3 ">

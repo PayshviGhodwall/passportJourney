@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { contactUs } from "../apiServices/adminHttpService/adminLoginHttpService";
+import { joinUs } from "../apiServices/adminHttpService/adminLoginHttpService";
 
-function JoinOuTeam() {
+function JoinOuTeam({ modalClose }) {
   const {
     register,
     handleSubmit,
@@ -14,13 +14,14 @@ function JoinOuTeam() {
   const onSubmit = async (data) => {
     console.log(data);
 
-    const response = await contactUs(data);
+    const response = await joinUs(data);
     if (!response.data.error) {
       document.getElementById("email").value = "";
       document.getElementById("first_name").value = "";
       document.getElementById("last_name").value = "";
 
       reset();
+      modalClose();
     }
   };
 
