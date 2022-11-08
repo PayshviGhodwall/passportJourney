@@ -6,6 +6,8 @@ import WebFooter from "./commonComponent/webFooter";
 import { getSubscriptionList } from "../apiServices/subscriptionHttpService/adminSubscriptionHttpService";
 import { useForm } from "react-hook-form";
 import { subscribeUs } from "../apiServices/adminHttpService/adminLoginHttpService";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 function Index() {
   const [subscription, setSubscription] = useState("");
@@ -287,11 +289,11 @@ function Index() {
                 <div class="therepy_launch_outter">
                   <div class="therepy_launch_box">
                     <div class="therepy_img">
-                      <img src="assets/img/img_1.png" alt="" />
+                      <img src="assets/img/hand (1).png" alt="" />
                       <span>01</span>
                     </div>
                     <div class="therepy_content">
-                      <p>Pay for month 1 of our intake process here </p>
+                      <p>Pay for month 1 of our intake process</p>
                       <Link class="Buttn_comman Buttn-bg1" to="/contact-us">
                         Pay now
                       </Link>
@@ -303,7 +305,18 @@ function Index() {
                       <span>02</span>
                     </div>
                     <div class="therepy_content">
-                      <p>Complete our intake questionnaire here </p>
+                      <p>
+                        Complete our intake questionnaire
+                        <a
+                          href="https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
+                          target="_blank"
+                        >
+                          <span style={{ color: "#86c7c3", cursor: "pointer" }}>
+                            {" "}
+                            here
+                          </span>
+                        </a>
+                      </p>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
@@ -313,8 +326,17 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>
-                        Your clinician will schedule 4 total appointments for
-                        month 1{" "}
+                        Your intake questionnaires will be reviewed and you will
+                        be matched to a licensed clinician
+                        <a
+                          href=" https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
+                          target="_blank"
+                        >
+                          <span style={{ color: "#86c7c3", cursor: "pointer" }}>
+                            {" "}
+                            here
+                          </span>
+                        </a>
                       </p>
                     </div>
                   </div>
@@ -325,9 +347,8 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>
-                        Mother-Daughter pairs who are a good fit for our app
-                        model will be instructed to begin their monthly
-                        subscription in the app...
+                        Your clinician will schedule 4 total appointments for
+                        month 1...
                         <span
                           style={{ color: "#86c7c3", cursor: "pointer" }}
                           data-bs-toggle="modal"
@@ -345,8 +366,9 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>
-                        An activity and journal prompt are assigned after each
-                        therapy appointment to the pair to track within the app
+                        Mother-Daughter pairs who are a good fit for our app
+                        model will be instructed to begin their monthly
+                        subscription in the app.
                       </p>
                     </div>
                   </div>
