@@ -58,7 +58,7 @@ function WebHeader() {
             <div class="container">
               <div class="row align-items-center">
                 <div class="col-auto">
-                  <Link class="header_logo" to="/home">
+                  <Link class="header_logo" to="/">
                     <img src="assets/img/logo.png" alt="" />
                   </Link>
                 </div>
@@ -67,9 +67,9 @@ function WebHeader() {
                     <li>
                       <Link
                         class={
-                          window.location.href.includes("/home") ? "active" : ""
+                          window.location.href.includes("/") ? "active" : ""
                         }
-                        to="/home"
+                        to="/"
                       >
                         Home
                       </Link>
@@ -157,7 +157,7 @@ function WebHeader() {
         </div>
         <div class="offcanvas-body text-center">
           <div class="menus_mobiinner">
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/donate">Donate</Link>
             <Link to="/team">Our Team</Link>
             <Link to="/contact-us">Contact</Link>

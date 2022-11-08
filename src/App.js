@@ -280,7 +280,6 @@ function App() {
 
           {/* Web routes */}
           <Route path="/" element={<Index />} />
-          <Route path="/home" element={<Index />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/team" element={<Team />} />
           <Route path="/contact-us" element={<ContactUs />} />

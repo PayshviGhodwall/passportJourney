@@ -52,7 +52,7 @@ function PaymentSuccess() {
                             <br />
                             for verification.
                           </p>
-                          <Link to="/home" class="redo btn my-3">
+                          <Link to="/" class="redo btn my-3">
                             Continue
                           </Link>
                           <span class="change"></span>
