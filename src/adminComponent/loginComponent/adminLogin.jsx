@@ -77,7 +77,9 @@ function AdminLogin() {
                         />
 
                         {errors?.password && (
-                          <p className="form-error">This field is required</p>
+                          <p className="form-error mt-1">
+                            This field is required
+                          </p>
                         )}
                       </div>
                       <div className="form-group col-12">

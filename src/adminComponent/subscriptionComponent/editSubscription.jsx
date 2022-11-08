@@ -75,7 +75,7 @@ function EditSubscription({ listing }) {
                 />
 
                 {errors?.plan_name && (
-                  <p className="form-error">This field is required</p>
+                  <p className="form-error mt-1">This field is required</p>
                 )}
               </div>
               <div className="form-group mb-3 col-4">
@@ -89,7 +89,7 @@ function EditSubscription({ listing }) {
                 />
 
                 {errors?.plan_price && (
-                  <p className="form-error">This field is required</p>
+                  <p className="form-error mt-1">This field is required</p>
                 )}
               </div>
               <div className="form-group mb-3 col-4">
@@ -103,7 +103,7 @@ function EditSubscription({ listing }) {
                 />
 
                 {errors?.plan_duration && (
-                  <p className="form-error">This field is required</p>
+                  <p className="form-error mt-1">This field is required</p>
                 )}
               </div>
               <div className="form-group mb-0 mt-3 col-12 text-center">

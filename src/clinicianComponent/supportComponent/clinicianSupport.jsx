@@ -8,6 +8,7 @@ function ClinicianSupport() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -20,6 +21,7 @@ function ClinicianSupport() {
       document.getElementById("email").value = "";
       document.getElementById("subject").value = "";
       document.getElementById("description").value = "";
+      reset();
     }
   };
 

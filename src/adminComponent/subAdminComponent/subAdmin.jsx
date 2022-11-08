@@ -82,7 +82,7 @@ function SubAdmin() {
   const {
     register,
     handleSubmit,
-
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -167,6 +167,7 @@ function SubAdmin() {
         document.getElementById("confirmPassword").value = "";
         setSelected([]);
         await getAdminListing();
+        reset();
       }
     } else {
       toast.error("New password should be equal to Confirm password");
@@ -206,7 +207,7 @@ function SubAdmin() {
                           })}
                         />
                         {errors?.full_name && (
-                          <p className="form-error mt-2">
+                          <p className="form-error mt-1">
                             This field is required
                           </p>
                         )}

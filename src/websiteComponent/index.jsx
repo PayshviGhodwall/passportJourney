@@ -314,7 +314,7 @@ function Index() {
                         >
                           <span style={{ color: "#86c7c3", cursor: "pointer" }}>
                             {" "}
-                            here
+                            Click here
                           </span>
                         </a>
                       </p>
@@ -336,7 +336,7 @@ function Index() {
                         >
                           <span style={{ color: "#86c7c3", cursor: "pointer" }}>
                             {" "}
-                            here
+                            Click here
                           </span>
                         </a>
                       </p>
