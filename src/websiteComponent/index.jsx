@@ -293,7 +293,7 @@ function Index() {
                 <div class="therepy_launch_outter">
                   <div class="therepy_launch_box">
                     <div class="therepy_img">
-                      <img src="assets/img/hand (1).png" alt="" />
+                      <img src="assets/img/hand.png" alt="" />
                       <span>01</span>
                     </div>
                     <div class="therepy_content">
@@ -333,13 +333,6 @@ function Index() {
                         Your intake questionnaires will be reviewed and you will
                         be matched to a licensed clinician
                       </p>
-                      <a
-                        href=" https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
-                        target="_blank"
-                        class="Buttn_comman Buttn-bg1"
-                      >
-                        Click here
-                      </a>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
