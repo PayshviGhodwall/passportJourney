@@ -40,6 +40,14 @@ function ClinicianOtpVerify() {
       });
     }
   };
+  const moveOnMax = (event, field, nextField) => {
+    event = event || window.event;
+    if (event.keyCode != 9) {
+      if (field.value.length >= field.maxLength) {
+        nextField.focus();
+      }
+    }
+  };
 
   return (
     <>
@@ -66,6 +74,13 @@ function ClinicianOtpVerify() {
                           name="otp1"
                           id="otp1"
                           {...register("otp1", { required: true })}
+                          onKeyUp={(event) => {
+                            moveOnMax(
+                              event,
+                              document.getElementById("otp1"),
+                              document.getElementById("otp2")
+                            );
+                          }}
                         />
                         <input
                           type="number"
@@ -75,6 +90,13 @@ function ClinicianOtpVerify() {
                           name="otp2"
                           id="otp2"
                           {...register("otp2", { required: true })}
+                          onKeyUp={(event) => {
+                            moveOnMax(
+                              event,
+                              document.getElementById("otp2"),
+                              document.getElementById("otp3")
+                            );
+                          }}
                         />
                         <input
                           type="number"
@@ -84,6 +106,13 @@ function ClinicianOtpVerify() {
                           name="otp3"
                           id="otp3"
                           {...register("otp3", { required: true })}
+                          onKeyUp={(event) => {
+                            moveOnMax(
+                              event,
+                              document.getElementById("otp3"),
+                              document.getElementById("otp4")
+                            );
+                          }}
                         />
                         <input
                           type="number"

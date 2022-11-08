@@ -11,7 +11,7 @@ function WebHeader() {
               <div class="top_header_inner">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="javascript:;">
+                    <a href="mailto: laceytezino@passportjourneysapp.com">
                       <img src="assets/img/main_icon.png" alt="" />
                     </a>
                   </li>
@@ -67,17 +67,20 @@ function WebHeader() {
                     <li>
                       <Link
                         class={
-                          window.location.href.includes("/") ? "active" : ""
+                          window.location.href.split("/")[3] === ""
+                            ? "active"
+                            : ""
                         }
                         to="/"
                       >
                         Home
                       </Link>
+                      {console.log(window.location.href.split("/"))}
                     </li>
                     <li>
                       <Link
                         class={
-                          window.location.href.includes("/Donate")
+                          window.location.href.includes("/donate")
                             ? "active"
                             : ""
                         }

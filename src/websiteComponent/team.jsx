@@ -63,7 +63,7 @@ function Team() {
                     way to honor her own unique mother-daughter relationship.
                   </p>
                   <div class="social_icon">
-                    <a href="" target="_blank">
+                    <a href="mailto: laceytezino@passportjourneysapp.com">
                       <img src="assets/img/main_icon.png" alt="" />
                     </a>
                     <a

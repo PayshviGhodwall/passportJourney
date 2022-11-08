@@ -52,7 +52,7 @@ function WebFooter() {
                   Houston, TX 77096
                 </p>
                 <div class="social_icon">
-                  <a href="" target="_blank">
+                  <a href="mailto: laceytezino@passportjourneysapp.com">
                     <img src="assets/img/main_icon.png" alt="" />
                   </a>
                   <a

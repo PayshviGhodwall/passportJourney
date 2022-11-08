@@ -200,9 +200,13 @@ function Index() {
                           </li>
                         ))}
                       </ul>
-                      <Link class="Buttn_comman Buttn-bg2" to="/contact-us">
+                      <a
+                        class="Buttn_comman Buttn-bg2"
+                        target="_blank"
+                        href="https://checkout.stripe.com/c/pay/cs_live_a16Ggd8q2hBwZAjJkMUAZqjOy7OGDsA1QvWZ9dQ747vJjCGSZ4dvNb8uIK#fidkdWxOYHwnPyd1blppbHNgWjA0TmtpZ09BSGhBa0l8a2Rsc0R%2FVHRKX05GY0x1YUdcak9GVUdzVlJVS2lkQ3RKU302M3BDcH9VS2B0Zk1ibnFsZFZSSHFoXTA0ajczSHVTT11EYEIxfXRiNTVObjdCQFZIQycpJ3VpbGtuQH11anZgYUxhJz8nPXJIYFNcNjYyN1xUNVRAM2pqJyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmZtYGZuanBxK3Zxd2x1YCtmamgqJ3gl"
+                      >
                         Subscribe Now
-                      </Link>
+                      </a>
                     </div>
                   </div>
                   <div class="col px-xl-5 px-lg-4 px-md-4 border-start d-flex align-items-stretch">
@@ -294,9 +298,13 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>Pay for month 1 of our intake process</p>
-                      <Link class="Buttn_comman Buttn-bg1" to="/payment">
+                      <a
+                        class="Buttn_comman Buttn-bg1"
+                        target="_blank"
+                        href="https://checkout.stripe.com/c/pay/cs_live_a16Ggd8q2hBwZAjJkMUAZqjOy7OGDsA1QvWZ9dQ747vJjCGSZ4dvNb8uIK#fidkdWxOYHwnPyd1blppbHNgWjA0TmtpZ09BSGhBa0l8a2Rsc0R%2FVHRKX05GY0x1YUdcak9GVUdzVlJVS2lkQ3RKU302M3BDcH9VS2B0Zk1ibnFsZFZSSHFoXTA0ajczSHVTT11EYEIxfXRiNTVObjdCQFZIQycpJ3VpbGtuQH11anZgYUxhJz8nPXJIYFNcNjYyN1xUNVRAM2pqJyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmZtYGZuanBxK3Zxd2x1YCtmamgqJ3gl"
+                      >
                         Pay now
-                      </Link>
+                      </a>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
@@ -305,19 +313,14 @@ function Index() {
                       <span>02</span>
                     </div>
                     <div class="therepy_content">
-                      <p>
-                        Complete our intake questionnaire
-                        <br />
-                        <a
-                          href="https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
-                          target="_blank"
-                        >
-                          <span style={{ color: "#86c7c3", cursor: "pointer" }}>
-                            {" "}
-                            Click here
-                          </span>
-                        </a>
-                      </p>
+                      <p>Complete our intake questionnaire</p>
+                      <a
+                        href="https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
+                        target="_blank"
+                        class="Buttn_comman Buttn-bg1"
+                      >
+                        Click here
+                      </a>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
@@ -329,17 +332,14 @@ function Index() {
                       <p>
                         Your intake questionnaires will be reviewed and you will
                         be matched to a licensed clinician
-                        <br />
-                        <a
-                          href=" https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
-                          target="_blank"
-                        >
-                          <span style={{ color: "#86c7c3", cursor: "pointer" }}>
-                            {" "}
-                            Click here
-                          </span>
-                        </a>
                       </p>
+                      <a
+                        href=" https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
+                        target="_blank"
+                        class="Buttn_comman Buttn-bg1"
+                      >
+                        Click here
+                      </a>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
@@ -350,15 +350,16 @@ function Index() {
                     <div class="therepy_content">
                       <p>
                         Your clinician will schedule 4 total appointments for
-                        month 1...
-                        <span
-                          style={{ color: "#86c7c3", cursor: "pointer" }}
-                          data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop"
-                        >
-                          Read More
-                        </span>
+                        month 1
                       </p>
+                      <Link
+                        class="Buttn_comman Buttn-bg1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        to=""
+                      >
+                        Read More
+                      </Link>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
