@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@popperjs/core";
-import "bootstrap";
-import $ from "jquery";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "@popperjs/core";
+// import "bootstrap";
+// import $ from "jquery";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navigate, Outlet } from "react-router-dom";
