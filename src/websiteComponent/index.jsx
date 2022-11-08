@@ -294,7 +294,7 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>Pay for month 1 of our intake process</p>
-                      <Link class="Buttn_comman Buttn-bg1" to="/contact-us">
+                      <Link class="Buttn_comman Buttn-bg1" to="/payment">
                         Pay now
                       </Link>
                     </div>
@@ -307,6 +307,7 @@ function Index() {
                     <div class="therepy_content">
                       <p>
                         Complete our intake questionnaire
+                        <br />
                         <a
                           href="https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
                           target="_blank"
@@ -328,6 +329,7 @@ function Index() {
                       <p>
                         Your intake questionnaires will be reviewed and you will
                         be matched to a licensed clinician
+                        <br />
                         <a
                           href=" https://corexmslmtdwdd7f6wtd.qualtrics.com/jfe/form/SV_1AGFpRXrxyvBdMq"
                           target="_blank"
