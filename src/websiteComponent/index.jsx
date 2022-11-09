@@ -385,7 +385,7 @@ function Index() {
           <div class="container">
             <div class="row mx-md-0">
               <div class="col-12 subscribeer_heading text-center">
-                <h2>Subscribe Us</h2>
+                <h2>Subscribe With Us</h2>
                 <p>
                   Sign up with your email address to receive news and updates.
                 </p>
