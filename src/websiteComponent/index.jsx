@@ -83,9 +83,14 @@ function Index() {
                     Relationship
                   </h1>
                   <span>— Lacey Tezino, Founder</span>
-                  <Link class="Buttn_comman Buttn-bg1" to="/contact-us">
+                  <a
+                    class="Buttn_comman Buttn-bg1"
+                    href="https://buy.stripe.com/8wMeVY3372YQ0QE6oo
+"
+                    target="_blank"
+                  >
                     Sign Up Today
-                  </Link>
+                  </a>
                 </div>
               </div>
               <div class="col-12 d-lg-none d-md-block d-block text-center mb-md-5 mb-4">
@@ -301,7 +306,7 @@ function Index() {
                       <a
                         class="Buttn_comman Buttn-bg1"
                         target="_blank"
-                        href="https://checkout.stripe.com/c/pay/cs_live_a16Ggd8q2hBwZAjJkMUAZqjOy7OGDsA1QvWZ9dQ747vJjCGSZ4dvNb8uIK#fidkdWxOYHwnPyd1blppbHNgWjA0TmtpZ09BSGhBa0l8a2Rsc0R%2FVHRKX05GY0x1YUdcak9GVUdzVlJVS2lkQ3RKU302M3BDcH9VS2B0Zk1ibnFsZFZSSHFoXTA0ajczSHVTT11EYEIxfXRiNTVObjdCQFZIQycpJ3VpbGtuQH11anZgYUxhJz8nPXJIYFNcNjYyN1xUNVRAM2pqJyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmZtYGZuanBxK3Zxd2x1YCtmamgqJ3gl"
+                        href="https://buy.stripe.com/8wMeVY3372YQ0QE6oo"
                       >
                         Pay now
                       </a>

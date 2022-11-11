@@ -16,12 +16,13 @@ function WebFooter() {
                   mother - daughter pairs through our non-profit, Mom + Me
                   Journey.
                 </p>
-                <Link
+                <a
                   class="Buttn_comman Buttn-bg1 d-lg-flex d-md-inline-flex me-4"
-                  to="/payment"
+                  href="https://donate.stripe.com/5kAdRU47b7f6eHu3cd"
+                  target="_blank"
                 >
                   Donate Now
-                </Link>
+                </a>
               </div>
             </div>
             <div class="col-lg-4 col-md-6 d-flex justify-content-lg-center justify-content-md-start justify-content-start mb-md-0 mb-4">
