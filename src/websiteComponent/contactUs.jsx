@@ -48,9 +48,8 @@ function ContactUs() {
                 <form class="form_design row" onSubmit={handleSubmit(onSubmit)}>
                   <div class="form-group col-12">
                     <p>
-                      Please fill out the details below and a member of our
-                      Passport <br /> Journeys team will contact you for a
-                      therapy start date.
+                      Please fill out your information below and a member <br />{" "}
+                      of our Passport Journeys team will contact you.
                     </p>
                   </div>
                   <div class="form-group col-md-6">
@@ -178,11 +177,11 @@ function ContactUs() {
                       <li>
                         Experience working with diverse patient populations{" "}
                       </li>
-                      <li>Special interests: additional LCDC certification </li>
-
                       <li>
-                        Years in practice: 2 years independently licensed{" "}
+                        Additional LCDC certification or expertise a bonus{" "}
                       </li>
+
+                      <li>Independently licensed for at least 2 years. </li>
                     </ul>
                   </p>
                   <Link

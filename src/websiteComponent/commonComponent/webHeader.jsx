@@ -120,7 +120,7 @@ function WebHeader() {
                     }
                     to="/contact-us"
                   >
-                    Join The Wait List
+                    Join The Waitlist
                   </Link>
                 </div>
                 <div class="col d-md-none d-block mobile_menus text-end">
@@ -166,7 +166,7 @@ function WebHeader() {
             <Link to="/contact-us">Contact</Link>
           </div>
           <Link class="Buttn_comman Buttn-bg1 mt-4" to="/contact-us">
-            Join The Wait List
+            Join The Waitlist
           </Link>
         </div>
       </div>

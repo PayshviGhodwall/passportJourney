@@ -240,10 +240,10 @@ function Index() {
                               alt=""
                             />
                           </span>
-                          <h3>Journal Promote</h3>
+                          <h3>Journal Prompts</h3>
                           <p>
                             Intimate journal prompts curated to pull out deep
-                            throught to simulate growth and healing through
+                            thoughts to simulate growth and healing through
                             writing - 1 assigned per month
                           </p>
                         </div>
@@ -263,8 +263,8 @@ function Index() {
                           <h3>Prescribed Activities</h3>
                           <p>
                             Throughtful activities in between video sessions to
-                            promote intentional bonding in (in person and
-                            virtual available) - 1 assigned per month
+                            promote intentional bonding (in person and virtual
+                            available) - 1 assigned per month
                           </p>
                         </div>
                       </div>
@@ -275,9 +275,8 @@ function Index() {
                           </span>
                           <h3>Worksheets</h3>
                           <p>
-                            Clinician selected homework to sharpen a particular
-                            skill, based on your challenge areas - 1 assigned
-                            per month
+                            Clinician-selected homework to sharpen a particular
+                            skill, based on your goals - 1 assigned per month
                           </p>
                         </div>
                       </div>
@@ -380,7 +379,7 @@ function Index() {
                   <Link class="Buttn_comman Buttn-bg1" to="/contact-us">
                     Join Our Therapy Pilot
                   </Link>
-                  <p>Receive an email when the teletherapy version is live!</p>
+                  <p>Receive an email when the teletherapy app is live!</p>
                 </div>
               </div>
             </div>

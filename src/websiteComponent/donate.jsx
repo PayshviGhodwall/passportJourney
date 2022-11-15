@@ -61,7 +61,7 @@ function Donate() {
                           alt=""
                         />
                       </span>
-                      <h3>Education</h3>
+                      <h3>Educate</h3>
                       <p>
                         mother-daughter pairs on how to communicate, bond and
                         heal through quality learning materials.

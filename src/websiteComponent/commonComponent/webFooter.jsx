@@ -12,7 +12,7 @@ function WebFooter() {
                 <h2>Support</h2>
                 <p>
                   Passport Journeys has a philanthropic arm that will support
-                  charitable events and therapeutic support for under served
+                  charitable events and therapeutic support for underserved
                   mother - daughter pairs through our non-profit, Mom + Me
                   Journey.
                 </p>
