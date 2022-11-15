@@ -162,7 +162,7 @@ function ContactUs() {
                 <div class="contact_team_content">
                   <h2>Opportunities </h2>
                   <p>
-                    Actively Recruiting Licensed Clinicians who meet the
+                    We are actively recruiting Licensed Clinicians who meet the
                     following criteria:{" "}
                     <ul>
                       <li>
@@ -177,11 +177,11 @@ function ContactUs() {
                       <li>
                         Experience working with diverse patient populations{" "}
                       </li>
+
+                      <li>Independently licensed for at least 2 years. </li>
                       <li>
                         Additional LCDC certification or expertise a bonus{" "}
                       </li>
-
-                      <li>Independently licensed for at least 2 years. </li>
                     </ul>
                   </p>
                   <Link
