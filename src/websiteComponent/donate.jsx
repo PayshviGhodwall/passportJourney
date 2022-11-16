@@ -19,13 +19,9 @@ function Donate() {
                     To expand access to Teletherapy <br /> services for
                     Mother-Daughter <br /> pairs who want help{" "}
                   </h2>
-                  <a
-                    class="Buttn_comman Buttn-bg3"
-                    href="https://donate.stripe.com/5kAdRU47b7f6eHu3cd"
-                    target="_blank"
-                  >
+                  <Link class="Buttn_comman Buttn-bg3" to="/payment">
                     Give Today
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="col-4 d-lg-block d-md-none d-none"></div>

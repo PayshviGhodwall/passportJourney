@@ -54,6 +54,38 @@ function ContactUs() {
                   </div>
                   <div class="form-group col-md-6">
                     <label class="form_label" for="">
+                      Are you interested in participating in our Teletherapy
+                      Pilot?
+                    </label>
+                    <div class="outer_check">
+                      <div class="checkbox_main">
+                        <input
+                          type="radio"
+                          id="v1"
+                          name="v3"
+                          class="d-none"
+                          onChange={() => setInt(true)}
+                        />
+                        <label for="v1">
+                          <div class="btns_check">Yes</div>
+                        </label>
+                      </div>
+                      <div class="checkbox_main">
+                        <input
+                          type="radio"
+                          id="v2"
+                          name="v3"
+                          class="d-none"
+                          onChange={() => setInt(false)}
+                        />
+                        <label for="v2">
+                          <div class="btns_check">No</div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form_label" for="">
                       First Name
                     </label>
                     <input
@@ -112,38 +144,7 @@ function ContactUs() {
                       <p className="form-error mt-1">{errors.email.message}</p>
                     )}
                   </div>
-                  <div class="form-group col-md-6">
-                    <label class="form_label" for="">
-                      Are you interested in participating in our Teletherapy
-                      Pilot?
-                    </label>
-                    <div class="outer_check">
-                      <div class="checkbox_main">
-                        <input
-                          type="radio"
-                          id="v1"
-                          name="v3"
-                          class="d-none"
-                          onChange={() => setInt(true)}
-                        />
-                        <label for="v1">
-                          <div class="btns_check">Yes</div>
-                        </label>
-                      </div>
-                      <div class="checkbox_main">
-                        <input
-                          type="radio"
-                          id="v2"
-                          name="v3"
-                          class="d-none"
-                          onChange={() => setInt(false)}
-                        />
-                        <label for="v2">
-                          <div class="btns_check">No</div>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+
                   <div class="form-group col-12 mt-md-4 mt-2 mb-0">
                     <button class="Buttn_comman Buttn-bg3" type="submit">
                       Submit Now

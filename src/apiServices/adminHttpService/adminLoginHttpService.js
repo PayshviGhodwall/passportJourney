@@ -266,6 +266,19 @@ export async function donate(formData) {
     return { error };
   }
 }
+export async function subscribe() {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/subscribe`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
 export async function success(formData) {
   try {
     const { data } = await adminhttpService.post(

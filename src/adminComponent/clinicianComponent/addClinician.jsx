@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
 import { MultiSelect } from "react-multi-select-component";
-import DatePicker from "react-multi-date-picker";
-import TimePicker from "react-multi-date-picker/plugins/time_picker";
-
-import "react-calendar/dist/Calendar.css";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addClinician } from "../../apiServices/clinicianHttpService/adminClinicianHttpService";
 import moment from "moment";
+import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
 
 const options = [
   { value: "counselling", label: "Counselling" },
@@ -20,11 +17,8 @@ const options = [
 function AddClinician() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selected, setSelected] = useState([]);
-  const [value, onChange] = useState(new Date());
-  const [timeSlots, setTimeSlots] = useState([]);
-  const [date, setDate] = useState([]);
 
-  useEffect(() => {}, [value]);
+  useEffect(() => {}, []);
 
   const {
     register,
@@ -36,10 +30,9 @@ function AddClinician() {
 
   const onSubmit = async (data) => {
     console.log(data);
-    console.log(date);
 
     data.expertise = selected.map((option) => option.label);
-    data.time_slots = date;
+    data.time_slots = "";
 
     const formData = new FormData();
     for (const item in data) {
@@ -70,34 +63,32 @@ function AddClinician() {
       setSelectedFile(event[0]);
     }
   };
-  const [dates, setDates] = useState([]);
 
-  function handleChange(value) {
-    setDates(value);
+  // const getTimeSlots = (time) => {
+  //   let slots = [...timeSlots];
+  //   slots.push(time);
+  //   console.log(slots);
+  //   setTimeSlots(slots);
+  // };
 
-    let newDate = [];
-    value.forEach((element, index, array) => {
-      console.log(element, index);
-      newDate.push({
-        date: moment(
-          new Date(element.year, element.month.number - 1, element.day)
-        ).format("LL"),
-        time_slots: timeSlots,
-      });
-    });
+  let timeslots = [
+    ["10:", "11"],
+    ["11", "12"],
+    ["12", "13"],
+    ["13", "14"],
+    ["14", "15"],
+    ["15", "16"],
+    ["16", "17"],
+    ["17", "18"],
+    ["18", "19"],
+    ["19", "20"],
+    ["20", "21"],
+  ];
 
-    console.log(newDate);
-    setDate(newDate);
-  }
-
-  const getTimeSlots = (time) => {
-    let slots = [...timeSlots];
-    slots.push(time);
-    console.log(slots);
-    setTimeSlots(slots);
+  let onSelectTimeslot = (allTimeslots, lastSelectedTimeslot) => {
+    console.log(lastSelectedTimeslot.startDate, allTimeslots);
   };
 
-  console.log(dates);
   return (
     <>
       {" "}
@@ -278,188 +269,20 @@ function AddClinician() {
                       <p className="form-error mt-2">This field is required</p>
                     )}
                   </div>
-                  <div class="form-group col-4">
+                  <div class="form-group col-12">
                     <label for="">Select Date</label>
-                    <DatePicker
-                      value={dates}
-                      onChange={handleChange}
-                      format="MM/DD/YYYY HH"
-                      plugins={[
-                        <TimePicker
-                          position="bottom"
-                          hideSeconds
-                          format="HH"
-                        />,
-                      ]}
+                    <ReactTimeslotCalendar
+                      initialDate={moment().format()}
+                      maxTimeslots={100}
+                      timeslots={timeslots}
+                      onSelectTimeslot={(timeslots, lastSelected) => {
+                        console.log("All Timeslots:");
+                        console.log(timeslots);
+
+                        console.log("Last selected timeslot:");
+                        console.log(lastSelected);
+                      }}
                     />
-                  </div>
-                  <div class="form-group col-8 ps-3">
-                    <label for="">Select Slots</label>
-                    <div class="row select_slotss ms--1 me-0">
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("09:30 AM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("09:30 AM")}
-                        >
-                          09:30 AM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("10:30 AM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("10:30 AM")}
-                        >
-                          10:30 AM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("11:30 AM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("11:30 AM")}
-                        >
-                          11:30 AM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("12:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("12:30 PM")}
-                        >
-                          12:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("01:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("01:30 PM")}
-                        >
-                          01:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("02:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          onClick={() => getTimeSlots("02:30 PM")}
-                          to=""
-                        >
-                          02:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("03:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("03:30 PM")}
-                        >
-                          03:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("04:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("04:30 PM")}
-                        >
-                          04:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("05:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("05:30 PM")}
-                        >
-                          05:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("06:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("06:30 PM")}
-                        >
-                          06:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("07:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("07:30 PM")}
-                        >
-                          07:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots.includes("08:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                          onClick={() => getTimeSlots("08:30 PM")}
-                        >
-                          08:30 PM
-                        </Link>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-12 text-center mt-4">
-                        <button class="comman_btn" type="submit">
-                          Save
-                        </button>
-                      </div>
-                    </div>
                   </div>
                 </form>
               </div>

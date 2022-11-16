@@ -16,13 +16,12 @@ function WebFooter() {
                   mother - daughter pairs through our non-profit, Mom + Me
                   Journey.
                 </p>
-                <a
+                <Link
                   class="Buttn_comman Buttn-bg1 d-lg-flex d-md-inline-flex me-4"
-                  href="https://donate.stripe.com/5kAdRU47b7f6eHu3cd"
-                  target="_blank"
+                  to="/payment"
                 >
                   Donate Now
-                </a>
+                </Link>
               </div>
             </div>
             <div class="col-lg-4 col-md-6 d-flex justify-content-lg-center justify-content-md-start justify-content-start mb-md-0 mb-4">
@@ -49,8 +48,8 @@ function WebFooter() {
                   - Passport Journeys.
                 </p>
                 <p>
-                  <strong>Location:</strong> 5300 N Braeswood BLVD STE 4 - V711,
-                  Houston, TX 77096
+                  <strong>Headquaters Location:</strong> 5300 N Braeswood BLVD
+                  STE 4 - V711, Houston, TX 77096
                 </p>
                 <div class="social_icon">
                   <a href="mailto: laceytezino@passportjourneysapp.com">

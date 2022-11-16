@@ -41,7 +41,7 @@ function AdminHeader() {
                 <div className="header-imgg">
                   <img
                     src={
-                      adminData.profile_image
+                      adminData?.profile_image
                         ? `${process.env.REACT_APP_APIENDPOINTNEW}${adminData?.profile_image}`
                         : "/assets/img/profile.png"
                     }

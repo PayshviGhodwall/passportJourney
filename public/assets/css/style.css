@@ -6270,3 +6270,48 @@ input[type="number"]::-webkit-outer-spin-button {
 .read-more3 {
   font-size: 15px;
 }
+.tsc-calendar__actions {
+  background-color: #ff8752;
+  border: none !important;
+}
+.tsc-calendar {
+  padding: 0px !important;
+}
+.tsc-calendar__action {
+  font-weight: 600 !important;
+  font-size: 15px;
+  font-family: "Poppins!important";
+  text-transform: none !important;
+  color: #fff !important;
+}
+.tsc-month__action {
+  font-weight: 600 !important;
+  font-size: 15px;
+  font-family: "Poppins!important";
+  color: #fff !important;
+}
+.tsc-day__title {
+  font-weight: 600 !important;
+  font-size: 15px;
+  font-family: "Poppins!important";
+  text-transform: none !important;
+  padding: 1em 0px !important;
+}
+.tsc-month__actions {
+  background-color: #86c7c3;
+}
+.tsc-month {
+  background-color: #eef3ff !important;
+}
+.tsc-timeslot--selected {
+  background-color: #ff8752 !important ;
+}
+
+.tsc-timeslot {
+  font-size: 15px;
+  font-family: "Poppins!important";
+}
+
+.tsc-timeslot:not(.tsc-timeslot--disabled):hover {
+  background-color: #ff8752 !important ;
+}

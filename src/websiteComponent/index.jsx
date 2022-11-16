@@ -5,7 +5,10 @@ import OwlCarousel from "react-owl-carousel";
 import WebFooter from "./commonComponent/webFooter";
 import { getSubscriptionList } from "../apiServices/subscriptionHttpService/adminSubscriptionHttpService";
 import { useForm } from "react-hook-form";
-import { subscribeUs } from "../apiServices/adminHttpService/adminLoginHttpService";
+import {
+  subscribe,
+  subscribeUs,
+} from "../apiServices/adminHttpService/adminLoginHttpService";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
@@ -15,6 +18,16 @@ function Index() {
   useEffect(() => {
     getSubscriptionInfo();
   }, []);
+
+  const checkout = async () => {
+    const response = await subscribe();
+    if (!response.data.error) {
+      const link = document.createElement("a");
+      link.href = response.data.results.url;
+      link.target = "_blank";
+      link.click();
+    }
+  };
 
   const state = {
     responsive: {
@@ -83,14 +96,9 @@ function Index() {
                     Relationship
                   </h1>
                   <span>— Lacey Tezino, Founder</span>
-                  <a
-                    class="Buttn_comman Buttn-bg1"
-                    href="https://buy.stripe.com/8wMeVY3372YQ0QE6oo
-"
-                    target="_blank"
-                  >
+                  <Link class="Buttn_comman Buttn-bg1" to="" onClick={checkout}>
                     Sign Up Today
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="col-12 d-lg-none d-md-block d-block text-center mb-md-5 mb-4">
@@ -170,19 +178,21 @@ function Index() {
                   responsive={state.responsive} // add this line
                 >
                   <div class="item">
-                    <img src="assets/img/Home Screen.png" alt="" />
-                  </div>
-                  <div class="item">
                     <img src="assets/img/screen_2.png" alt="" />
                   </div>
                   <div class="item">
-                    <img src="assets/img/screen_3.png" alt="" />
+                    <img src="assets/img/image (7).png" alt="" />
                   </div>
+
                   <div class="item">
                     <img src="assets/img/screen_4.png" alt="" />
                   </div>
                   <div class="item adjust_height">
                     <img src="assets/img/screen_5.png" alt="" />
+                  </div>
+
+                  <div class="item">
+                    <img src="assets/img/Home Screen.png" alt="" />
                   </div>
                 </OwlCarousel>
               </div>
@@ -205,13 +215,13 @@ function Index() {
                           </li>
                         ))}
                       </ul>
-                      <a
+                      <Link
                         class="Buttn_comman Buttn-bg2"
-                        target="_blank"
-                        href="https://checkout.stripe.com/c/pay/cs_live_a16Ggd8q2hBwZAjJkMUAZqjOy7OGDsA1QvWZ9dQ747vJjCGSZ4dvNb8uIK#fidkdWxOYHwnPyd1blppbHNgWjA0TmtpZ09BSGhBa0l8a2Rsc0R%2FVHRKX05GY0x1YUdcak9GVUdzVlJVS2lkQ3RKU302M3BDcH9VS2B0Zk1ibnFsZFZSSHFoXTA0ajczSHVTT11EYEIxfXRiNTVObjdCQFZIQycpJ3VpbGtuQH11anZgYUxhJz8nPXJIYFNcNjYyN1xUNVRAM2pqJyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmZtYGZuanBxK3Zxd2x1YCtmamgqJ3gl"
+                        onClick={checkout}
+                        to=""
                       >
                         Subscribe Now
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div class="col px-xl-5 px-lg-4 px-md-4 border-start d-flex align-items-stretch">
@@ -262,7 +272,7 @@ function Index() {
                           </span>
                           <h3>Prescribed Activities</h3>
                           <p>
-                            Throughtful activities in between video sessions to
+                            Thoughtful activities in between video sessions to
                             promote intentional bonding (in person and virtual
                             available) - 1 assigned per month
                           </p>
@@ -302,13 +312,13 @@ function Index() {
                     </div>
                     <div class="therepy_content">
                       <p>Pay for month 1 of our intake process</p>
-                      <a
+                      <Link
                         class="Buttn_comman Buttn-bg1"
-                        target="_blank"
-                        href="https://buy.stripe.com/8wMeVY3372YQ0QE6oo"
+                        onClick={checkout}
+                        to=""
                       >
                         Pay now
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div class="therepy_launch_box">
