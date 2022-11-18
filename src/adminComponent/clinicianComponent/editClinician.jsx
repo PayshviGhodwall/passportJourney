@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
+import moment from "moment";
+import { MultiSelect } from "react-multi-select-component";
+import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
+const options = [
+  { value: "counselling", label: "Counselling" },
+  { value: "psychology", label: "Psychology" },
+];
 
 function EditClinician() {
+  const [selected, setSelected] = useState([]);
+  let timeslots = [
+    ["8", "9"],
+    ["9", "10"],
+    ["10", "11"],
+    ["11", "12"],
+    ["12", "13"],
+    ["13", "14"],
+    ["14", "15"],
+    ["15", "16"],
+    ["16", "17"],
+    ["17", "18"],
+    ["18", "19"],
+    ["19", "20"],
+    ["20", "21"],
+  ];
+
   return (
     <>
       <div class="admin_main">
@@ -90,17 +114,13 @@ function EditClinician() {
                   </div>
                   <div class="form-group col-4 multiple_select_design">
                     <label for="">Expertise</label>
-                    <select
-                      class="form-select multiple-select-custom-field"
-                      aria-label="Default select example"
-                      data-placeholder=""
-                      multiple
-                    >
-                      <option selected>Counselling</option>
-                      <option selected value="1">
-                        Psychology
-                      </option>
-                    </select>
+                    <MultiSelect
+                      options={options}
+                      value={selected}
+                      onChange={setSelected}
+                      labelledBy={"Select"}
+                      isCreatable={true}
+                    />
                   </div>
                   <div class="form-group col-4">
                     <label for="">Experience (Years)</label>
@@ -112,91 +132,20 @@ function EditClinician() {
                       id="name"
                     />
                   </div>
-                  <div class="form-group col-4">
+                  <div class="form-group col-12">
                     <label for="">Select Date</label>
-                    <div class="calendar calendar-first" id="calendar_first">
-                      <div class="calendar_header">
-                        <a href="javscript:;" class="switch-month switch-left">
-                          <i class="fa fa-chevron-left"></i>
-                        </a>
-                        <h2></h2>
-                        <a href="javscript:;" class="switch-month switch-right">
-                          <i class="fa fa-chevron-right"></i>
-                        </a>
-                      </div>
-                      <div class="calendar_weekdays"></div>
-                      <div class="calendar_content"></div>
-                    </div>
-                  </div>
-                  <div class="form-group col-8 ps-3">
-                    <label for="">Available Slots</label>
-                    <div class="row select_slotss ms--1 me-0">
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          09:30 AM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn active" href="javscript::">
-                          10:30 AM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn active" href="javscript::">
-                          11:30 AM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          12:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          01:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn active" href="javscript::">
-                          02:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          03:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          04:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn active" href="javscript::">
-                          05:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          06:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn active" href="javscript::">
-                          07:30 PM
-                        </a>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <a class="slot_btn" href="javscript::">
-                          08:30 PM
-                        </a>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-12 text-center mt-4">
-                        <button class="comman_btn">Save</button>
-                      </div>
-                    </div>
+                    <ReactTimeslotCalendar
+                      initialDate={moment().format()}
+                      maxTimeslots={100}
+                      timeslots={timeslots}
+                      onSelectTimeslot={(timeslots, lastSelected) => {
+                        console.log("All Timeslots:");
+                        console.log(timeslots);
+
+                        console.log("Last selected timeslot:");
+                        console.log(lastSelected);
+                      }}
+                    />
                   </div>
                 </form>
               </div>

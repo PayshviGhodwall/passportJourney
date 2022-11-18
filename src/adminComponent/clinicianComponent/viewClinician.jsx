@@ -6,9 +6,8 @@ import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
 import { useParams } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
 
 const options = [
   { value: "counselling", label: "Counselling" },
@@ -68,6 +67,23 @@ function ViewClinician() {
       }
     }
   };
+
+  let timeslots = [
+    ["8", "9"],
+    ["9", "10"],
+    ["10", "11"],
+    ["11", "12"],
+    ["12", "13"],
+    ["13", "14"],
+    ["14", "15"],
+    ["15", "16"],
+    ["16", "17"],
+    ["17", "18"],
+    ["18", "19"],
+    ["19", "20"],
+    ["20", "21"],
+  ];
+
   return (
     <>
       <div class="admin_main">
@@ -231,165 +247,20 @@ function ViewClinician() {
                       <p className="form-error mt-2">This field is required</p>
                     )}
                   </div>
-                  <div class="form-group col-4">
+                  <div class="form-group col-12">
                     <label for="">Select Date</label>
-                    <Calendar onChange={onChange} value={value} />
-                  </div>
-                  <div class="form-group col-8 ps-3">
-                    <label for="">Select Slots</label>
-                    <div class="row select_slotss ms--1 me-0">
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("09:30 AM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          09:30 AM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("10:30 AM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          10:30 AM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("11:30 AM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          11:30 AM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("12:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          12:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("01:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          01:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("02:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          02:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("03:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          03:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("04:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          04:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("05:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          05:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("06:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          06:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("07:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          07:30 PM
-                        </Link>
-                      </div>
-                      <div class="col-auto px-2 mb-4">
-                        <Link
-                          class={
-                            timeSlots?.includes("08:30 PM")
-                              ? "slot_btn active"
-                              : "slot_btn"
-                          }
-                          to=""
-                        >
-                          08:30 PM
-                        </Link>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-12 text-center mt-4">
-                        <button class="comman_btn" type="submit">
-                          Save
-                        </button>
-                      </div>
-                    </div>
+                    <ReactTimeslotCalendar
+                      initialDate={moment().format()}
+                      maxTimeslots={100}
+                      timeslots={timeslots}
+                      onSelectTimeslot={(timeslots, lastSelected) => {
+                        console.log("All Timeslots:");
+                        console.log(timeslots);
+
+                        console.log("Last selected timeslot:");
+                        console.log(lastSelected);
+                      }}
+                    />
                   </div>
                 </form>
               </div>
