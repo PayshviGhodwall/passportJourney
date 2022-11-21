@@ -55,16 +55,22 @@ function ViewClinician() {
       }
       setSelected(defaultValues);
 
-      const filterDate = data.results.clinician.time_slots.filter(
-        (item) =>
-          moment(new Date(item.date)).format("LL") ===
-          moment(Date.now()).format("LL")
-      );
-      if (filterDate.length) {
-        setTimeSlots(filterDate[0].time_slots);
-      } else {
-        setTimeSlots([]);
+      let slots = [];
+      for (const date of data.results.clinician.time_slots) {
+        for (const time of date.time_slots) {
+          slots.push({
+            startDate: moment(
+              new Date(date.date).setHours(+time.split(":")[0])
+            ).format("LLL"),
+
+            endDate: moment(
+              new Date(date.date).setHours(+time.split(":")[0] + 1)
+            ).format("LLL"),
+          });
+        }
       }
+      console.log(slots);
+      setTimeSlots(slots);
     }
   };
 
@@ -249,18 +255,24 @@ function ViewClinician() {
                   </div>
                   <div class="form-group col-12">
                     <label for="">Select Date</label>
-                    <ReactTimeslotCalendar
-                      initialDate={moment().format()}
-                      maxTimeslots={100}
-                      timeslots={timeslots}
-                      onSelectTimeslot={(timeslots, lastSelected) => {
-                        console.log("All Timeslots:");
-                        console.log(timeslots);
+                    {console.log(timeSlots)}
+                    {timeslots ? (
+                      <ReactTimeslotCalendar
+                        initialDate={moment().format()}
+                        maxTimeslots={100}
+                        selectedTimeslots={timeSlots}
+                        timeslots={timeslots}
+                        onSelectTimeslot={(timeslots, lastSelected) => {
+                          console.log("All Timeslots:");
+                          console.log(timeslots);
 
-                        console.log("Last selected timeslot:");
-                        console.log(lastSelected);
-                      }}
-                    />
+                          console.log("Last selected timeslot:");
+                          console.log(lastSelected);
+                        }}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </form>
               </div>

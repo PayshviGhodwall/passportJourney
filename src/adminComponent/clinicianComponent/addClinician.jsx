@@ -17,6 +17,7 @@ const options = [
 function AddClinician() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selected, setSelected] = useState([]);
+  const [timeSlots, setTimeSlots] = useState([]);
 
   useEffect(() => {}, []);
 
@@ -30,9 +31,27 @@ function AddClinician() {
 
   const onSubmit = async (data) => {
     console.log(data);
+    if (!timeSlots) {
+      toast.error("Please select time slots");
+      return;
+    }
 
     data.expertise = selected.map((option) => option.label);
-    data.time_slots = "";
+
+    data.time_slots = [];
+
+    const keys = Object.keys(timeSlots);
+    const value = Object.values(timeSlots);
+
+    for (const key of keys) {
+      data.time_slots.push({
+        date: key,
+        time_slots: timeSlots[key],
+      });
+    }
+
+    data.time_slots = JSON.stringify(data.time_slots);
+    data.expertise = JSON.stringify(data.expertise);
 
     const formData = new FormData();
     for (const item in data) {
@@ -64,13 +83,6 @@ function AddClinician() {
     }
   };
 
-  // const getTimeSlots = (time) => {
-  //   let slots = [...timeSlots];
-  //   slots.push(time);
-  //   console.log(slots);
-  //   setTimeSlots(slots);
-  // };
-
   let timeslots = [
     ["8", "9"],
     ["9", "10"],
@@ -86,10 +98,6 @@ function AddClinician() {
     ["19", "20"],
     ["20", "21"],
   ];
-
-  let onSelectTimeslot = (allTimeslots, lastSelectedTimeslot) => {
-    console.log(lastSelectedTimeslot.startDate, allTimeslots);
-  };
 
   return (
     <>
@@ -277,15 +285,30 @@ function AddClinician() {
                       initialDate={moment().format()}
                       maxTimeslots={100}
                       timeslots={timeslots}
-                      onSelectTimeslot={(timeslots, lastSelected) => {
-                        console.log("All Timeslots:");
-                        console.log(timeslots);
-
-                        console.log("Last selected timeslot:");
-                        console.log(lastSelected);
+                      onSelectTimeslot={(timeslots) => {
+                        const dateTime = timeslots.reduce(
+                          (date, { startDate }) => {
+                            if (
+                              !date[moment(new Date(startDate._d)).format("LL")]
+                            )
+                              date[
+                                moment(new Date(startDate._d)).format("LL")
+                              ] = [];
+                            date[
+                              moment(new Date(startDate._d)).format("LL")
+                            ].push(
+                              moment(new Date(startDate._d)).format("hh:mm A")
+                            );
+                            return date;
+                          },
+                          {}
+                        );
+                        console.log(dateTime);
+                        setTimeSlots(dateTime);
                       }}
                     />
                   </div>
+                  <button type="submit">krjfnvkdf</button>
                 </form>
               </div>
             </div>
