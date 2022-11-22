@@ -11,6 +11,9 @@ function ViewPending() {
           <AdminHeader />{" "}
           <div class="admin_panel_data height_adjust">
             <div class="row user-details-part upcoming_view justify-content-center">
+              <div class="col-12 mb-4 main_heading text-center">
+                <h1>Pending</h1>
+              </div>
               <div class="col-12 design_outter_comman shadow mb-4">
                 <div class="row comman_header justify-content-between">
                   <div class="col-auto">
@@ -227,150 +230,6 @@ function ViewPending() {
                         >
                           08
                         </button>
-                        <button
-                          class="nav-link"
-                          id="nav-09-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-09"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-09"
-                          aria-selected="false"
-                        >
-                          09
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-10-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-10"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-10"
-                          aria-selected="false"
-                        >
-                          10
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-11-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-11"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-11"
-                          aria-selected="false"
-                        >
-                          11
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-12-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-12"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-12"
-                          aria-selected="false"
-                        >
-                          12
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-13-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-13"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-13"
-                          aria-selected="false"
-                        >
-                          13
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-14-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-14"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-14"
-                          aria-selected="false"
-                        >
-                          14
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-15-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-15"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-15"
-                          aria-selected="false"
-                        >
-                          15
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-16-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-16"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-16"
-                          aria-selected="false"
-                        >
-                          16
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-17-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-17"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-17"
-                          aria-selected="false"
-                        >
-                          17
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-18-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-18"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-18"
-                          aria-selected="false"
-                        >
-                          18
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-19-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-19"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-19"
-                          aria-selected="false"
-                        >
-                          19
-                        </button>
-                        <button
-                          class="nav-link"
-                          id="nav-20-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#nav-20"
-                          type="button"
-                          role="tab"
-                          aria-controls="nav-20"
-                          aria-selected="false"
-                        >
-                          20
-                        </button>
                       </div>
                     </nav>
                     <div class="tab-content mt-4" id="nav-tabContent">
@@ -380,9 +239,12 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-01-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">
+                            My mother/daughter and I communicate well with each
+                            other.
+                          </h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
                               id="radio1"
@@ -390,16 +252,43 @@ function ViewPending() {
                               name="radio1"
                               class="d-none"
                             />
-                            <label for="radio1">Yes</label>
+                            <label for="radio1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
                               id="radio2"
                               name="radio1"
                               class="d-none"
                             />
-                            <label for="radio2">No</label>
+                            <label for="radio2">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="radio3"
+                              name="radio1"
+                              class="d-none"
+                            />
+                            <label for="radio3">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="radio4"
+                              name="radio1"
+                              class="d-none"
+                            />
+                            <label for="radio4">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="radio5"
+                              name="radio1"
+                              class="d-none"
+                            />
+                            <label for="radio5">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -409,26 +298,53 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-02-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">We enjoy quality time together.</h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="v1"
                               checked
-                              name="radio2"
+                              name="v1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="v1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="v2"
+                              name="v1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="v2">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="v3"
+                              name="v1"
+                              class="d-none"
+                            />
+                            <label for="v3">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="v4"
+                              name="v1"
+                              class="d-none"
+                            />
+                            <label for="v4">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="v5"
+                              name="v1"
+                              class="d-none"
+                            />
+                            <label for="v5">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -438,26 +354,55 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-03-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">
+                            We regularly spend time together.
+                          </h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="v6"
                               checked
-                              name="radio2"
+                              name="v6"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="v6">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="v7"
+                              name="v6"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="v7">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="v8"
+                              name="v6"
+                              class="d-none"
+                            />
+                            <label for="v8">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="v9"
+                              name="v6"
+                              class="d-none"
+                            />
+                            <label for="v9">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="v10"
+                              name="v6"
+                              class="d-none"
+                            />
+                            <label for="v10">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -467,26 +412,55 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-04-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">
+                            I have a good understanding of my mother/daughter
+                          </h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="j1"
                               checked
-                              name="radio2"
+                              name="j1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="j1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="j2"
+                              name="j1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="j2">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="j3"
+                              name="j1"
+                              class="d-none"
+                            />
+                            <label for="j3">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="j4"
+                              name="j1"
+                              class="d-none"
+                            />
+                            <label for="j4">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="j5"
+                              name="j1"
+                              class="d-none"
+                            />
+                            <label for="j5">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -496,26 +470,56 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-05-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">
+                            The relationship with my mother/daughter is built
+                            upon trust.
+                          </h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="b1"
                               checked
-                              name="radio2"
+                              name="b1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="b1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="b2"
+                              name="b1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="b2">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="b3"
+                              name="b1"
+                              class="d-none"
+                            />
+                            <label for="b3">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="b4"
+                              name="b1"
+                              class="d-none"
+                            />
+                            <label for="b4">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="b5"
+                              name="b1"
+                              class="d-none"
+                            />
+                            <label for="b5">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -525,26 +529,56 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-06-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">
+                            I have the skills needed to maintain a healthy
+                            relationship with my mother/daughter.
+                          </h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="c1"
                               checked
-                              name="radio2"
+                              name="c1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="c1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="c2"
+                              name="c1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="c2">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="c3"
+                              name="c1"
+                              class="d-none"
+                            />
+                            <label for="c3">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="c4"
+                              name="c1"
+                              class="d-none"
+                            />
+                            <label for="c4">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="c5"
+                              name="c1"
+                              class="d-none"
+                            />
+                            <label for="c5">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -554,26 +588,53 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-07-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">I journal regularly.</h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="d1"
                               checked
-                              name="radio2"
+                              name="d1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="d1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="d2"
+                              name="d1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="d2">Poor</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="d3"
+                              name="d1"
+                              class="d-none"
+                            />
+                            <label for="d3">Average</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="d4"
+                              name="d1"
+                              class="d-none"
+                            />
+                            <label for="d4">Good</label>
+                          </div>
+                          <div class="form-group col-auto custom_radio">
+                            <input
+                              type="radio"
+                              id="d5"
+                              name="d1"
+                              class="d-none"
+                            />
+                            <label for="d5">Excellent</label>
                           </div>
                         </form>
                       </div>
@@ -583,374 +644,56 @@ function ViewPending() {
                         role="tabpanel"
                         aria-labelledby="nav-08-tab"
                       >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                        <form class="row question_ansbox justify-content-center">
+                          <h3 class="mb-4">
+                            I look forward to planning activities with my
+                            mother/daughter.
+                          </h3>
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
+                              id="r1"
                               checked
-                              name="radio2"
+                              name="r1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="r1">Very Poor</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="r2"
+                              name="r1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="r2">Poor</label>
                           </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-09"
-                        role="tabpanel"
-                        aria-labelledby="nav-09-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
+                              id="r3"
+                              name="r1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
+                            <label for="r3">Average</label>
                           </div>
-                          <div class="form-group col-6 text-start custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio3"
-                              name="radio2"
+                              id="r4"
+                              name="r1"
                               class="d-none"
                             />
-                            <label for="radio4">No</label>
+                            <label for="r4">Good</label>
                           </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-10"
-                        role="tabpanel"
-                        aria-labelledby="nav-10-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
+                          <div class="form-group col-auto custom_radio">
                             <input
                               type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
+                              id="r5"
+                              name="r1"
                               class="d-none"
                             />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-11"
-                        role="tabpanel"
-                        aria-labelledby="nav-11-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-12"
-                        role="tabpanel"
-                        aria-labelledby="nav-12-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-13"
-                        role="tabpanel"
-                        aria-labelledby="nav-13-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-14"
-                        role="tabpanel"
-                        aria-labelledby="nav-14-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-15"
-                        role="tabpanel"
-                        aria-labelledby="nav-15-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-16"
-                        role="tabpanel"
-                        aria-labelledby="nav-16-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-17"
-                        role="tabpanel"
-                        aria-labelledby="nav-17-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-18"
-                        role="tabpanel"
-                        aria-labelledby="nav-18-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-19"
-                        role="tabpanel"
-                        aria-labelledby="nav-19-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="nav-20"
-                        role="tabpanel"
-                        aria-labelledby="nav-20-tab"
-                      >
-                        <form class="row question_ansbox">
-                          <h3 class="mb-3">Have you been in therapy before?</h3>
-                          <div class="form-group col-6 text-end custom_radio">
-                            <input
-                              type="radio"
-                              id="radio2"
-                              checked
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio2">Yes</label>
-                          </div>
-                          <div class="form-group col-6 text-start custom_radio">
-                            <input
-                              type="radio"
-                              id="radio3"
-                              name="radio2"
-                              class="d-none"
-                            />
-                            <label for="radio4">No</label>
+                            <label for="r5">Excellent</label>
                           </div>
                         </form>
                       </div>

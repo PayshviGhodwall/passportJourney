@@ -58,14 +58,19 @@ function ViewClinician() {
       let slots = [];
       for (const date of data.results.clinician.time_slots) {
         for (const time of date.time_slots) {
+          var hours = Number(time.match(/^(\d+)/)[1]);
+          var minutes = Number(time.match(/:(\d+)/)[1]);
+          var AMPM = time.match(/\s(.*)$/)[1];
+          if (AMPM == "PM" && hours < 12) hours = hours + 12;
+          if (AMPM == "AM" && hours == 12) hours = hours - 12;
+          var sHours = hours.toString();
+          var sMinutes = minutes.toString();
+          if (hours < 10) sHours = "0" + sHours;
+          if (minutes < 10) sMinutes = "0" + sMinutes;
+          console.log(time, sHours, sMinutes);
           slots.push({
-            startDate: moment(
-              new Date(date.date).setHours(+time.split(":")[0])
-            ).format("LLL"),
-
-            endDate: moment(
-              new Date(date.date).setHours(+time.split(":")[0] + 1)
-            ).format("LLL"),
+            startDate: moment(new Date(date.date).setHours(sHours)),
+            endDate: moment(new Date(date.date).setHours(sHours + 1)),
           });
         }
       }
@@ -89,6 +94,7 @@ function ViewClinician() {
     ["19", "20"],
     ["20", "21"],
   ];
+  if (!timeSlots.length) return null;
 
   return (
     <>
@@ -116,10 +122,7 @@ function ViewClinician() {
                   <div class="form-group col-12 mb-4 pb-3">
                     <div class="userinfor_box text-center">
                       <span class="user_imgg">
-                        <img
-                          src={`${process.env.REACT_APP_APIENDPOINTNEW}${clinician.profile_image}`}
-                          alt=""
-                        />
+                        <img src={clinician.profile_image} alt="" />
                       </span>
                       <strong>{clinician.name}</strong>
                       <strong class="d-block fw-normal mt-1">
@@ -256,7 +259,7 @@ function ViewClinician() {
                   <div class="form-group col-12">
                     <label for="">Select Date</label>
                     {console.log(timeSlots)}
-                    {timeslots ? (
+                    {timeSlots ? (
                       <ReactTimeslotCalendar
                         initialDate={moment().format()}
                         maxTimeslots={100}

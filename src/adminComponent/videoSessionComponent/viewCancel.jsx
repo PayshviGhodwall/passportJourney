@@ -204,6 +204,19 @@ function ViewCancel() {
                       id="name"
                     />
                   </div>
+                  <div class="form-group col-12 boi_box">
+                    <label for="">Bio</label>
+                    <textarea class="form-control" name="" id="">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rem quas asperiores tempora sunt enim quam, laudantium
+                      veritatis laborum expedita a omnis deleniti in voluptates
+                      excepturi, quis ab quos laboriosam suscipit? Lorem ipsum
+                      dolor sit amet consectetur adipisicing elit. Rem quas
+                      asperiores tempora sunt enim quam, laudantium veritatis
+                      laborum expedita a omnis deleniti in voluptates excepturi,
+                      quis ab quos laboriosam suscipit? Lorem ipsum.
+                    </textarea>
+                  </div>
                 </form>
               </div>
               <div class="col-12 design_outter_comman shadow mb-4">
@@ -216,22 +229,22 @@ function ViewCancel() {
                   class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
                   action=""
                 >
-                  <div class="form-group mb-0 col">
+                  <div class="form-group col-6">
                     <label for="">Date</label>
                     <input
-                      type="date"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="26/09/2022"
                       name="name"
                       id="name"
                     />
                   </div>
-                  <div class="form-group mb-0 col">
+                  <div class="form-group col-6">
                     <label for="">Time</label>
                     <input
-                      type="time"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="10:20AM"
                       name="name"
                       id="name"
                     />
@@ -248,22 +261,42 @@ function ViewCancel() {
                   class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
                   action=""
                 >
-                  <div class="form-group mb-0 col">
+                  <div class="form-group col-6">
                     <label for="">Date</label>
                     <input
-                      type="date"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="26/09/2022"
                       name="name"
                       id="name"
                     />
                   </div>
-                  <div class="form-group mb-0 col">
+                  <div class="form-group col-6">
                     <label for="">Time</label>
                     <input
-                      type="time"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="10:20AM"
+                      name="name"
+                      id="name"
+                    />
+                  </div>
+                  <div class="form-group mb-0 col-6">
+                    <label for="">Cancelled by (User / Clinician)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="Clinician"
+                      name="name"
+                      id="name"
+                    />
+                  </div>
+                  <div class="form-group mb-0 col-6">
+                    <label for="">Cancellation Reason</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus laborum tempore officia, tempora qui nihil debitis a"
                       name="name"
                       id="name"
                     />

@@ -134,9 +134,9 @@ function ClinicianViewCancel() {
                   <div class="form-group mb-0 col">
                     <label for="">Date</label>
                     <input
-                      type="date"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="26/09/2022"
                       name="name"
                       id="name"
                     />
@@ -144,9 +144,9 @@ function ClinicianViewCancel() {
                   <div class="form-group mb-0 col">
                     <label for="">Time</label>
                     <input
-                      type="time"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="10:20AM"
                       name="name"
                       id="name"
                     />
@@ -163,22 +163,42 @@ function ClinicianViewCancel() {
                   class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
                   action=""
                 >
-                  <div class="form-group mb-0 col">
+                  <div class="form-group col-6">
                     <label for="">Date</label>
                     <input
-                      type="date"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="26/09/2022"
                       name="name"
                       id="name"
                     />
                   </div>
-                  <div class="form-group mb-0 col">
+                  <div class="form-group col-6">
                     <label for="">Time</label>
                     <input
-                      type="time"
+                      type="text"
                       class="form-control"
-                      value=""
+                      value="10:20AM"
+                      name="name"
+                      id="name"
+                    />
+                  </div>
+                  <div class="form-group mb-0 col-6">
+                    <label for="">Cancelled by (User / Clinician)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="Clinician"
+                      name="name"
+                      id="name"
+                    />
+                  </div>
+                  <div class="form-group mb-0 col-6">
+                    <label for="">Cancellation Reason</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus laborum tempore officia, tempora qui nihil debitis a"
                       name="name"
                       id="name"
                     />

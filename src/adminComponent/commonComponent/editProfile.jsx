@@ -34,9 +34,7 @@ function EditProfile() {
 
       reset({ ...defaultValues });
       if (data.results.admin.profile_image) {
-        setImageFile(
-          `${process.env.REACT_APP_APIENDPOINTNEW}${data.results.admin.profile_image}`
-        );
+        setImageFile(data.results.admin.profile_image);
       }
     }
   };

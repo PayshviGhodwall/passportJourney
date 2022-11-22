@@ -204,6 +204,19 @@ function ViewUpcoming() {
                       id="name"
                     />
                   </div>
+                  <div class="form-group col-12 boi_box">
+                    <label for="">Bio</label>
+                    <textarea class="form-control" name="" id="">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rem quas asperiores tempora sunt enim quam, laudantium
+                      veritatis laborum expedita a omnis deleniti in voluptates
+                      excepturi, quis ab quos laboriosam suscipit? Lorem ipsum
+                      dolor sit amet consectetur adipisicing elit. Rem quas
+                      asperiores tempora sunt enim quam, laudantium veritatis
+                      laborum expedita a omnis deleniti in voluptates excepturi,
+                      quis ab quos laboriosam suscipit? Lorem ipsum.
+                    </textarea>
+                  </div>
                 </form>
               </div>
               <div class="col-12 design_outter_comman shadow mb-4">
@@ -239,7 +252,7 @@ function ViewUpcoming() {
                 </form>
               </div>
             </div>
-          </div>{" "}
+          </div>
         </div>
       </div>
     </>

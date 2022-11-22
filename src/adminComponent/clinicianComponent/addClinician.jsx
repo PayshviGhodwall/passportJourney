@@ -308,7 +308,13 @@ function AddClinician() {
                       }}
                     />
                   </div>
-                  <button type="submit">krjfnvkdf</button>
+                  <div class="row">
+                    <div class="form-group col-12 text-center mt-4">
+                      <button class="comman_btn" type="submit">
+                        Save
+                      </button>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
