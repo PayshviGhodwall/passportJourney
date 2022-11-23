@@ -2,6 +2,7 @@ import React from "react";
 import ClinicianHeader from "../commonComponent/clinicianHeader";
 import ClinicianSidebar from "../commonComponent/clinicianSidebar";
 import ReactItemSlider from "react-items-slider";
+import OwlCarousel from "react-owl-carousel";
 
 function ClinicianViewComplete() {
   return (
@@ -129,92 +130,104 @@ function ClinicianViewComplete() {
                   <div class="col-12 design_outter_comman shadow mb-4">
                     <div class="row py-4 px-4">
                       <div class="col-12 mb-4">
-                        <div class="slider_session owl-carousel">
+                        <OwlCarousel
+                          className="slider_session owl-carousel"
+                          autoplay={false}
+                          autoplayHoverPause={true}
+                          autoplayTimeout={5000}
+                          dots={false}
+                          loop={false}
+                          autoWidth={false}
+                          nav={true}
+                          fade={true}
+                          items={6}
+                          stagePadding={20}
+                        >
                           <a
-                            class="slider_menu active"
+                            class="slider_menu item active"
                             onclick="sendQuery(this,1)"
                             href="javascript:;"
                           >
                             1st Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,2)"
                             href="javascript:;"
                           >
                             2nd Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,3)"
                             href="javascript:;"
                           >
                             3rd Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,4)"
                             href="javascript:;"
                           >
                             4th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,5)"
                             href="javascript:;"
                           >
                             5th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,6)"
                             href="javascript:;"
                           >
                             6th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,7)"
                             href="javascript:;"
                           >
                             7th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,8)"
                             href="javascript:;"
                           >
                             8th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,9)"
                             href="javascript:;"
                           >
                             9th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,10)"
                             href="javascript:;"
                           >
                             10th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,11)"
                             href="javascript:;"
                           >
                             11th Month
                           </a>
                           <a
-                            class="slider_menu"
+                            class="slider_menu item"
                             onclick="sendQuery(this,12)"
                             href="javascript:;"
                           >
                             12th Month
                           </a>
-                        </div>
+                        </OwlCarousel>
                       </div>
                       <div
                         id="video_list_1"

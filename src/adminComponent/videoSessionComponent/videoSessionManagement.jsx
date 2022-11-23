@@ -345,6 +345,7 @@ function VideoSessionManagement() {
                                         <th>date</th>
                                         <th>time</th>
                                         <th>duration</th>
+                                        <th>Clinical Documentation</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -355,6 +356,14 @@ function VideoSessionManagement() {
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>15 MIN</td>
+                                        <td>
+                                          <Link
+                                            class="comman_btn table_viewbtn"
+                                            to="/admin/view-completed"
+                                          >
+                                            View
+                                          </Link>
+                                        </td>
                                       </tr>
                                       <tr>
                                         <td>2</td>
@@ -363,6 +372,14 @@ function VideoSessionManagement() {
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>10 MIN</td>
+                                        <td>
+                                          <Link
+                                            class="comman_btn table_viewbtn"
+                                            to="/admin/view-completed"
+                                          >
+                                            View
+                                          </Link>
+                                        </td>
                                       </tr>
                                       <tr>
                                         <td>3</td>
@@ -371,6 +388,14 @@ function VideoSessionManagement() {
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>28 MIN</td>
+                                        <td>
+                                          <Link
+                                            class="comman_btn table_viewbtn"
+                                            to="/admin/view-completed"
+                                          >
+                                            View
+                                          </Link>
+                                        </td>
                                       </tr>
                                       <tr>
                                         <td>4</td>
@@ -379,6 +404,14 @@ function VideoSessionManagement() {
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>10 MIN</td>
+                                        <td>
+                                          <Link
+                                            class="comman_btn table_viewbtn"
+                                            to="/admin/view-completed"
+                                          >
+                                            View
+                                          </Link>
+                                        </td>
                                       </tr>
                                       <tr>
                                         <td>5</td>
@@ -387,6 +420,14 @@ function VideoSessionManagement() {
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>20 MIN</td>
+                                        <td>
+                                          <Link
+                                            class="comman_btn table_viewbtn"
+                                            to="/admin/view-completed"
+                                          >
+                                            View
+                                          </Link>
+                                        </td>
                                       </tr>
                                     </tbody>
                                   </table>

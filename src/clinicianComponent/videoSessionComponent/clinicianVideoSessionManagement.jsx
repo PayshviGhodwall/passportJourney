@@ -98,6 +98,7 @@ function ClinicianVideoSessionManagement() {
                                         <th>S.No.</th>
                                         <th>User Name</th>
                                         <th>User Type</th>
+                                        <th>VIDEO SESSION</th>
                                         <th>date</th>
                                         <th>time</th>
                                         <th>Action</th>
@@ -108,6 +109,7 @@ function ClinicianVideoSessionManagement() {
                                         <td>1</td>
                                         <td>Ajay Sharma</td>
                                         <td>Mother</td>
+                                        <td>First</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>
@@ -123,6 +125,7 @@ function ClinicianVideoSessionManagement() {
                                         <td>2</td>
                                         <td>John Dubey</td>
                                         <td>Daughter</td>
+                                        <td>First</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>
@@ -138,6 +141,7 @@ function ClinicianVideoSessionManagement() {
                                         <td>3</td>
                                         <td>Vikas</td>
                                         <td>Daughter</td>
+                                        <td>Second</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>
@@ -153,6 +157,7 @@ function ClinicianVideoSessionManagement() {
                                         <td>4</td>
                                         <td>Ajay Sharma</td>
                                         <td>Mother</td>
+                                        <td>First</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>
@@ -168,6 +173,7 @@ function ClinicianVideoSessionManagement() {
                                         <td>5</td>
                                         <td>Ajay Sharma</td>
                                         <td>Daughter</td>
+                                        <td>Second</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>

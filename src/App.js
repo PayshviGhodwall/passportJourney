@@ -62,6 +62,7 @@ import QuerySubscribe from "./adminComponent/queryComponent/querySubscribe";
 import Payment from "./websiteComponent/payment";
 import PaymentSuccess from "./websiteComponent/commonComponent/paymentSuccess";
 import PaymentError from "./websiteComponent/commonComponent/paymentError";
+import ViewCompleted from "./adminComponent/videoSessionComponent/viewCompleted";
 
 function App() {
   const [subAdmin, setSubAdmin] = useState("");
@@ -129,7 +130,10 @@ function App() {
                 path="/admin/view-clinician/:id"
                 element={<ViewClinician />}
               />
-              <Route path="/admin/edit-clinician" element={<EditClinician />} />{" "}
+              <Route
+                path="/admin/edit-clinician/:id"
+                element={<EditClinician />}
+              />{" "}
             </>
           ) : (
             <Route path="/admin/clinician-management" element={<UnAuth />} />
@@ -143,6 +147,7 @@ function App() {
               />
               <Route path="/admin/view-upcoming" element={<ViewUpcoming />} />
               <Route path="/admin/view-pending" element={<ViewPending />} />
+              <Route path="/admin/view-completed" element={<ViewCompleted />} />
               <Route path="/admin/view-cancel" element={<ViewCancel />} />
             </>
           ) : (

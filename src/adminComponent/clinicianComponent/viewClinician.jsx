@@ -17,7 +17,6 @@ const options = [
 function ViewClinician() {
   const [selected, setSelected] = useState([]);
   const [clinician, setClinician] = useState("");
-  const [value, onChange] = useState(new Date());
   const [timeSlots, setTimeSlots] = useState([]);
 
   let { id } = useParams();
@@ -110,7 +109,7 @@ function ViewClinician() {
                     <h2>Clinician Information</h2>
                   </div>
                   <div class="col-auto">
-                    <Link class="edit_form" to="/admin/edit-clinician">
+                    <Link class="edit_form" to={`/admin/edit-clinician/${id}`}>
                       <i class="fas fa-edit"></i>
                     </Link>
                   </div>
@@ -262,16 +261,8 @@ function ViewClinician() {
                     {timeSlots ? (
                       <ReactTimeslotCalendar
                         initialDate={moment().format()}
-                        maxTimeslots={100}
                         selectedTimeslots={timeSlots}
                         timeslots={timeslots}
-                        onSelectTimeslot={(timeslots, lastSelected) => {
-                          console.log("All Timeslots:");
-                          console.log(timeslots);
-
-                          console.log("Last selected timeslot:");
-                          console.log(lastSelected);
-                        }}
                       />
                     ) : (
                       ""

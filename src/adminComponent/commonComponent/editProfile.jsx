@@ -78,7 +78,7 @@ function EditProfile() {
       <div class="admin_main">
         <AdminSidebar />
         <div class="admin_main_inner">
-          <AdminHeader />
+          <AdminHeader profile={onSubmit} />
           <div class="admin_panel_data height_adjust">
             <div class="row">
               <div class="col-12 editprofile design_outter_comman shadow">

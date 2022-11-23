@@ -124,3 +124,34 @@ export async function changePassword(formData) {
     return { error };
   }
 }
+export async function getClinicianData() {
+  try {
+    const { data } = await clinicianhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/getClinicianData`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function editClinician(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/updateProfile`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
