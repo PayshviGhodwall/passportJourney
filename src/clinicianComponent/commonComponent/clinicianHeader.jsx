@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getClinicianData } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 
 function ClinicianHeader() {
+  const [clinicianData, setclinicianData] = useState("");
+
+  useEffect(() => {
+    getclinicianValue();
+  }, []);
+
+  const getclinicianValue = async () => {
+    const { data } = await getClinicianData();
+    if (!data.error) {
+      setclinicianData(data.results.clinician);
+    }
+  };
+
   return (
     <>
       {" "}
@@ -25,7 +39,16 @@ function ClinicianHeader() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img src="../assets/img/profile.png" alt="" />
+                <div className="header-imgg">
+                  <img
+                    src={
+                      clinicianData?.profile_image
+                        ? clinicianData?.profile_image
+                        : "/assets/img/profile.png"
+                    }
+                    alt=""
+                  />
+                </div>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>

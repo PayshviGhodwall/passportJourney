@@ -133,7 +133,7 @@ function VideoSessionManagement() {
                                       </tr>
                                       <tr>
                                         <td>2</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
                                         <td>Ajay Sharma</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
@@ -238,7 +238,7 @@ function VideoSessionManagement() {
                                     <tbody>
                                       <tr>
                                         <td>1</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
                                         <td>01/07/2022</td>
                                         <td>
                                           <Link
@@ -367,8 +367,8 @@ function VideoSessionManagement() {
                                       </tr>
                                       <tr>
                                         <td>2</td>
-                                        <td>John Dubey</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
+                                        <td>Bella Ira</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
                                         <td>10 MIN</td>
@@ -493,7 +493,7 @@ function VideoSessionManagement() {
                                       </tr>
                                       <tr>
                                         <td>2</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
                                         <td>Ajay Sharma</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>

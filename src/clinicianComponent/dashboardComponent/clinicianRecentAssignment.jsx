@@ -40,7 +40,7 @@ function ClinicianRecentAssignment() {
                             <img src="../assets/img/profile.png" alt="" />
                           </span>
                           <strong>
-                            John Dubey <div class="sub_name">(Mother)</div>
+                            Bella Ira <div class="sub_name">(Mother)</div>
                           </strong>
                         </div>
                       </div>

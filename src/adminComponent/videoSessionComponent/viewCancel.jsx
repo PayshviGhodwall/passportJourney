@@ -40,7 +40,7 @@ function ViewCancel() {
                             <img src="../assets/img/profile.png" alt="" />
                           </span>
                           <strong>
-                            John Dubey <div class="sub_name">(Mother)</div>
+                            Bella Ira <div class="sub_name">(Mother)</div>
                           </strong>
                         </div>
                       </div>
@@ -137,7 +137,7 @@ function ViewCancel() {
                         <img src="../assets/img/profile.png" alt="" />
                       </span>
                       <strong>
-                        John Dubey <div class="sub_name">(Mother)</div>
+                        Bella Ira <div class="sub_name">(Mother)</div>
                       </strong>
                       <strong class="d-block fw-normal mt-1">
                         Registration Date: 01/01/2022
@@ -149,7 +149,7 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="John Dubey"
+                      value="Bella Ira"
                       name="name"
                       id="name"
                     />

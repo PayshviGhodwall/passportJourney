@@ -263,6 +263,7 @@ function ViewClinician() {
                         initialDate={moment().format()}
                         selectedTimeslots={timeSlots}
                         timeslots={timeslots}
+                        maxTimeslots={100}
                       />
                     ) : (
                       ""
@@ -315,7 +316,7 @@ function ViewClinician() {
                           </tr>
                           <tr>
                             <td>2</td>
-                            <td>John Dubey</td>
+                            <td>Bella Ira</td>
                             <td>01/07/2022</td>
                             <td>12:00 PM</td>
                             <td>10 MIN</td>

@@ -22,6 +22,7 @@ function ClinicianEditProfile() {
   const [timeSlots, setTimeSlots] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+  const [time_Slots, setTime_Slots] = useState([]);
 
   const {
     register,
@@ -80,6 +81,7 @@ function ClinicianEditProfile() {
       }
       console.log(slots);
       setTimeSlots(slots);
+      setTime_Slots(data.results.clinician.time_slots);
     }
   };
 
@@ -106,19 +108,8 @@ function ClinicianEditProfile() {
       return;
     }
 
-    data.time_slots = [];
-
-    const keys = Object.keys(timeSlots);
-    const value = Object.values(timeSlots);
-
-    for (const key of keys) {
-      data.time_slots.push({
-        date: key,
-        time_slots: timeSlots[key],
-      });
-    }
-
-    data.time_slots = JSON.stringify(data.time_slots);
+    data.time_slots = JSON.stringify(time_Slots);
+    console.log(data);
 
     const formData = new FormData();
     for (const item in data) {
@@ -197,11 +188,6 @@ function ClinicianEditProfile() {
                                 />
                               </div>
                             </div>
-                          </div>
-                          <div class="col-12 userinfor_box">
-                            <strong>
-                              John Dubey <div class="sub_name">(Mother)</div>
-                            </strong>
                           </div>
                         </div>
                       </div>
@@ -376,8 +362,17 @@ function ClinicianEditProfile() {
                               },
                               {}
                             );
-                            console.log(dateTime);
-                            setTimeSlots(dateTime);
+                            let timeslotdata = [];
+                            const keys = Object.keys(dateTime);
+
+                            for (const key of keys) {
+                              timeslotdata.push({
+                                date: key,
+                                time_slots: dateTime[key],
+                              });
+                            }
+                            console.log(timeslotdata, "bsdjvkbdsjkvbjkdbvjkdb");
+                            setTime_Slots(timeslotdata);
                           }}
                         />
                       </div>
@@ -392,50 +387,6 @@ function ClinicianEditProfile() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="modal fade comman_modal edit_slotsmodal"
-        id="staticBackdrop09"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content border-0">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Edit Slots
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form class="form-design row" action="">
-                <div class="form-group col-12">
-                  <label for="">Select Date</label>
-                  <ReactTimeslotCalendar
-                    initialDate={moment().format()}
-                    maxTimeslots={100}
-                    timeslots={timeslots}
-                    onSelectTimeslot={(timeslots, lastSelected) => {
-                      console.log("All Timeslots:");
-                      console.log(timeslots);
-
-                      console.log("Last selected timeslot:");
-                      console.log(lastSelected);
-                    }}
-                  />
-                </div>
-              </form>
             </div>
           </div>
         </div>

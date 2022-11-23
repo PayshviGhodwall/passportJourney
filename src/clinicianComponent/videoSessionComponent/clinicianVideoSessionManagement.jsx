@@ -123,7 +123,7 @@ function ClinicianVideoSessionManagement() {
                                       </tr>
                                       <tr>
                                         <td>2</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
                                         <td>Daughter</td>
                                         <td>First</td>
                                         <td>01/07/2022</td>
@@ -251,7 +251,7 @@ function ClinicianVideoSessionManagement() {
                                       </tr>
                                       <tr>
                                         <td>2</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
                                         <td>Mother</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>
@@ -377,7 +377,7 @@ function ClinicianVideoSessionManagement() {
                                       </tr>
                                       <tr>
                                         <td>2</td>
-                                        <td>John Dubey</td>
+                                        <td>Bella Ira</td>
                                         <td>Daughter</td>
                                         <td>01/07/2022</td>
                                         <td>12:00 PM</td>

@@ -6,6 +6,7 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { MultiSelect } from "react-multi-select-component";
+import { Link, useNavigate } from "react-router-dom";
 import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
 import {
   editClinician,
@@ -22,6 +23,7 @@ function EditClinician() {
   const [timeSlots, setTimeSlots] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+  const [time_Slots, setTime_Slots] = useState([]);
 
   let { id } = useParams();
 
@@ -31,6 +33,8 @@ function EditClinician() {
     reset,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getClinicainValue();
@@ -82,6 +86,7 @@ function EditClinician() {
       }
       console.log(slots);
       setTimeSlots(slots);
+      setTime_Slots(data.results.clinician.time_slots);
     }
   };
 
@@ -110,19 +115,7 @@ function EditClinician() {
 
     data.expertise = selected.map((option) => option.label);
 
-    data.time_slots = [];
-
-    const keys = Object.keys(timeSlots);
-    const value = Object.values(timeSlots);
-
-    for (const key of keys) {
-      data.time_slots.push({
-        date: key,
-        time_slots: timeSlots[key],
-      });
-    }
-
-    data.time_slots = JSON.stringify(data.time_slots);
+    data.time_slots = JSON.stringify(time_Slots);
     data.expertise = JSON.stringify(data.expertise);
 
     const formData = new FormData();
@@ -130,6 +123,7 @@ function EditClinician() {
       formData.append(item, data[item]);
       console.log(data[item]);
     }
+    console.log(data);
 
     if (selectedFile) {
       formData.append("profile_image", selectedFile, selectedFile.name);
@@ -137,7 +131,7 @@ function EditClinician() {
 
     const response = await editClinician(formData);
     if (!response.data.error) {
-      getClinicainValue();
+      navigate(`/admin/view-clinician/${id}`);
     }
   };
   const onFileSelection = (event) => {
@@ -199,11 +193,6 @@ function EditClinician() {
                             />
                           </div>
                         </div>
-                      </div>
-                      <div class="col-12 userinfor_box">
-                        <strong>
-                          John Dubey <div class="sub_name">(Mother)</div>
-                        </strong>
                       </div>
                     </div>
                   </div>
@@ -358,8 +347,17 @@ function EditClinician() {
                           },
                           {}
                         );
-                        console.log(dateTime);
-                        setTimeSlots(dateTime);
+                        let timeslotdata = [];
+                        const keys = Object.keys(dateTime);
+
+                        for (const key of keys) {
+                          timeslotdata.push({
+                            date: key,
+                            time_slots: dateTime[key],
+                          });
+                        }
+                        console.log(timeslotdata);
+                        setTime_Slots(timeslotdata);
                       }}
                     />
                   </div>
