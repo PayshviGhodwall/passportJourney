@@ -318,6 +318,165 @@ function ClinicianViewComplete() {
                               <div class="col-12 design_outter_comman border rounded mb-4">
                                 <div class="row comman_header justify-content-between">
                                   <div class="col-auto">
+                                    <h2>Assigned Activity</h2>
+                                  </div>
+                                </div>
+                                <form
+                                  class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
+                                  action=""
+                                >
+                                  <div class="form-group col mb-0 choose_file position-relative">
+                                    <span>Upload Image</span>
+                                    <label for="upload_video">
+                                      <i class="fal fa-camera me-1"></i>Choose
+                                      File
+                                    </label>
+                                    <input
+                                      type="file"
+                                      class="form-control"
+                                      value=""
+                                      name="upload_video"
+                                      id="upload_video"
+                                    />
+                                  </div>
+                                  <div class="form-group col mb-0">
+                                    <label for="">Message</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      value=""
+                                      name="name"
+                                      id="name"
+                                    />
+                                  </div>
+                                  <div class="form-group mb-0 col-auto">
+                                    <button class="comman_btn">Send</button>
+                                  </div>
+                                </form>
+                                <div class="row mx-0 user_response text-center pb-4">
+                                  <div class="col-12 mb-2">
+                                    <label for="">User Response</label>
+                                  </div>
+                                  <div class="col-5">
+                                    <div class="d-flex align-items-center justify-content-start">
+                                      <div class="user_response_box me-3">
+                                        <img
+                                          src="../assets/img/profile_img1.png"
+                                          alt=""
+                                        />
+                                      </div>
+                                      <a
+                                        class="comman_btn2"
+                                        href="javascript::"
+                                      >
+                                        <i class="fal fa-download me-2"></i>
+                                        Download
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-12 design_outter_comman border rounded mb-4">
+                                <div class="row comman_header justify-content-between">
+                                  <div class="col-auto">
+                                    <h2>Suggest A Journal</h2>
+                                  </div>
+                                </div>
+                                <form
+                                  class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
+                                  action=""
+                                >
+                                  <div class="form-group col-10">
+                                    <label for="">Journal Topic</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      value=""
+                                      name="name"
+                                      id="name"
+                                    />
+                                  </div>
+                                  <div class="form-group col-2">
+                                    <button class="comman_btn w-100">
+                                      Send
+                                    </button>
+                                  </div>
+                                  <div class="form-group col-12 mb-0">
+                                    <label for="">User Response</label>
+                                  </div>
+                                  <div class="form-group col-10">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      value=""
+                                      name="name"
+                                      id="name"
+                                    />
+                                  </div>
+                                  <div class="form-group col-4 mb-0">
+                                    <div class="row audi_record align-items-center">
+                                      <div class="col-1 px-1">
+                                        <a
+                                          class="play_icon"
+                                          href="javascript:;"
+                                        >
+                                          <i class="fas fa-play"></i>
+                                        </a>
+                                      </div>
+                                      <div class="col px-2">
+                                        <div class="audio_part">
+                                          <span class="circle_ball"></span>
+                                        </div>
+                                      </div>
+                                      <div class="col-2 px-1">
+                                        <span class="time_zome">00:26</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="col-12 design_outter_comman border rounded mb-4">
+                                <div class="row comman_header justify-content-between">
+                                  <div class="col-auto">
+                                    <h2>Assigned Worksheet</h2>
+                                  </div>
+                                </div>
+                                <form
+                                  class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
+                                  action=""
+                                >
+                                  <div class="form-group col mb-0 choose_file position-relative">
+                                    <span>Upload Pdf</span>
+                                    <label for="upload_video">
+                                      <i class="fal fa-file me-1"></i>Choose
+                                      File
+                                    </label>
+                                    <input
+                                      type="file"
+                                      class="form-control"
+                                      value=""
+                                      name="upload_video"
+                                      id="upload_video"
+                                    />
+                                  </div>
+                                  <div class="form-group col mb-0">
+                                    <label for="">Message</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      value=""
+                                      name="name"
+                                      id="name"
+                                    />
+                                  </div>
+                                  <div class="form-group mb-0 col-auto">
+                                    <button class="comman_btn">Send</button>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="col-12 design_outter_comman border rounded mb-4">
+                                <div class="row comman_header justify-content-between">
+                                  <div class="col-auto">
                                     <h2>Clinical Documentation</h2>
                                   </div>
                                 </div>

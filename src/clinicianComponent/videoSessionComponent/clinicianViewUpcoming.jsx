@@ -705,7 +705,7 @@ function ClinicianViewUpcoming() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 pb-4 text-center">
+                  {/* <div class="col-12 pb-4 text-center">
                     <a
                       href="javscript:;"
                       data-bs-toggle="modal"
@@ -714,7 +714,7 @@ function ClinicianViewUpcoming() {
                     >
                       Assign Clinician
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div class="col-12 design_outter_comman shadow mb-4">
