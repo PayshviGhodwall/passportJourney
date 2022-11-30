@@ -130,7 +130,7 @@ function Payment() {
                       })}
                     />
                     <label for="test4">
-                      $260.00 (A full month of therapy for 1 mother-daughter
+                      $220.00 (A full month of therapy for 1 mother-daughter
                       pair )
                     </label>
                   </p>

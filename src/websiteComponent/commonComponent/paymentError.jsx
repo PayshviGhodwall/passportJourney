@@ -1,24 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { success } from "../../apiServices/adminHttpService/adminLoginHttpService";
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
 
 function PaymentError() {
-  useEffect(() => {
-    payment();
-  }, []);
-
-  const payment = async () => {
-    const formData = {
-      email: params.email,
-      amount: params.amount,
-    };
-    const { data } = await success(formData);
-    if (!data.error) {
-    }
-  };
+  useEffect(() => {}, []);
   return (
     <>
       <div class="fresh_trader_main">

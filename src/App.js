@@ -62,6 +62,8 @@ import QuerySubscribe from "./adminComponent/queryComponent/querySubscribe";
 import Payment from "./websiteComponent/payment";
 import PaymentSuccess from "./websiteComponent/commonComponent/paymentSuccess";
 import PaymentError from "./websiteComponent/commonComponent/paymentError";
+import PaymentSuccessSubscription from "./websiteComponent/commonComponent/paymentSuccessSubscription";
+import PaymentErrorSubscription from "./websiteComponent/commonComponent/paymentErrorSubscription";
 import ViewCompleted from "./adminComponent/videoSessionComponent/viewCompleted";
 
 function App() {
@@ -291,6 +293,14 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/success" element={<PaymentSuccess />} />
           <Route path="/cancel" element={<PaymentError />} />
+          <Route
+            path="/success-subscription"
+            element={<PaymentSuccessSubscription />}
+          />
+          <Route
+            path="/cancel-subscription"
+            element={<PaymentErrorSubscription />}
+          />
         </Routes>
       </BrowserRouter>
     </>
