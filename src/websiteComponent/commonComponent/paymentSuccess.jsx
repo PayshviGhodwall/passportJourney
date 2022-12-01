@@ -48,9 +48,9 @@ function PaymentSuccess() {
 
                           <h1 className="my-3">Success!</h1>
                           <p>
-                            We've sent a confirmation to your e-mail
+                            Congrats! Your Payment is successful
                             <br />
-                            for verification.
+                            Thank You for your donation
                           </p>
                           <Link to="/" class="redo btn my-3">
                             Continue

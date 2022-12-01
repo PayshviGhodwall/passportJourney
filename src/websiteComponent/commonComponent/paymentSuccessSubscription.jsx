@@ -31,9 +31,9 @@ function PaymentSuccessSubscription() {
 
                           <h1 className="my-3">Success!</h1>
                           <p>
-                            We've sent a confirmation to your e-mail
+                            Congrats!
                             <br />
-                            for verification.
+                            Your Plan is activated
                           </p>
                           <span class="change"></span>
                         </div>

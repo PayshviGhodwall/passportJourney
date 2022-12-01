@@ -124,7 +124,7 @@ function Payment() {
                       type="radio"
                       id="test4"
                       name="amount"
-                      value={260.0}
+                      value={220.0}
                       {...register("amount", {
                         required: true,
                       })}
