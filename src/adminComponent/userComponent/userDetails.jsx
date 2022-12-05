@@ -130,7 +130,7 @@ function UserDetails() {
                           <div className="form-group col-12 mb-2">
                             <div className="userinfor_box text-center">
                               <span className="user_imgg">
-                                <img src="/assets/img/profile.png" alt="" />
+                                <img src={user.profile_image} alt="" />
                               </span>
                               <strong>
                                 {user.full_name}

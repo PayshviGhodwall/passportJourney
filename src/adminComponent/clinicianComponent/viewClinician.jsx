@@ -41,7 +41,6 @@ function ViewClinician() {
       defaultValue.phone_number = data.results.clinician.phone_number;
       defaultValue.email = data.results.clinician.email;
       defaultValue.license = data.results.clinician.license;
-      defaultValue.email = data.results.clinician.email;
       defaultValue.experience = data.results.clinician.experience;
       defaultValue.email = data.results.clinician.email;
       defaultValue.bio = data.results.clinician.bio;

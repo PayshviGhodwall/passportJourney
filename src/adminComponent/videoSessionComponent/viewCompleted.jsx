@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSessionData } from "../../apiServices/userHttpService/adminUserHttpService";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
 
 function ViewCompleted() {
+  const [completedData, setCompletedData] = useState("");
+  let { id } = useParams();
+
+  useEffect(() => {
+    getDetail();
+  }, []);
+
+  const getDetail = async () => {
+    const { data } = await getSessionData(id);
+    if (!data.error) {
+      console.log(data);
+      setCompletedData(data.results.session);
+    }
+  };
+
   return (
     <>
       {" "}
@@ -26,27 +43,7 @@ function ViewCompleted() {
                     <div class="clinician_documentation_box border">
                       <span class="headerrr">Clinician feedback</span>
                       <div class="documentation_box_data">
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Culpa aliquid dolor sequi natus ab error eaque
-                          adipisci fuga, libero quia architecto deserunt
-                          distinctio dolorum aut exercitationem, reprehenderit
-                          id neque nesciunt!
-                        </p>
-                        <ul>
-                          <li>
-                            <p>eaque adipisci fuga, libero quia architecto</p>
-                          </li>
-                          <li>
-                            <p>dolor sit amet consectetur adipisicing</p>
-                          </li>
-                          <li>
-                            <p>
-                              eaque adipisci fuga, libero quia architecto
-                              deserunt distinctio dolorum
-                            </p>
-                          </li>
-                        </ul>
+                        <p>{completedData.feedback}</p>
                       </div>
                     </div>
                   </div>
@@ -54,27 +51,7 @@ function ViewCompleted() {
                     <div class="clinician_documentation_box border">
                       <span class="headerrr">Focus of Session</span>
                       <div class="documentation_box_data">
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Culpa aliquid dolor sequi natus ab error eaque
-                          adipisci fuga, libero quia architecto deserunt
-                          distinctio dolorum aut exercitationem, reprehenderit
-                          id neque nesciunt!
-                        </p>
-                        <ul>
-                          <li>
-                            <p>eaque adipisci fuga, libero quia architecto</p>
-                          </li>
-                          <li>
-                            <p>dolor sit amet consectetur adipisicing</p>
-                          </li>
-                          <li>
-                            <p>
-                              eaque adipisci fuga, libero quia architecto
-                              deserunt distinctio dolorum
-                            </p>
-                          </li>
-                        </ul>
+                        <p>{completedData.focus_of_session}</p>
                       </div>
                     </div>
                   </div>
@@ -82,27 +59,7 @@ function ViewCompleted() {
                     <div class="clinician_documentation_box border">
                       <span class="headerrr">Progress toward Goals</span>
                       <div class="documentation_box_data">
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Culpa aliquid dolor sequi natus ab error eaque
-                          adipisci fuga, libero quia architecto deserunt
-                          distinctio dolorum aut exercitationem, reprehenderit
-                          id neque nesciunt!
-                        </p>
-                        <ul>
-                          <li>
-                            <p>eaque adipisci fuga, libero quia architecto</p>
-                          </li>
-                          <li>
-                            <p>dolor sit amet consectetur adipisicing</p>
-                          </li>
-                          <li>
-                            <p>
-                              eaque adipisci fuga, libero quia architecto
-                              deserunt distinctio dolorum
-                            </p>
-                          </li>
-                        </ul>
+                        <p>{completedData.progress_toward_goals}</p>
                       </div>
                     </div>
                   </div>
@@ -110,27 +67,7 @@ function ViewCompleted() {
                     <div class="clinician_documentation_box border">
                       <span class="headerrr">Safety Concerns</span>
                       <div class="documentation_box_data">
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Culpa aliquid dolor sequi natus ab error eaque
-                          adipisci fuga, libero quia architecto deserunt
-                          distinctio dolorum aut exercitationem, reprehenderit
-                          id neque nesciunt!
-                        </p>
-                        <ul>
-                          <li>
-                            <p>eaque adipisci fuga, libero quia architecto</p>
-                          </li>
-                          <li>
-                            <p>dolor sit amet consectetur adipisicing</p>
-                          </li>
-                          <li>
-                            <p>
-                              eaque adipisci fuga, libero quia architecto
-                              deserunt distinctio dolorum
-                            </p>
-                          </li>
-                        </ul>
+                        <p>{completedData.safety_concerns}</p>
                       </div>
                     </div>
                   </div>
@@ -138,27 +75,7 @@ function ViewCompleted() {
                     <div class="clinician_documentation_box border">
                       <span class="headerrr">Plan</span>
                       <div class="documentation_box_data">
-                        <p>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Culpa aliquid dolor sequi natus ab error eaque
-                          adipisci fuga, libero quia architecto deserunt
-                          distinctio dolorum aut exercitationem, reprehenderit
-                          id neque nesciunt!
-                        </p>
-                        <ul>
-                          <li>
-                            <p>eaque adipisci fuga, libero quia architecto</p>
-                          </li>
-                          <li>
-                            <p>dolor sit amet consectetur adipisicing</p>
-                          </li>
-                          <li>
-                            <p>
-                              eaque adipisci fuga, libero quia architecto
-                              deserunt distinctio dolorum
-                            </p>
-                          </li>
-                        </ul>
+                        <p>{completedData.plan}</p>
                       </div>
                     </div>
                   </div>

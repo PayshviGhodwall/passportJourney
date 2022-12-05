@@ -147,10 +147,16 @@ function App() {
                 path="/admin/video-session-management"
                 element={<VideoSessionManagement />}
               />
-              <Route path="/admin/view-upcoming" element={<ViewUpcoming />} />
-              <Route path="/admin/view-pending" element={<ViewPending />} />
-              <Route path="/admin/view-completed" element={<ViewCompleted />} />
-              <Route path="/admin/view-cancel" element={<ViewCancel />} />
+              <Route
+                path="/admin/view-upcoming/:id"
+                element={<ViewUpcoming />}
+              />
+              <Route path="/admin/view-pending/:id" element={<ViewPending />} />
+              <Route
+                path="/admin/view-completed/:id"
+                element={<ViewCompleted />}
+              />
+              <Route path="/admin/view-cancel/:id" element={<ViewCancel />} />
             </>
           ) : (
             <Route

@@ -14,10 +14,11 @@ function Payment() {
   const onSubmit = async (data) => {
     const response = await donate(data);
     if (!response.data.error) {
-      const link = document.createElement("a");
-      link.href = response.data.results.url;
-      link.target = "_blank";
-      link.click();
+      window.open(response.data.results.url, "_blank");
+      // const link = document.createElement("a");
+      // link.href = response.data.results.url;
+      // link.target = "_blank";
+      // link.click();
     }
   };
   return (

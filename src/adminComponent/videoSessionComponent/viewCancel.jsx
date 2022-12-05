@@ -1,8 +1,36 @@
-import React from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  changeUserStatus,
+  getSessionData,
+} from "../../apiServices/userHttpService/adminUserHttpService";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
 
 function ViewCancel() {
+  const [cancelData, setCancelData] = useState("");
+  let { id } = useParams();
+
+  useEffect(() => {
+    getDetail();
+  }, []);
+
+  const getDetail = async () => {
+    const { data } = await getSessionData(id);
+    if (!data.error) {
+      console.log(data);
+      setCancelData(data.results.session);
+    }
+  };
+
+  const changeStatus = async (Id) => {
+    const { data } = await changeUserStatus(Id);
+    if (!data.error) {
+      await getDetail();
+    }
+  };
+
   return (
     <>
       {" "}
@@ -25,10 +53,11 @@ function ViewCancel() {
                   <div class="check_toggle">
                     <input
                       type="checkbox"
-                      checked=""
                       name="check1"
                       id="check1"
                       class="d-none"
+                      checked={cancelData?.user?.status}
+                      onChange={() => changeStatus(cancelData?.user?._id)}
                     />
                     <label for="check1"></label>
                   </div>
@@ -37,16 +66,20 @@ function ViewCancel() {
                       <div class="form-group col-12 mb-2">
                         <div class="userinfor_box text-center">
                           <span class="user_imgg">
-                            <img src="../assets/img/profile.png" alt="" />
+                            <img src={cancelData?.user?.profile_image} alt="" />
                           </span>
                           <strong>
-                            Bella Ira <div class="sub_name">(Mother)</div>
+                            {cancelData?.user?.full_name}{" "}
+                            <div class="sub_name">
+                              ({cancelData?.user?.type})
+                            </div>
                           </strong>
                         </div>
                       </div>
                       <div class="form-group col-12 text-center mb-2">
                         <label class="mb-0 text-center" for="">
-                          Registration Date: 01/01/2022
+                          Registration Date:{" "}
+                          {moment(cancelData?.user?.createdAt).format("L")}
                         </label>
                       </div>
                     </div>
@@ -54,11 +87,13 @@ function ViewCancel() {
                   <div class="col px-4">
                     <div class="row">
                       <div class="form-group col-12">
-                        <label for="">Pairing Member (Daughter):</label>
+                        <label for="">
+                          Pairing Member ({cancelData?.user?.partner?.type}):
+                        </label>
                         <input
                           type="text"
                           class="form-control"
-                          value="Surbhi"
+                          value={cancelData?.user?.partner?.full_name}
                           name="name"
                           id="name"
                         />
@@ -68,7 +103,7 @@ function ViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="surbhi@gamil.com"
+                          value={cancelData?.user?.partner?.email}
                           name="name"
                           id="name"
                         />
@@ -78,7 +113,7 @@ function ViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="In-person"
+                          value={cancelData?.user?.relationship}
                           name="name"
                           id="name"
                         />
@@ -92,7 +127,7 @@ function ViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="+1 9876543210"
+                          value={cancelData?.user?.phone_number}
                           name="name"
                           id="name"
                         />
@@ -102,21 +137,25 @@ function ViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="User@gmail.com"
+                          value={cancelData?.user?.email}
                           name="name"
                           id="name"
                         />
                       </div>
-                      <div class="form-group col-12 mb-0">
-                        <label for="">Apple Id: </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          value="User@apple.com"
-                          name="name"
-                          id="name"
-                        />
-                      </div>
+                      {cancelData?.user?.appleId ? (
+                        <div class="form-group col-12 mb-0">
+                          <label for="">Apple Id: </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            value={cancelData?.user?.appleId}
+                            name="name"
+                            id="name"
+                          />
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </form>
@@ -131,16 +170,18 @@ function ViewCancel() {
                   class="form-design py-4 px-3 help-support-form row align-items-start justify-content-between"
                   action=""
                 >
-                  <div class="form-group col-12 mb-4 pb-3">
+                  <div class="form-group col-12 mb-4">
                     <div class="userinfor_box text-center">
                       <span class="user_imgg">
-                        <img src="../assets/img/profile.png" alt="" />
+                        <img
+                          src={cancelData?.clinician?.profile_image}
+                          alt=""
+                        />
                       </span>
-                      <strong>
-                        Bella Ira <div class="sub_name">(Mother)</div>
-                      </strong>
+                      <strong>{cancelData?.clinician?.name}</strong>
                       <strong class="d-block fw-normal mt-1">
-                        Registration Date: 01/01/2022
+                        Registration Date:{" "}
+                        {moment(cancelData?.clinician?.createdAt).format("L")}
                       </strong>
                     </div>
                   </div>
@@ -149,7 +190,7 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="Bella Ira"
+                      value={cancelData?.clinician?.name}
                       name="name"
                       id="name"
                     />
@@ -159,7 +200,7 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="+1 09823420934"
+                      value={cancelData?.clinician?.phone_number}
                       name="name"
                       id="name"
                     />
@@ -168,7 +209,7 @@ function ViewCancel() {
                     <label for="">Email</label>
                     <input
                       type="text"
-                      value="xyz@gmail.com"
+                      value={cancelData?.clinician?.email}
                       class="form-control"
                       name="name"
                       id="name"
@@ -178,7 +219,7 @@ function ViewCancel() {
                     <label for="">License No.</label>
                     <input
                       type="text"
-                      value="90839248923"
+                      value={cancelData?.clinician?.license}
                       class="form-control"
                       name="name"
                       id="name"
@@ -189,7 +230,7 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="Counselling , Psychology"
+                      value={cancelData?.clinician?.expertise}
                       name="name"
                       id="name"
                     />
@@ -199,23 +240,19 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="4"
+                      value={cancelData?.clinician?.experience}
                       name="name"
                       id="name"
                     />
                   </div>
                   <div class="form-group col-12 boi_box">
                     <label for="">Bio</label>
-                    <textarea class="form-control" name="" id="">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Rem quas asperiores tempora sunt enim quam, laudantium
-                      veritatis laborum expedita a omnis deleniti in voluptates
-                      excepturi, quis ab quos laboriosam suscipit? Lorem ipsum
-                      dolor sit amet consectetur adipisicing elit. Rem quas
-                      asperiores tempora sunt enim quam, laudantium veritatis
-                      laborum expedita a omnis deleniti in voluptates excepturi,
-                      quis ab quos laboriosam suscipit? Lorem ipsum.
-                    </textarea>
+                    <textarea
+                      class="form-control"
+                      name=""
+                      id=""
+                      value={cancelData?.clinician?.bio}
+                    ></textarea>
                   </div>
                 </form>
               </div>
@@ -229,22 +266,22 @@ function ViewCancel() {
                   class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
                   action=""
                 >
-                  <div class="form-group col-6">
+                  <div class="form-group mb-0 col">
                     <label for="">Date</label>
                     <input
-                      type="text"
+                      type="type"
                       class="form-control"
-                      value="26/09/2022"
+                      value={moment(cancelData?.date).format("L")}
                       name="name"
                       id="name"
                     />
                   </div>
-                  <div class="form-group col-6">
+                  <div class="form-group mb-0 col">
                     <label for="">Time</label>
                     <input
-                      type="text"
+                      type="type"
                       class="form-control"
-                      value="10:20AM"
+                      value={moment(cancelData?.date).format("L")}
                       name="name"
                       id="name"
                     />
@@ -266,7 +303,7 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="26/09/2022"
+                      value={moment(cancelData?.cancelled_date).format("L")}
                       name="name"
                       id="name"
                     />
@@ -276,7 +313,9 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="10:20AM"
+                      value={moment(cancelData?.cancelled_date).format(
+                        "hh:mm A"
+                      )}
                       name="name"
                       id="name"
                     />
@@ -286,7 +325,7 @@ function ViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="Clinician"
+                      value={cancelData.cancelled_by}
                       name="name"
                       id="name"
                     />

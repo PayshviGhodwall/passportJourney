@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getSessionCount } from "../../apiServices/userHttpService/adminUserHttpService";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
+import AdminCancel from "./adminCancelList";
+import AdminCompleted from "./adminCompletedList";
+import AdminPending from "./adminPendingList";
+import AdminUpcoming from "./adminUpcomingList";
 
 function VideoSessionManagement() {
+  const [count, setCount] = useState("");
+
+  useEffect(() => {
+    getCountDetail();
+  }, []);
+
+  const getCountDetail = async () => {
+    const { data } = await getSessionCount();
+    if (!data.error) {
+      console.log(data);
+      setCount(data.results);
+    }
+  };
   return (
     <>
       <div class="admin_main">
@@ -36,7 +54,7 @@ function VideoSessionManagement() {
                           aria-controls="nav-home"
                           aria-selected="true"
                         >
-                          Upcoming<span>10</span>
+                          Upcoming<span>{count.upcomingSessionCount}</span>
                         </button>
                         <button
                           class="nav-link nav-link-width"
@@ -48,7 +66,7 @@ function VideoSessionManagement() {
                           aria-controls="nav-profile"
                           aria-selected="false"
                         >
-                          Pending <span>10</span>
+                          Pending <span>{count.pendingSessionCount}</span>
                         </button>
                         <button
                           class="nav-link nav-link-width"
@@ -60,7 +78,7 @@ function VideoSessionManagement() {
                           aria-controls="nav-completed"
                           aria-selected="false"
                         >
-                          Completed<span>10</span>
+                          Completed<span>{count.completedSessionCount}</span>
                         </button>
                         <button
                           class="nav-link nav-link-width"
@@ -72,7 +90,7 @@ function VideoSessionManagement() {
                           aria-controls="nav-cancelled"
                           aria-selected="false"
                         >
-                          Cancelled<span>10</span>
+                          Cancelled<span>{count.cancelledSessionCount}</span>
                         </button>
                       </div>
                     </nav>
@@ -83,359 +101,25 @@ function VideoSessionManagement() {
                         role="tabpanel"
                         aria-labelledby="nav-home-tab"
                       >
-                        <div class="row">
-                          <div class="col-12 design_outter_comman recent_orders shadow">
-                            <form
-                              class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
-                              action=""
-                            >
-                              <div class="form-group mb-0 col-5">
-                                <label for="">From</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-5">
-                                <label for="">To</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-auto">
-                                <button class="comman_btn">Search</button>
-                              </div>
-                            </form>
-                            <div class="row">
-                              <div class="col-12 comman_table_design px-0">
-                                <div class="table-responsive">
-                                  <table class="table mb-0">
-                                    <thead>
-                                      <tr>
-                                        <th>S.No.</th>
-                                        <th>User Name</th>
-                                        <th>Clinician Name</th>
-                                        <th>date</th>
-                                        <th>time</th>
-                                        <th>Action</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>Moh. Aarif</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-upcoming"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>Bella Ira</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-upcoming"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>3</td>
-                                        <td>Vikas</td>
-                                        <td>Ajay jain</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-upcoming"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>4</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>Moh. Aarif</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-upcoming"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>5</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>Vijay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-upcoming"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <AdminUpcoming />
                       </div>
+
                       <div
                         class="tab-pane fade"
                         id="nav-profile"
                         role="tabpanel"
                         aria-labelledby="nav-profile-tab"
                       >
-                        <div class="row">
-                          <div class="col-12 design_outter_comman recent_orders shadow">
-                            <form
-                              class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
-                              action=""
-                            >
-                              <div class="form-group mb-0 col-5">
-                                <label for="">From</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-5">
-                                <label for="">To</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-auto">
-                                <button class="comman_btn">Search</button>
-                              </div>
-                            </form>
-                            <div class="row">
-                              <div class="col-12 comman_table_design px-0">
-                                <div class="table-responsive">
-                                  <table class="table mb-0">
-                                    <thead>
-                                      <tr>
-                                        <th>S.No.</th>
-                                        <th>User Name</th>
-                                        <th>Request date</th>
-                                        <th>Action</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Bella Ira</td>
-                                        <td>01/07/2022</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-pending"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>Vikas</td>
-                                        <td>01/07/2022</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-pending"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>3</td>
-                                        <td>Ajay jain</td>
-                                        <td>01/07/2022</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-pending"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>4</td>
-                                        <td>Vijay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-pending"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>5</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-pending"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <AdminPending />
                       </div>
+
                       <div
                         class="tab-pane fade"
                         id="nav-completed"
                         role="tabpanel"
                         aria-labelledby="nav-completed-tab"
                       >
-                        <div class="row">
-                          <div class="col-12 design_outter_comman recent_orders shadow">
-                            <form
-                              class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
-                              action=""
-                            >
-                              <div class="form-group mb-0 col-5">
-                                <label for="">From</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-5">
-                                <label for="">To</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-auto">
-                                <button class="comman_btn">Search</button>
-                              </div>
-                            </form>
-                            <div class="row">
-                              <div class="col-12 comman_table_design px-0">
-                                <div class="table-responsive">
-                                  <table class="table mb-0">
-                                    <thead>
-                                      <tr>
-                                        <th>S.No.</th>
-                                        <th>User Name</th>
-                                        <th>Clinician Name</th>
-                                        <th>date</th>
-                                        <th>time</th>
-                                        <th>duration</th>
-                                        <th>Clinical Documentation</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Moh. Aarif</td>
-                                        <td>Moh. Aarif</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>15 MIN</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-completed"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>Bella Ira</td>
-                                        <td>Bella Ira</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>10 MIN</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-completed"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>3</td>
-                                        <td>Vikas</td>
-                                        <td>Vikas</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>28 MIN</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-completed"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>4</td>
-                                        <td>Ajay jain</td>
-                                        <td>Ajay jain</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>10 MIN</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-completed"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>5</td>
-                                        <td>Vijay Sharma</td>
-                                        <td>Vijay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>20 MIN</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-completed"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <AdminCompleted />
                       </div>
                       <div
                         class="tab-pane fade"
@@ -443,121 +127,7 @@ function VideoSessionManagement() {
                         role="tabpanel"
                         aria-labelledby="nav-cancelled-tab"
                       >
-                        <div class="row">
-                          <div class="col-12 design_outter_comman recent_orders shadow">
-                            <form
-                              class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
-                              action=""
-                            >
-                              <div class="form-group mb-0 col-5">
-                                <label for="">From</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-5">
-                                <label for="">To</label>
-                                <input type="date" class="form-control" />
-                              </div>
-                              <div class="form-group mb-0 col-auto">
-                                <button class="comman_btn">Search</button>
-                              </div>
-                            </form>
-                            <div class="row">
-                              <div class="col-12 comman_table_design px-0">
-                                <div class="table-responsive">
-                                  <table class="table mb-0">
-                                    <thead>
-                                      <tr>
-                                        <th>S.No.</th>
-                                        <th>User Name</th>
-                                        <th>Clinician Name</th>
-                                        <th>date</th>
-                                        <th>time</th>
-                                        <th>Action</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>Moh. Aarif</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-cancel"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>Bella Ira</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-cancel"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>3</td>
-                                        <td>Vikas</td>
-                                        <td>Ajay jain</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-cancel"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>4</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>Moh. Aarif</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-cancel"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>5</td>
-                                        <td>Ajay Sharma</td>
-                                        <td>Vijay Sharma</td>
-                                        <td>01/07/2022</td>
-                                        <td>12:00 PM</td>
-                                        <td>
-                                          <Link
-                                            class="comman_btn table_viewbtn"
-                                            to="/admin/view-cancel"
-                                          >
-                                            View
-                                          </Link>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <AdminCancel />
                       </div>
                     </div>
                   </div>
