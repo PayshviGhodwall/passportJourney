@@ -251,16 +251,17 @@ function ViewPending() {
                     <h2>Question & Answer</h2>
                   </div>
                 </div>
-                {user?.answers?.map((item, index) => {
-                  return (
-                    <div class="row">
-                      <div class="col-12 user_tabbing py-4 px-4">
-                        <nav>
-                          <div
-                            class="nav nav-tabs d-flex justify-content-start border-0"
-                            id="nav-tab"
-                            role="tablist"
-                          >
+
+                <div class="row">
+                  <div class="col-12 user_tabbing py-4 px-4">
+                    <nav>
+                      <div
+                        class="nav nav-tabs d-flex justify-content-start border-0"
+                        id="nav-tab"
+                        role="tablist"
+                      >
+                        {user?.answers?.map((item, index) => {
+                          return (
                             <button
                               class={
                                 index === index1
@@ -278,59 +279,59 @@ function ViewPending() {
                             >
                               {index + 1}
                             </button>
-                          </div>
-                        </nav>
-                        {user.answers ? (
-                          <div class="tab-content mt-4" id="nav-tabContent">
-                            <div
-                              class="tab-pane fade show active"
-                              id={`nav-${index1}`}
-                              role="tabpanel"
-                              aria-labelledby={`nav-${index1}-tab`}
-                            >
-                              <form class="row question_ansbox justify-content-center">
-                                <h3 class="mb-4">
-                                  {user?.answers[index1]?.questionId?.question}
-                                </h3>
-
-                                {user?.answers[index1]?.questionId?.options.map(
-                                  (item, index) => {
-                                    return (
-                                      <div class="form-group col-auto custom_radio">
-                                        <input
-                                          type="radio"
-                                          id="radio1"
-                                          name="radio1"
-                                          class="d-none"
-                                          checke={
-                                            item === user.answers[index1].answer
-                                          }
-                                        />
-                                        <label for="radio1">{item}</label>
-                                      </div>
-                                    );
-                                  }
-                                )}
-                              </form>
-                            </div>
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                          );
+                        })}
                       </div>
-                      <div class="col-12 pb-4 text-center">
-                        <a
-                          href="javscript:;"
-                          data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop07"
-                          class="comman_btn"
+                    </nav>
+                    {user.answers ? (
+                      <div class="tab-content mt-4" id="nav-tabContent">
+                        <div
+                          class="tab-pane fade show active"
+                          id={`nav-${index1}`}
+                          role="tabpanel"
+                          aria-labelledby={`nav-${index1}-tab`}
                         >
-                          Assign Clinician
-                        </a>
+                          <form class="row question_ansbox justify-content-center">
+                            <h3 class="mb-4">
+                              {user?.answers[index1]?.questionId?.question}
+                            </h3>
+
+                            {user?.answers[index1]?.questionId?.options.map(
+                              (item, index) => {
+                                return (
+                                  <div class="form-group col-auto custom_radio">
+                                    <input
+                                      type="radio"
+                                      id="radio1"
+                                      name="radio1"
+                                      class="d-none"
+                                      checke={
+                                        item === user.answers[index1].answer
+                                      }
+                                    />
+                                    <label for="radio1">{item}</label>
+                                  </div>
+                                );
+                              }
+                            )}
+                          </form>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div class="col-12 pb-4 text-center">
+                    <a
+                      href="javscript:;"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop07"
+                      class="comman_btn"
+                    >
+                      Assign Clinician
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
