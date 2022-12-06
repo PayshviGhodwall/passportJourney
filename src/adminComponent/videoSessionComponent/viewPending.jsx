@@ -116,7 +116,9 @@ function ViewPending() {
     };
     const { data } = await assignClinician(formData);
     if (!data.error) {
-      await getClinicianListing();
+      await getDetail();
+      const link = document.getElementById("close");
+      link.click();
     }
   };
 
@@ -322,14 +324,23 @@ function ViewPending() {
                     )}
                   </div>
                   <div class="col-12 pb-4 text-center">
-                    <a
-                      href="javscript:;"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop07"
-                      class="comman_btn"
-                    >
-                      Assign Clinician
-                    </a>
+                    {!user.assignedClinician ? (
+                      <a
+                        href="javscript:;"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop07"
+                        class="comman_btn"
+                      >
+                        Assign Clinician
+                      </a>
+                    ) : (
+                      <Link
+                        to={`/admin/view-clinician/${user?.assignedClinician?._id}`}
+                        class="comman_btn"
+                      >
+                        Assigned Clinician
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -357,6 +368,7 @@ function ViewPending() {
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                id="close"
               ></button>
             </div>
             <div class="modal-body py-0">
@@ -371,15 +383,6 @@ function ViewPending() {
                       sortable
                     />
                   </div>
-                </div>
-                <div class="col-12 text-center py-4">
-                  <button
-                    class="comman_btn"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    Save
-                  </button>
                 </div>
               </div>
             </div>
