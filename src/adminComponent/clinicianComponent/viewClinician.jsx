@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { getClinicianData } from "../../apiServices/clinicianHttpService/adminClinicianHttpService";
+import {
+  getClinicianData,
+  getClinicianSessionHistory,
+} from "../../apiServices/clinicianHttpService/adminClinicianHttpService";
 import AdminHeader from "../commonComponent/adminHeader";
 import AdminSidebar from "../commonComponent/adminSidebar";
 import { useParams } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
 import moment from "moment";
 import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
+import { MDBDataTable } from "mdbreact";
 
 const options = [
   { value: "counselling", label: "Counselling" },
@@ -18,6 +22,76 @@ function ViewClinician() {
   const [selected, setSelected] = useState([]);
   const [clinician, setClinician] = useState("");
   const [timeSlots, setTimeSlots] = useState([]);
+  const [from, setFrom] = useState("");
+  const [till, setTill] = useState("");
+  const [session, setSession] = useState({
+    columns: [
+      {
+        label: "S.No.",
+        field: "sn",
+        sort: "asc",
+        width: 150,
+      },
+
+      {
+        label: "User Name",
+        field: "name",
+        sort: "asc",
+        width: 100,
+      },
+
+      {
+        label: "Date",
+        field: "date",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "Time",
+        field: "time",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "Duration",
+        field: "duration",
+        sort: "asc",
+        width: 100,
+      },
+    ],
+    rows: [],
+  });
+
+  useEffect(() => {
+    getSessionListing();
+    getClinicainValue();
+  }, []);
+
+  const getSessionListing = async () => {
+    const formData = {
+      from: from,
+      till: till,
+      clinicianId: id,
+    };
+    const { data } = await getClinicianSessionHistory(formData);
+    if (!data.error) {
+      const newRows = [];
+      console.log(data);
+      data.results.sessions.map((list, index) => {
+        const returnData = {};
+
+        returnData.sn = index + 1;
+        returnData.name = list.user.full_name;
+        returnData.duration = list.duration;
+        returnData.date = moment(list.date).format("L");
+        returnData.time = list.time;
+
+        newRows.push(returnData);
+      });
+
+      setSession({ ...session, rows: newRows });
+    }
+  };
 
   let { id } = useParams();
 
@@ -27,10 +101,6 @@ function ViewClinician() {
     reset,
     formState: { errors },
   } = useForm();
-
-  useEffect(() => {
-    getClinicainValue();
-  }, []);
 
   const getClinicainValue = async () => {
     const { data } = await getClinicianData(id);
@@ -277,72 +347,47 @@ function ViewClinician() {
                   </div>
                 </div>
                 <form
-                  class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
+                  className="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
                   action=""
                 >
-                  <div class="form-group mb-0 col-5">
+                  <div className="form-group mb-0 col-5">
                     <label for="">From</label>
-                    <input type="date" class="form-control" />
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="from"
+                      onChange={(e) => setFrom(e.target.value)}
+                    />
                   </div>
-                  <div class="form-group mb-0 col-5">
+                  <div className="form-group mb-0 col-5">
                     <label for="">To</label>
-                    <input type="date" class="form-control" />
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="till"
+                      onChange={(e) => setTill(e.target.value)}
+                    />
                   </div>
-                  <div class="form-group mb-0 col-auto">
-                    <button class="comman_btn">Search</button>
+                  <div className="form-group mb-0 col-auto">
+                    <Link
+                      className="comman_btn"
+                      onClick={() => getSessionListing()}
+                      to=""
+                    >
+                      Search
+                    </Link>
                   </div>
                 </form>
                 <div class="row">
                   <div class="col-12 comman_table_design px-0">
                     <div class="table-responsive">
-                      <table class="table mb-0">
-                        <thead>
-                          <tr>
-                            <th>S.No.</th>
-                            <th>User Name</th>
-                            <th>date</th>
-                            <th>time</th>
-                            <th>duration</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Moh. Aarif</td>
-                            <td>01/07/2022</td>
-                            <td>12:00 PM</td>
-                            <td>15 MIN</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Bella Ira</td>
-                            <td>01/07/2022</td>
-                            <td>12:00 PM</td>
-                            <td>10 MIN</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Vikas</td>
-                            <td>01/07/2022</td>
-                            <td>12:00 PM</td>
-                            <td>28 MIN</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>Ajay jain</td>
-                            <td>01/07/2022</td>
-                            <td>12:00 PM</td>
-                            <td>10 MIN</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>Vijay Sharma</td>
-                            <td>01/07/2022</td>
-                            <td>12:00 PM</td>
-                            <td>20 MIN</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <MDBDataTable
+                        bordered
+                        hover
+                        data={session}
+                        noBottomColumns
+                        sortable
+                      />
                     </div>
                   </div>
                 </div>

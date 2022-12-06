@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ClinicianHeader from "../commonComponent/clinicianHeader";
 import ClinicianSidebar from "../commonComponent/clinicianSidebar";
 import ReactItemSlider from "react-items-slider";
 import OwlCarousel from "react-owl-carousel";
+import { useParams } from "react-router-dom";
+import { getSessionData } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
+import moment from "moment";
 
 function ClinicianViewComplete() {
+  const [completedData, setCompletedData] = useState("");
+  let { id } = useParams();
+
+  useEffect(() => {
+    getDetail();
+  }, []);
+
+  const getDetail = async () => {
+    const { data } = await getSessionData(id);
+    if (!data.error) {
+      console.log(data);
+      setCompletedData(data.results.session);
+    }
+  };
   return (
     <>
       <div class="admin_main">
@@ -23,31 +40,28 @@ function ClinicianViewComplete() {
                   </div>
                 </div>
                 <form class="row mx-0 align-items-center justify-content-center form-design position-relative p-4 py-5">
-                  <div class="check_toggle">
-                    <input
-                      type="checkbox"
-                      checked=""
-                      name="check1"
-                      id="check1"
-                      class="d-none"
-                    />
-                    <label for="check1"></label>
-                  </div>
                   <div class="col-3">
                     <div class="row">
                       <div class="form-group col-12 mb-2">
                         <div class="userinfor_box text-center">
                           <span class="user_imgg">
-                            <img src="../assets/img/profile.png" alt="" />
+                            <img
+                              src={completedData?.user?.profile_image}
+                              alt=""
+                            />
                           </span>
                           <strong>
-                            Bella Ira <div class="sub_name">(Mother)</div>
+                            {completedData?.user?.full_name}{" "}
+                            <div class="sub_name">
+                              ({completedData?.user?.type})
+                            </div>
                           </strong>
                         </div>
                       </div>
                       <div class="form-group col-12 text-center mb-2">
                         <label class="mb-0 text-center" for="">
-                          Registration Date: 01/01/2022
+                          Registration Date:{" "}
+                          {moment(completedData?.user?.createdAt).format("L")}
                         </label>
                       </div>
                     </div>
@@ -55,11 +69,13 @@ function ClinicianViewComplete() {
                   <div class="col px-4">
                     <div class="row">
                       <div class="form-group col-12">
-                        <label for="">Pairing Member (Daughter):</label>
+                        <label for="">
+                          Pairing Member ({completedData?.user?.partner?.type}):
+                        </label>
                         <input
                           type="text"
                           class="form-control"
-                          value="Surbhi"
+                          value={completedData?.user?.partner?.full_name}
                           name="name"
                           id="name"
                         />
@@ -69,7 +85,7 @@ function ClinicianViewComplete() {
                         <input
                           type="text"
                           class="form-control"
-                          value="surbhi@gamil.com"
+                          value={completedData?.user?.partner?.email}
                           name="name"
                           id="name"
                         />
@@ -79,7 +95,7 @@ function ClinicianViewComplete() {
                         <input
                           type="text"
                           class="form-control"
-                          value="In-person"
+                          value={completedData?.user?.relationship}
                           name="name"
                           id="name"
                         />
@@ -93,7 +109,7 @@ function ClinicianViewComplete() {
                         <input
                           type="text"
                           class="form-control"
-                          value="+1 9876543210"
+                          value={completedData?.user?.phone_number}
                           name="name"
                           id="name"
                         />
@@ -103,21 +119,25 @@ function ClinicianViewComplete() {
                         <input
                           type="text"
                           class="form-control"
-                          value="User@gmail.com"
+                          value={completedData?.user?.email}
                           name="name"
                           id="name"
                         />
                       </div>
-                      <div class="form-group col-12 mb-0">
-                        <label for="">Apple Id: </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          value="User@apple.com"
-                          name="name"
-                          id="name"
-                        />
-                      </div>
+                      {completedData?.user?.appleId ? (
+                        <div class="form-group col-12 mb-0">
+                          <label for="">Apple Id: </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="User@apple.com"
+                            name="name"
+                            id="name"
+                          />
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </form>

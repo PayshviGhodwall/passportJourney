@@ -80,3 +80,18 @@ export async function getClinicianData(id) {
     return { error };
   }
 }
+
+export async function getClinicianSessionHistory(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getClinicianSessionHistory`,
+      formData
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}

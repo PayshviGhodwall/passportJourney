@@ -9,7 +9,7 @@ function ClinicianSidebar() {
         <div class="siderbar_inner">
           <div class="sidebar_logo">
             <Link to="javscript:;">
-              <img src="../assets/img/logo.png" alt="Logo" />{" "}
+              <img src="/assets/img/logo.png" alt="Logo" />{" "}
             </Link>
           </div>
           <diV class="sidebar_menus">

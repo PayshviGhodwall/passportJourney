@@ -1,8 +1,25 @@
-import React from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSessionData } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 import ClinicianHeader from "../commonComponent/clinicianHeader";
 import ClinicianSidebar from "../commonComponent/clinicianSidebar";
 
 function ClinicianViewCancel() {
+  const [cancelData, setCancelData] = useState("");
+  let { id } = useParams();
+
+  useEffect(() => {
+    getDetail();
+  }, []);
+
+  const getDetail = async () => {
+    const { data } = await getSessionData(id);
+    if (!data.error) {
+      console.log(data);
+      setCancelData(data.results.session);
+    }
+  };
   return (
     <>
       {" "}
@@ -22,31 +39,25 @@ function ClinicianViewCancel() {
                   </div>
                 </div>
                 <form class="row mx-0 align-items-center justify-content-center form-design position-relative p-4 py-5">
-                  <div class="check_toggle">
-                    <input
-                      type="checkbox"
-                      checked=""
-                      name="check1"
-                      id="check1"
-                      class="d-none"
-                    />
-                    <label for="check1"></label>
-                  </div>
                   <div class="col-3">
                     <div class="row">
                       <div class="form-group col-12 mb-2">
                         <div class="userinfor_box text-center">
                           <span class="user_imgg">
-                            <img src="../assets/img/profile.png" alt="" />
+                            <img src={cancelData?.user?.profile_image} alt="" />
                           </span>
                           <strong>
-                            Bella Ira <div class="sub_name">(Mother)</div>
+                            {cancelData?.user?.full_name}{" "}
+                            <div class="sub_name">
+                              ({cancelData?.user?.type})
+                            </div>
                           </strong>
                         </div>
                       </div>
                       <div class="form-group col-12 text-center mb-2">
                         <label class="mb-0 text-center" for="">
-                          Registration Date: 01/01/2022
+                          Registration Date:{" "}
+                          {moment(cancelData?.user?.createdAt).format("L")}
                         </label>
                       </div>
                     </div>
@@ -54,11 +65,13 @@ function ClinicianViewCancel() {
                   <div class="col px-4">
                     <div class="row">
                       <div class="form-group col-12">
-                        <label for="">Pairing Member (Daughter):</label>
+                        <label for="">
+                          Pairing Member ({cancelData?.user?.partner?.type}):
+                        </label>
                         <input
                           type="text"
                           class="form-control"
-                          value="Surbhi"
+                          value={cancelData?.user?.partner?.full_name}
                           name="name"
                           id="name"
                         />
@@ -68,7 +81,7 @@ function ClinicianViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="surbhi@gamil.com"
+                          value={cancelData?.user?.partner?.email}
                           name="name"
                           id="name"
                         />
@@ -78,7 +91,7 @@ function ClinicianViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="In-person"
+                          value={cancelData?.user?.relationship}
                           name="name"
                           id="name"
                         />
@@ -92,7 +105,7 @@ function ClinicianViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="+1 9876543210"
+                          value={cancelData?.user?.phone_number}
                           name="name"
                           id="name"
                         />
@@ -102,21 +115,25 @@ function ClinicianViewCancel() {
                         <input
                           type="text"
                           class="form-control"
-                          value="User@gmail.com"
+                          value={cancelData?.user?.email}
                           name="name"
                           id="name"
                         />
                       </div>
-                      <div class="form-group col-12 mb-0">
-                        <label for="">Apple Id: </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          value="User@apple.com"
-                          name="name"
-                          id="name"
-                        />
-                      </div>
+                      {cancelData?.user?.appleId ? (
+                        <div class="form-group col-12 mb-0">
+                          <label for="">Apple Id: </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="User@apple.com"
+                            name="name"
+                            id="name"
+                          />
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </form>
@@ -136,7 +153,7 @@ function ClinicianViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="26/09/2022"
+                      value={moment(cancelData?.date).format("L")}
                       name="name"
                       id="name"
                     />
@@ -146,7 +163,7 @@ function ClinicianViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="10:20AM"
+                      value={cancelData?.time}
                       name="name"
                       id="name"
                     />
@@ -168,7 +185,7 @@ function ClinicianViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="26/09/2022"
+                      value={moment(cancelData?.cancelled_date).format("L")}
                       name="name"
                       id="name"
                     />
@@ -178,7 +195,9 @@ function ClinicianViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="10:20AM"
+                      value={moment(cancelData?.cancelled_date).format(
+                        "hh:mm A"
+                      )}
                       name="name"
                       id="name"
                     />
@@ -188,7 +207,7 @@ function ClinicianViewCancel() {
                     <input
                       type="text"
                       class="form-control"
-                      value="Clinician"
+                      value={cancelData.cancelled_by}
                       name="name"
                       id="name"
                     />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getDashboardCount } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 import ClinicianHeader from "../commonComponent/clinicianHeader";
 import ClinicianSidebar from "../commonComponent/clinicianSidebar";
+import ClinicianUpcoming from "../videoSessionComponent/clinicianUpcomingList";
 
 function ClinicianDashboard() {
   const [dashboard, setDashboard] = useState("");
@@ -107,102 +108,7 @@ function ClinicianDashboard() {
                         </form>
                       </div>
                     </div>
-                    <form
-                      className="form-design py-4 px-3 help-support-form row align-items-end justify-content-between"
-                      action=""
-                    >
-                      <div className="form-group mb-0 col-5">
-                        <label for="">From</label>
-                        <input type="datetime-local" className="form-control" />
-                      </div>
-                      <div className="form-group mb-0 col-5">
-                        <label for="">To</label>
-                        <input type="datetime-local" className="form-control" />
-                      </div>
-                      <div className="form-group mb-0 col-auto">
-                        <button className="comman_btn">Search</button>
-                      </div>
-                    </form>
-                    <div className="row">
-                      <div className="col-12 comman_table_design px-0">
-                        <div className="table-responsive">
-                          <table className="table mb-0">
-                            <thead>
-                              <tr>
-                                <th>S.No.</th>
-                                <th>User Name</th>
-                                <th>User Type</th>
-                                <th>Date </th>
-                                <th>Time</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>John Debey</td>
-                                <td>Mother</td>
-                                <td>2/9/2022</td>
-                                <td>10:10AM</td>
-                                <td>
-                                  <Link
-                                    className="comman_btn table_viewbtn"
-                                    to="/clinician/view-recent-assignment"
-                                  >
-                                    View
-                                  </Link>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>John Debey</td>
-                                <td>Daughter</td>
-                                <td>2/9/2022</td>
-                                <td>10:10AM</td>
-                                <td>
-                                  <Link
-                                    className="comman_btn table_viewbtn"
-                                    to="/clinician/view-recent-assignment"
-                                  >
-                                    View
-                                  </Link>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>3</td>
-                                <td>John Debey</td>
-                                <td>Mother</td>
-                                <td>2/9/2022</td>
-                                <td>10:10AM</td>
-                                <td>
-                                  <Link
-                                    className="comman_btn table_viewbtn"
-                                    to="/clinician/view-recent-assignment"
-                                  >
-                                    View
-                                  </Link>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>4</td>
-                                <td>John Debey</td>
-                                <td>Mother</td>
-                                <td>2/9/2022</td>
-                                <td>10:10AM</td>
-                                <td>
-                                  <Link
-                                    className="comman_btn table_viewbtn"
-                                    to="/clinician/view-recent-assignment"
-                                  >
-                                    View
-                                  </Link>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
+                    <ClinicianUpcoming />
                   </div>
                 </div>
               </div>

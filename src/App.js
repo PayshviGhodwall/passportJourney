@@ -252,15 +252,15 @@ function App() {
             element={<ClinicianVideoSessionManagement />}
           />
           <Route
-            path="/clinician/view-upcoming"
+            path="/clinician/view-upcoming/:id"
             element={<ClinicianViewUpcoming />}
           />
           <Route
-            path="/clinician/view-complete"
+            path="/clinician/view-complete/:id"
             element={<ClinicianViewComplete />}
           />
           <Route
-            path="/clinician/view-cancel"
+            path="/clinician/view-cancel/:id"
             element={<ClinicianViewCancel />}
           />
           <Route path="/clinician/about-us" element={<ClinicianAboutUs />} />

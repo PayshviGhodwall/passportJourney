@@ -28,7 +28,7 @@ function Dashboard() {
   const getUserListing = async () => {
     const { data } = await getUserList();
     if (!data.error) {
-      setUser(data.results.users);
+      setUser(data.results.users.splice(0, 5));
     }
   };
   const changeStatus = async (id) => {
