@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getSessionCount } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 import ClinicianHeader from "../commonComponent/clinicianHeader";
 import ClinicianSidebar from "../commonComponent/clinicianSidebar";
 import ClinicianCancel from "./clinicianCancelList";
@@ -7,6 +8,20 @@ import ClinicianCompleted from "./clinicianCompletetList";
 import ClinicianUpcoming from "./clinicianUpcomingList";
 
 function ClinicianVideoSessionManagement() {
+  const [count, setCount] = useState("");
+
+  useEffect(() => {
+    getCountDetail();
+  }, []);
+
+  const getCountDetail = async () => {
+    const { data } = await getSessionCount();
+    if (!data.error) {
+      console.log(data);
+      setCount(data.results);
+    }
+  };
+
   return (
     <>
       <div class="admin_main">
@@ -39,7 +54,7 @@ function ClinicianVideoSessionManagement() {
                           aria-controls="nav-home"
                           aria-selected="true"
                         >
-                          Upcoming<span>10</span>
+                          Upcoming<span>{count.upcomingSessionCount}</span>
                         </button>
                         <button
                           class="nav-link"
@@ -51,7 +66,7 @@ function ClinicianVideoSessionManagement() {
                           aria-controls="nav-completed"
                           aria-selected="false"
                         >
-                          Completed<span>10</span>
+                          Completed<span>{count.completedSessionCount}</span>
                         </button>
                         <button
                           class="nav-link"
@@ -63,7 +78,7 @@ function ClinicianVideoSessionManagement() {
                           aria-controls="nav-cancelled"
                           aria-selected="false"
                         >
-                          Cancelled<span>10</span>
+                          Cancelled<span>{count.cancelledSessionCount}</span>
                         </button>
                       </div>
                     </nav>

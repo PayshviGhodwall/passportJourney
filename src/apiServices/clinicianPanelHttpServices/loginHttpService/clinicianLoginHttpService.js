@@ -201,3 +201,17 @@ export async function cancelSession(formData) {
     return { error };
   }
 }
+
+export async function getSessionCount() {
+  try {
+    const { data } = await clinicianhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/getSessionCount`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}

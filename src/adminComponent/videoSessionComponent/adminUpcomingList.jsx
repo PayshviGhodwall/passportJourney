@@ -72,8 +72,8 @@ function AdminUpcoming() {
         const returnData = {};
 
         returnData.sn = index + 1;
-        returnData.name = list.clinician.name;
-        returnData.clinician = list.user.full_name;
+        returnData.clinician = list.clinician.name;
+        returnData.name = list.user.full_name;
         returnData.date = moment(list.date).format("L");
         returnData.time = list.time;
         returnData.action = (
