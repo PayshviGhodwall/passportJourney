@@ -184,6 +184,92 @@ export async function getSessionData(id) {
   }
 }
 
+export async function getSessionHistory(id) {
+  try {
+    const { data } = await clinicianhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/getSessionHistory/${id}`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function assignActivity(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/assignActivity`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function assignJournal(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/assignJournal`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function assignWorksheet(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/assignWorksheet`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function saveSessionDocumentation(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/saveSessionDocumentation`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
 export async function cancelSession(formData) {
   try {
     const { data } = await clinicianhttpService.post(
@@ -206,6 +292,20 @@ export async function getSessionCount() {
   try {
     const { data } = await clinicianhttpService.get(
       `${process.env.REACT_APP_APIENDPOINT}/clinician/getSessionCount`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function downloadFiles(formData) {
+  try {
+    const { data } = await clinicianhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/download/${formData}`
     );
     console.log(data);
 

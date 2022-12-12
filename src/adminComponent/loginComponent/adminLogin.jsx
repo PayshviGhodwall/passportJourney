@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,12 @@ function AdminLogin() {
   } = useForm();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token-admin")) {
+      navigate("/admin/dashboard");
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     console.log(data);

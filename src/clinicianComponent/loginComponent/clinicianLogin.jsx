@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,12 @@ function ClinicianLogin() {
   } = useForm();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token-clinician")) {
+      navigate("/clinician/dashboard");
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     console.log(data);

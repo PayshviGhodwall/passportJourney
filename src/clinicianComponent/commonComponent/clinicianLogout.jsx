@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import clinicianhttpService from "../../apiServices/clinicianhttpService";
 
 function ClinicianLogout() {
   const navigate = useNavigate();
@@ -8,11 +10,23 @@ function ClinicianLogout() {
   }, []);
 
   const logout = async () => {
-    if (await localStorage.getItem("token-clinician")) {
-      await localStorage.removeItem("token-clinician");
-    }
+    try {
+      const { data } = await clinicianhttpService.get(
+        `${process.env.REACT_APP_APIENDPOINT}/clinician/logout`
+      );
+      console.log(data);
 
-    return navigate("/clinician/login");
+      if (await localStorage.getItem("token-clinician")) {
+        await localStorage.removeItem("token-clinician");
+      }
+
+      return navigate("/clinician/login");
+
+      return { data };
+    } catch (error) {
+      if (error.response) toast.error(error.response.data.message);
+      return { error };
+    }
   };
 
   return null;

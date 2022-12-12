@@ -65,6 +65,8 @@ import PaymentError from "./websiteComponent/commonComponent/paymentError";
 import PaymentSuccessSubscription from "./websiteComponent/commonComponent/paymentSuccessSubscription";
 import PaymentErrorSubscription from "./websiteComponent/commonComponent/paymentErrorSubscription";
 import ViewCompleted from "./adminComponent/videoSessionComponent/viewCompleted";
+import ProtectedAdminRoutes from "./adminComponent/dashboardComponent/ProtectedAdminRoutes";
+import ProtectedClinicianRoutes from "./clinicianComponent/dashboardComponent/ProtectedClinicianRoutes";
 
 function App() {
   const [subAdmin, setSubAdmin] = useState("");
@@ -95,7 +97,7 @@ function App() {
             }}
           /> */}
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
+
           <Route
             path="/admin/forgot-password"
             element={<AdminForgotPassword />}
@@ -106,134 +108,138 @@ function App() {
             element={<AdminResetPassword />}
           />
 
-          {!subAdmin.length || subAdmin.includes(2) ? (
-            <>
-              <Route
-                path="/admin/user-management"
-                element={<UserManagement />}
-              />
-              <Route path="/admin/user-details/:id" element={<UserDetails />} />{" "}
-            </>
-          ) : (
-            <Route path="/admin/user-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(3) ? (
-            <>
-              <Route
-                path="/admin/clinician-management"
-                element={<ClinicianManagement />}
-              />
-              <Route
-                path="/admin/add-new-clinician"
-                element={<AddClinician />}
-              />
-              <Route
-                path="/admin/view-clinician/:id"
-                element={<ViewClinician />}
-              />
-              <Route
-                path="/admin/edit-clinician/:id"
-                element={<EditClinician />}
-              />{" "}
-            </>
-          ) : (
-            <Route path="/admin/clinician-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(4) ? (
-            <>
+          <Route exact path="/" element={<ProtectedAdminRoutes />}>
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            {!subAdmin.length || subAdmin.includes(2) ? (
+              <>
+                <Route
+                  path="/admin/user-management"
+                  element={<UserManagement />}
+                />
+                <Route
+                  path="/admin/user-details/:id"
+                  element={<UserDetails />}
+                />{" "}
+              </>
+            ) : (
+              <Route path="/admin/user-management" element={<UnAuth />} />
+            )}
+            {!subAdmin.length || subAdmin.includes(3) ? (
+              <>
+                <Route
+                  path="/admin/clinician-management"
+                  element={<ClinicianManagement />}
+                />
+                <Route
+                  path="/admin/add-new-clinician"
+                  element={<AddClinician />}
+                />
+                <Route
+                  path="/admin/view-clinician/:id"
+                  element={<ViewClinician />}
+                />
+                <Route
+                  path="/admin/edit-clinician/:id"
+                  element={<EditClinician />}
+                />{" "}
+              </>
+            ) : (
+              <Route path="/admin/clinician-management" element={<UnAuth />} />
+            )}
+            {!subAdmin.length || subAdmin.includes(4) ? (
+              <>
+                <Route
+                  path="/admin/video-session-management"
+                  element={<VideoSessionManagement />}
+                />
+                <Route
+                  path="/admin/view-upcoming/:id"
+                  element={<ViewUpcoming />}
+                />
+                <Route
+                  path="/admin/view-pending/:id"
+                  element={<ViewPending />}
+                />
+                <Route
+                  path="/admin/view-completed/:id"
+                  element={<ViewCompleted />}
+                />
+                <Route path="/admin/view-cancel/:id" element={<ViewCancel />} />
+              </>
+            ) : (
               <Route
                 path="/admin/video-session-management"
-                element={<VideoSessionManagement />}
+                element={<UnAuth />}
               />
+            )}
+            {!subAdmin.length || subAdmin.includes(5) ? (
               <Route
-                path="/admin/view-upcoming/:id"
-                element={<ViewUpcoming />}
+                path="/admin/subscription-management"
+                element={<Subscription />}
               />
-              <Route path="/admin/view-pending/:id" element={<ViewPending />} />
+            ) : (
               <Route
-                path="/admin/view-completed/:id"
-                element={<ViewCompleted />}
+                path="/admin/subscription-management"
+                element={<UnAuth />}
               />
-              <Route path="/admin/view-cancel/:id" element={<ViewCancel />} />
-            </>
-          ) : (
-            <Route
-              path="/admin/video-session-management"
-              element={<UnAuth />}
-            />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(5) ? (
-            <Route
-              path="/admin/subscription-management"
-              element={<Subscription />}
-            />
-          ) : (
-            <Route path="/admin/subscription-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(6) ? (
-            <Route path="/admin/sub-admin-management" element={<SubAdmin />} />
-          ) : (
-            <Route path="/admin/sub-admin-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(7) ? (
-            <Route
-              path="/admin/transaction-management"
-              element={<TransactionManagement />}
-            />
-          ) : (
-            <Route path="/admin/transaction-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(8) ? (
-            <Route
-              path="/admin/support-management"
-              element={<SupportManagement />}
-            />
-          ) : (
-            <Route path="/admin/support-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(9) ? (
-            <>
+            )}
+            {!subAdmin.length || subAdmin.includes(6) ? (
               <Route
-                path="/admin/content-management"
-                element={<ContentManagement />}
+                path="/admin/sub-admin-management"
+                element={<SubAdmin />}
               />
+            ) : (
+              <Route path="/admin/sub-admin-management" element={<UnAuth />} />
+            )}
+            {!subAdmin.length || subAdmin.includes(7) ? (
               <Route
-                path="/admin/edit-content-management"
-                element={<EditContent />}
+                path="/admin/transaction-management"
+                element={<TransactionManagement />}
               />
-            </>
-          ) : (
-            <Route path="/admin/content-management" element={<UnAuth />} />
-          )}
-
-          {!subAdmin.length || subAdmin.includes(10) ? (
-            <Route
-              path="/admin/query-management"
-              element={<QuerySubscribe />}
-            />
-          ) : (
-            <Route path="/admin/query-management" element={<UnAuth />} />
-          )}
-
-          <Route path="/admin/notifications" element={<Notifications />} />
-          <Route path="/admin/edit-profile" element={<EditProfile />} />
-          <Route path="/admin/change-password" element={<ChangePassword />} />
-          <Route path="/admin/logout" element={<AdminLogout />} />
+            ) : (
+              <Route
+                path="/admin/transaction-management"
+                element={<UnAuth />}
+              />
+            )}
+            {!subAdmin.length || subAdmin.includes(8) ? (
+              <Route
+                path="/admin/support-management"
+                element={<SupportManagement />}
+              />
+            ) : (
+              <Route path="/admin/support-management" element={<UnAuth />} />
+            )}
+            {!subAdmin.length || subAdmin.includes(9) ? (
+              <>
+                <Route
+                  path="/admin/content-management"
+                  element={<ContentManagement />}
+                />
+                <Route
+                  path="/admin/edit-content-management"
+                  element={<EditContent />}
+                />
+              </>
+            ) : (
+              <Route path="/admin/content-management" element={<UnAuth />} />
+            )}
+            {!subAdmin.length || subAdmin.includes(10) ? (
+              <Route
+                path="/admin/query-management"
+                element={<QuerySubscribe />}
+              />
+            ) : (
+              <Route path="/admin/query-management" element={<UnAuth />} />
+            )}
+            <Route path="/admin/notifications" element={<Notifications />} />
+            <Route path="/admin/edit-profile" element={<EditProfile />} />
+            <Route path="/admin/change-password" element={<ChangePassword />} />
+            <Route path="/admin/logout" element={<AdminLogout />} />
+          </Route>
 
           {/*Clinician routes*/}
           <Route path="/clinician/login" element={<ClinicianLogin />} />
-          <Route path="/clinician/dashboard" element={<ClinicianDashboard />} />
-          <Route
-            path="/clinician/view-recent-assignment"
-            element={<ClinicianRecentAssignment />}
-          />
 
           <Route
             path="/clinician/forgot-password"
@@ -247,49 +253,59 @@ function App() {
             path="/clinician/reset-password"
             element={<ClinicianResetPassword />}
           />
-          <Route
-            path="/clinician/video-session-management"
-            element={<ClinicianVideoSessionManagement />}
-          />
-          <Route
-            path="/clinician/view-upcoming/:id"
-            element={<ClinicianViewUpcoming />}
-          />
-          <Route
-            path="/clinician/view-complete/:id"
-            element={<ClinicianViewComplete />}
-          />
-          <Route
-            path="/clinician/view-cancel/:id"
-            element={<ClinicianViewCancel />}
-          />
-          <Route path="/clinician/about-us" element={<ClinicianAboutUs />} />
-          <Route
-            path="/clinician/terms-conditions"
-            element={<ClinicianTermConditions />}
-          />
-          <Route
-            path="/clinician/privacy-policy"
-            element={<ClinicianPrivacyPolicy />}
-          />
 
-          <Route
-            path="/clinician/support-management"
-            element={<ClinicianSupport />}
-          />
-          <Route
-            path="/clinician/notifications"
-            element={<ClinicianNotifications />}
-          />
-          <Route
-            path="/clinician/my-profile"
-            element={<ClinicianEditProfile />}
-          />
-          <Route
-            path="/clinician/change-password"
-            element={<ClinicianChangePassword />}
-          />
-          <Route path="/clinician/logout" element={<ClinicianLogout />} />
+          <Route exact path="/" element={<ProtectedClinicianRoutes />}>
+            <Route
+              path="/clinician/dashboard"
+              element={<ClinicianDashboard />}
+            />
+            <Route
+              path="/clinician/view-recent-assignment"
+              element={<ClinicianRecentAssignment />}
+            />
+            <Route
+              path="/clinician/video-session-management"
+              element={<ClinicianVideoSessionManagement />}
+            />
+            <Route
+              path="/clinician/view-upcoming/:id"
+              element={<ClinicianViewUpcoming />}
+            />
+            <Route
+              path="/clinician/view-complete/:id"
+              element={<ClinicianViewComplete />}
+            />
+            <Route
+              path="/clinician/view-cancel/:id"
+              element={<ClinicianViewCancel />}
+            />
+            <Route path="/clinician/about-us" element={<ClinicianAboutUs />} />
+            <Route
+              path="/clinician/terms-conditions"
+              element={<ClinicianTermConditions />}
+            />
+            <Route
+              path="/clinician/privacy-policy"
+              element={<ClinicianPrivacyPolicy />}
+            />
+            <Route
+              path="/clinician/support-management"
+              element={<ClinicianSupport />}
+            />
+            <Route
+              path="/clinician/notifications"
+              element={<ClinicianNotifications />}
+            />
+            <Route
+              path="/clinician/my-profile"
+              element={<ClinicianEditProfile />}
+            />
+            <Route
+              path="/clinician/change-password"
+              element={<ClinicianChangePassword />}
+            />
+            <Route path="/clinician/logout" element={<ClinicianLogout />} />{" "}
+          </Route>
 
           {/* Web routes */}
           <Route path="/" element={<Index />} />
