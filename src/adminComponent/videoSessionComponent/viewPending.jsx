@@ -300,18 +300,23 @@ function ViewPending() {
 
                             {user?.answers[index1]?.questionId?.options.map(
                               (item, index) => {
+                                console.log(user.answers[index1].answer, item);
                                 return (
                                   <div class="form-group col-auto custom_radio">
                                     <input
                                       type="radio"
-                                      id="radio1"
+                                      id={`radio1${user?.answers[index1]?.questionId}${index}`}
                                       name="radio1"
                                       class="d-none"
-                                      checke={
+                                      checked={
                                         item === user.answers[index1].answer
                                       }
                                     />
-                                    <label for="radio1">{item}</label>
+                                    <label
+                                      for={`radio1${user?.answers[index1]?.questionId}${index}`}
+                                    >
+                                      {item}
+                                    </label>
                                   </div>
                                 );
                               }
