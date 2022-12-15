@@ -14,6 +14,7 @@ import { getClinicianList } from "../../apiServices/clinicianHttpService/adminCl
 function ViewPending() {
   const [user, setUser] = useState("");
   const [index1, setIndex1] = useState(0);
+  const [index2, setIndex2] = useState(0);
   const [clinician, setClinician] = useState({
     columns: [
       {
@@ -247,107 +248,210 @@ function ViewPending() {
                   </div>
                 </form>
               </div>
-              <div class="col-12 design_outter_comman recent_orders shadow mb-4">
-                <div class="row comman_header justify-content-between">
-                  <div class="col">
-                    <h2>Question & Answer</h2>
+
+              {user?.answers?.length ? (
+                <div class="col-12 design_outter_comman recent_orders shadow mb-4">
+                  <div class="row comman_header justify-content-between">
+                    <div class="col">
+                      <h2>Question & Answer by {user.type}</h2>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12 user_tabbing py-4 px-4">
+                      <nav>
+                        <div
+                          class="nav nav-tabs d-flex justify-content-start border-0"
+                          id="nav-tab"
+                          role="tablist"
+                        >
+                          {user?.answers?.map((item, index) => {
+                            return (
+                              <button
+                                class={
+                                  index === index1
+                                    ? "nav-link active"
+                                    : "nav-link"
+                                }
+                                id={`nav-${index}-tab`}
+                                data-bs-toggle="tab"
+                                data-bs-target={`#nav-${index}`}
+                                type="button"
+                                role="tab"
+                                aria-controls={`nav-${index}`}
+                                aria-selected="true"
+                                onClick={() => setIndex1(index)}
+                              >
+                                {index + 1}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </nav>
+                      {user.answers ? (
+                        <div class="tab-content mt-4" id="nav-tabContent">
+                          <div
+                            class="tab-pane fade show active"
+                            id={`nav-${index1}`}
+                            role="tabpanel"
+                            aria-labelledby={`nav-${index1}-tab`}
+                          >
+                            <form class="row question_ansbox justify-content-center">
+                              <h3 class="mb-4">
+                                {user?.answers[index1]?.questionId?.question}
+                              </h3>
+
+                              {user?.answers[index1]?.questionId?.options.map(
+                                (item, index) => {
+                                  console.log(
+                                    user.answers[index1].answer,
+                                    item
+                                  );
+                                  return (
+                                    <div class="form-group col-auto custom_radio">
+                                      <input
+                                        type="radio"
+                                        id={`radio1${user?.answers[index1]?.questionId}${index}`}
+                                        name="radio1"
+                                        class="d-none"
+                                        checked={
+                                          item === user.answers[index1].answer
+                                        }
+                                      />
+                                      <label
+                                        for={`radio1${user?.answers[index1]?.questionId}${index}`}
+                                      >
+                                        {item}
+                                      </label>
+                                    </div>
+                                  );
+                                }
+                              )}
+                            </form>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
+              ) : (
+                ""
+              )}
+              {user?.partner?.answers?.length ? (
+                <div class="col-12 design_outter_comman recent_orders shadow mb-4">
+                  <div class="row comman_header justify-content-between">
+                    <div class="col">
+                      <h2>Question & Answer by {user?.partner?.type}</h2>
+                    </div>
+                  </div>
 
-                <div class="row">
-                  <div class="col-12 user_tabbing py-4 px-4">
-                    <nav>
-                      <div
-                        class="nav nav-tabs d-flex justify-content-start border-0"
-                        id="nav-tab"
-                        role="tablist"
-                      >
-                        {user?.answers?.map((item, index) => {
-                          return (
-                            <button
-                              class={
-                                index === index1
-                                  ? "nav-link active"
-                                  : "nav-link"
-                              }
-                              id={`nav-${index}-tab`}
-                              data-bs-toggle="tab"
-                              data-bs-target={`#nav-${index}`}
-                              type="button"
-                              role="tab"
-                              aria-controls={`nav-${index}`}
-                              aria-selected="true"
-                              onClick={() => setIndex1(index)}
-                            >
-                              {index + 1}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </nav>
-                    {user.answers ? (
-                      <div class="tab-content mt-4" id="nav-tabContent">
+                  <div class="row">
+                    <div class="col-12 user_tabbing py-4 px-4">
+                      <nav>
                         <div
-                          class="tab-pane fade show active"
-                          id={`nav-${index1}`}
-                          role="tabpanel"
-                          aria-labelledby={`nav-${index1}-tab`}
+                          class="nav nav-tabs d-flex justify-content-start border-0"
+                          id="nav-tab"
+                          role="tablist"
                         >
-                          <form class="row question_ansbox justify-content-center">
-                            <h3 class="mb-4">
-                              {user?.answers[index1]?.questionId?.question}
-                            </h3>
+                          {user?.partner.answers?.map((item, index) => {
+                            return (
+                              <button
+                                class={
+                                  index === index2
+                                    ? "nav-link active"
+                                    : "nav-link"
+                                }
+                                id={`nav-${index}-tab`}
+                                data-bs-toggle="tab"
+                                data-bs-target={`#nav-${index}`}
+                                type="button"
+                                role="tab"
+                                aria-controls={`nav-${index}`}
+                                aria-selected="true"
+                                onClick={() => setIndex2(index)}
+                              >
+                                {index + 1}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </nav>
+                      {user.partner.answers ? (
+                        <div class="tab-content mt-4" id="nav-tabContent">
+                          <div
+                            class="tab-pane fade show active"
+                            id={`nav-${index2}`}
+                            role="tabpanel"
+                            aria-labelledby={`nav-${index2}-tab`}
+                          >
+                            <form class="row question_ansbox justify-content-center">
+                              <h3 class="mb-4">
+                                {
+                                  user?.partner.answers[index2]?.questionId
+                                    ?.question
+                                }
+                              </h3>
 
-                            {user?.answers[index1]?.questionId?.options.map(
-                              (item, index) => {
-                                console.log(user.answers[index1].answer, item);
+                              {user?.partner.answers[
+                                index2
+                              ]?.questionId?.options.map((item, index) => {
+                                console.log(
+                                  user.partner.answers[index2].answer,
+                                  item
+                                );
                                 return (
                                   <div class="form-group col-auto custom_radio">
                                     <input
                                       type="radio"
-                                      id={`radio1${user?.answers[index1]?.questionId}${index}`}
+                                      id={`radio1${user?.partner.answers[index2]?.questionId}${index}`}
                                       name="radio1"
                                       class="d-none"
                                       checked={
-                                        item === user.answers[index1].answer
+                                        item ===
+                                        user.partner.answers[index2].answer
                                       }
                                     />
                                     <label
-                                      for={`radio1${user?.answers[index1]?.questionId}${index}`}
+                                      for={`radio1${user?.partner.answers[index2]?.questionId}${index}`}
                                     >
                                       {item}
                                     </label>
                                   </div>
                                 );
-                              }
-                            )}
-                          </form>
+                              })}
+                            </form>
+                          </div>
                         </div>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div class="col-12 pb-4 text-center">
-                    {!user.assignedClinician ? (
-                      <a
-                        href="javscript:;"
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop07"
-                        class="comman_btn"
-                      >
-                        Assign Clinician
-                      </a>
-                    ) : (
-                      <Link
-                        to={`/admin/view-clinician/${user?.assignedClinician?._id}`}
-                        class="comman_btn"
-                      >
-                        Assigned Clinician
-                      </Link>
-                    )}
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
+              ) : (
+                ""
+              )}
+
+              <div class="col-12 pb-4 text-center">
+                {!user.assignedClinician ? (
+                  <a
+                    href="javscript:;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop07"
+                    class="comman_btn"
+                  >
+                    Assign Clinician
+                  </a>
+                ) : (
+                  <Link
+                    to={`/admin/view-clinician/${user?.assignedClinician?._id}`}
+                    class="comman_btn"
+                  >
+                    Assigned Clinician
+                  </Link>
+                )}
               </div>
             </div>
           </div>

@@ -10,8 +10,16 @@ import moment from "moment";
 import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
 
 const options = [
-  { value: "counselling", label: "Counselling" },
-  { value: "psychology", label: "Psychology" },
+  { value: "Social Worker (LCSW)", label: "Social Worker (LCSW)" },
+  {
+    value: "Licensed Professional Counselor (LPC)",
+    label: "Licensed Professional Counselor (LPC)",
+  },
+  {
+    value: "Licensed Marriage and Family Therapist (LMFT)",
+    label: "Licensed Marriage and Family Therapist (LMFT)",
+  },
+  { value: "Psychologist (PsyD or PhD)", label: "Psychologist (PsyD or PhD)" },
 ];
 
 function AddClinician() {

@@ -13,8 +13,16 @@ import {
   getClinicianData,
 } from "../../apiServices/clinicianHttpService/adminClinicianHttpService";
 const options = [
-  { value: "counselling", label: "Counselling" },
-  { value: "psychology", label: "Psychology" },
+  { value: "Social Worker (LCSW)", label: "Social Worker (LCSW)" },
+  {
+    value: "Licensed Professional Counselor (LPC)",
+    label: "Licensed Professional Counselor (LPC)",
+  },
+  {
+    value: "Licensed Marriage and Family Therapist (LMFT)",
+    label: "Licensed Marriage and Family Therapist (LMFT)",
+  },
+  { value: "Psychologist (PsyD or PhD)", label: "Psychologist (PsyD or PhD)" },
 ];
 
 function EditClinician() {

@@ -12,8 +12,16 @@ import {
   getClinicianData,
 } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 const options = [
-  { value: "counselling", label: "Counselling" },
-  { value: "psychology", label: "Psychology" },
+  { value: "Social Worker (LCSW)", label: "Social Worker (LCSW)" },
+  {
+    value: "Licensed Professional Counselor (LPC)",
+    label: "Licensed Professional Counselor (LPC)",
+  },
+  {
+    value: "Licensed Marriage and Family Therapist (LMFT)",
+    label: "Licensed Marriage and Family Therapist (LMFT)",
+  },
+  { value: "Psychologist (PsyD or PhD)", label: "Psychologist (PsyD or PhD)" },
 ];
 
 function ClinicianEditProfile() {
@@ -56,7 +64,7 @@ function ClinicianEditProfile() {
       let defaultValues = [];
       for (const module of data.results.clinician.expertise) {
         const label = options.filter((item) => item.label === module);
-        defaultValues.push({ label: label[0].label, value: module });
+        defaultValues.push({ label: label[0]?.label, value: module });
       }
       setSelected(defaultValues);
 

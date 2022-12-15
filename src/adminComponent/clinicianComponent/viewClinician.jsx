@@ -14,8 +14,16 @@ import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-cale
 import { MDBDataTable } from "mdbreact";
 
 const options = [
-  { value: "counselling", label: "Counselling" },
-  { value: "psychology", label: "Psychology" },
+  { value: "Social Worker (LCSW)", label: "Social Worker (LCSW)" },
+  {
+    value: "Licensed Professional Counselor (LPC)",
+    label: "Licensed Professional Counselor (LPC)",
+  },
+  {
+    value: "Licensed Marriage and Family Therapist (LMFT)",
+    label: "Licensed Marriage and Family Therapist (LMFT)",
+  },
+  { value: "Psychologist (PsyD or PhD)", label: "Psychologist (PsyD or PhD)" },
 ];
 
 function ViewClinician() {
