@@ -75,7 +75,13 @@ function ViewPending() {
         returnData.sn = index + 1;
         returnData.name = list.name;
         returnData.year = list.experience;
-        returnData.expertise = list.expertise.map((x) => x).join(", ");
+        returnData.expertise = list.expertise.map((item, index) => {
+          return (
+            <ul key={index}>
+              <li>{item}</li>
+            </ul>
+          );
+        });
 
         returnData.action = (
           <>

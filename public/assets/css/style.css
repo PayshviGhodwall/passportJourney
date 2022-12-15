@@ -1413,7 +1413,7 @@ li.select2-search.select2-search--inline {
   display: none !important;
 }
 .assign_clinician .modal-dialog {
-  max-width: 760px;
+  max-width: 925px;
 }
 .video-session-management .help-support-table .nav-tabs .nav-link span {
   display: inline-flex;
@@ -2746,7 +2746,7 @@ li.select2-search.select2-search--inline {
   display: none !important;
 }
 .assign_clinician .modal-dialog {
-  max-width: 760px;
+  max-width: 925px;
 }
 .video-session-management .help-support-table .nav-tabs .nav-link span {
   display: inline-flex;
