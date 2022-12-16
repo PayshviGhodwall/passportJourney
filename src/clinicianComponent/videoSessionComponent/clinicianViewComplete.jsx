@@ -473,51 +473,102 @@ function ClinicianViewComplete() {
                                   </div>
                                 </form>
                                 <div class="row mx-0 user_response text-center pb-4">
-                                  <div class="col-12 mb-2">
-                                    <label for="">User Response</label>
-                                  </div>
-                                  <div class="col-5">
-                                    <div class="d-flex align-items-center justify-content-start">
-                                      <div class="user_response_box me-3">
-                                        <img
-                                          src={
-                                            getActivities(
-                                              getSession[monthIndex]
-                                                ?.activities,
-                                              "Activity"
-                                            ).response
-                                              ? getActivities(
-                                                  getSession[monthIndex]
-                                                    ?.activities,
-                                                  "Activity"
-                                                ).response
-                                              : "/assets/img/profile.png"
-                                          }
-                                          alt=""
-                                        />
-                                      </div>
+                                  <div className="col-6">
+                                    <div class="col-12 mb-2">
+                                      <label for="">Mother's Response</label>
+                                    </div>
+                                    <div class="col-5">
+                                      <div class="d-flex align-items-center justify-content-start">
+                                        <div class="user_response_box me-3">
+                                          <img
+                                            src={
+                                              getActivities(
+                                                getSession[monthIndex]
+                                                  ?.activities,
+                                                "Activity"
+                                              ).mother_response
+                                                ? getActivities(
+                                                    getSession[monthIndex]
+                                                      ?.activities,
+                                                    "Activity"
+                                                  ).mother_response
+                                                : "/assets/img/women.png"
+                                            }
+                                            alt=""
+                                          />
+                                        </div>
 
-                                      {getActivities(
-                                        getSession[monthIndex]?.activities,
-                                        "Activity"
-                                      ).response ? (
-                                        <a
-                                          class="comman_btn2"
-                                          href={
-                                            getActivities(
-                                              getSession[monthIndex]
-                                                ?.activities,
-                                              "Activity"
-                                            ).response ?? ""
-                                          }
-                                          target="_blank"
-                                        >
-                                          <i class="fal fa-download me-2"></i>
-                                          Download
-                                        </a>
-                                      ) : (
-                                        ""
-                                      )}
+                                        {getActivities(
+                                          getSession[monthIndex]?.activities,
+                                          "Activity"
+                                        ).mother_response ? (
+                                          <a
+                                            class="comman_btn2"
+                                            href={
+                                              getActivities(
+                                                getSession[monthIndex]
+                                                  ?.activities,
+                                                "Activity"
+                                              ).mother_response ?? ""
+                                            }
+                                            target="_blank"
+                                          >
+                                            <i class="fal fa-download me-2"></i>
+                                            Download
+                                          </a>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-6">
+                                    <div class="col-12 mb-2">
+                                      <label for="">Daughter's Response</label>
+                                    </div>
+                                    <div class="col-5">
+                                      <div class="d-flex align-items-center justify-content-start">
+                                        <div class="user_response_box me-3">
+                                          <img
+                                            src={
+                                              getActivities(
+                                                getSession[monthIndex]
+                                                  ?.activities,
+                                                "Activity"
+                                              ).daughter_response
+                                                ? getActivities(
+                                                    getSession[monthIndex]
+                                                      ?.activities,
+                                                    "Activity"
+                                                  ).daughter_response
+                                                : "/assets/img/women.png"
+                                            }
+                                            alt=""
+                                          />
+                                        </div>
+
+                                        {getActivities(
+                                          getSession[monthIndex]?.activities,
+                                          "Activity"
+                                        ).daughter_response ? (
+                                          <a
+                                            class="comman_btn2"
+                                            href={
+                                              getActivities(
+                                                getSession[monthIndex]
+                                                  ?.activities,
+                                                "Activity"
+                                              ).daughter_response ?? ""
+                                            }
+                                            target="_blank"
+                                          >
+                                            <i class="fal fa-download me-2"></i>
+                                            Download
+                                          </a>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -564,7 +615,7 @@ function ClinicianViewComplete() {
                                     )}
                                   </div>
                                   <div class="form-group col-12 mb-0">
-                                    <label for="">User Response</label>
+                                    <label for="">Mother's Response</label>
                                   </div>
                                   <div class="form-group col-10">
                                     <input
@@ -574,30 +625,61 @@ function ClinicianViewComplete() {
                                         getActivities(
                                           getSession[monthIndex]?.activities,
                                           "Journal"
-                                        ).response
+                                        ).mother_response
                                       }
                                       name="name"
                                       id="name"
                                     />
                                   </div>
+
+                                  <div class="form-group col-4 mb-0 ">
+                                    <div class="row  align-items-center">
+                                      <audio controls>
+                                        <source
+                                          src="horse.ogg"
+                                          type="audio/ogg"
+                                        />
+                                        <source
+                                          src="horse.mp3"
+                                          type="audio/mpeg"
+                                        />
+                                        Your browser does not support the audio
+                                        element.
+                                      </audio>
+                                    </div>
+                                  </div>
+                                  <div class="form-group col-12 mb-0 mt-4">
+                                    <label for="">Daughter's Response</label>
+                                  </div>
+                                  <div class="form-group col-10">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      value={
+                                        getActivities(
+                                          getSession[monthIndex]?.activities,
+                                          "Journal"
+                                        ).daughter_response
+                                      }
+                                      name="name"
+                                      id="name"
+                                    />
+                                  </div>
+
                                   <div class="form-group col-4 mb-0">
-                                    <div class="row audi_record align-items-center">
-                                      <div class="col-1 px-1">
-                                        <a
-                                          class="play_icon"
-                                          href="javascript:;"
-                                        >
-                                          <i class="fas fa-play"></i>
-                                        </a>
-                                      </div>
-                                      <div class="col px-2">
-                                        <div class="audio_part">
-                                          <span class="circle_ball"></span>
-                                        </div>
-                                      </div>
-                                      <div class="col-2 px-1">
-                                        <span class="time_zome">00:26</span>
-                                      </div>
+                                    <div class="row  align-items-center">
+                                      <audio controls>
+                                        <source
+                                          src="horse.ogg"
+                                          type="audio/ogg"
+                                        />
+                                        <source
+                                          src="horse.mp3"
+                                          type="audio/mpeg"
+                                        />
+                                        Your browser does not support the audio
+                                        element.
+                                      </audio>
                                     </div>
                                   </div>
                                 </form>
