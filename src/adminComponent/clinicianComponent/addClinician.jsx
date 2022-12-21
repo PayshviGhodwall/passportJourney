@@ -26,6 +26,7 @@ function AddClinician() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selected, setSelected] = useState([]);
   const [timeSlots, setTimeSlots] = useState([]);
+  const [type, setType] = useState("password");
 
   useEffect(() => {}, []);
 
@@ -106,6 +107,13 @@ function AddClinician() {
     ["19", "20"],
     ["20", "21"],
   ];
+
+  const typeChange = () => {
+    if (type === "password") setType("text");
+    else {
+      setType("password");
+    }
+  };
 
   return (
     <>
@@ -228,7 +236,7 @@ function AddClinician() {
                     <label for="">Password</label>
                     <input
                       class="form-control"
-                      type="password"
+                      type={type}
                       id="password"
                       name="password"
                       {...register("password", {
@@ -241,6 +249,13 @@ function AddClinician() {
                         },
                       })}
                     />
+                    <i
+                      className={`fa eyepassword2 fa-eye${
+                        type === "password" ? "" : "-slash"
+                      }`}
+                      onClick={() => typeChange()}
+                    ></i>
+
                     {errors?.password && (
                       <p className="form-error mt-1">
                         {errors?.password?.message}

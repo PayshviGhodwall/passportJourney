@@ -53,7 +53,7 @@ function QuerySubscribe() {
                           aria-controls="nav-home"
                           aria-selected="true"
                         >
-                          Query
+                          Contact Us
                         </button>
                         <button
                           className="nav-link"
@@ -65,7 +65,7 @@ function QuerySubscribe() {
                           aria-controls="nav-profile"
                           aria-selected="false"
                         >
-                          Subscribe
+                          Subscribe Us
                         </button>
                         <button
                           className="nav-link"
@@ -77,7 +77,7 @@ function QuerySubscribe() {
                           aria-controls="nav-profile2"
                           aria-selected="false"
                         >
-                          Our Team
+                          Join Our Team
                         </button>
                       </div>
                     </nav>

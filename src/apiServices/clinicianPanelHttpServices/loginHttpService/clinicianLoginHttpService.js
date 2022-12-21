@@ -315,3 +315,21 @@ export async function downloadFiles(formData) {
     return { error };
   }
 }
+
+export async function markAsComplete(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/markAsComplete`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}

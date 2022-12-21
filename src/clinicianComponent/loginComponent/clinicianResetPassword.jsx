@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -6,6 +6,9 @@ import { toast } from "react-toastify";
 import { updatePassword } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 
 function ClinicianResetPassword() {
+  const [type, setType] = useState("password");
+  const [type2, setType2] = useState("password");
+
   const {
     register,
     handleSubmit,
@@ -31,6 +34,18 @@ function ClinicianResetPassword() {
       navigate("/clinician/login");
     }
   };
+  const typeChange = () => {
+    if (type === "password") setType("text");
+    else {
+      setType("password");
+    }
+  };
+  const typeChange2 = () => {
+    if (type2 === "password") setType2("text");
+    else {
+      setType2("password");
+    }
+  };
 
   return (
     <>
@@ -54,7 +69,7 @@ function ClinicianResetPassword() {
                       <div className="form-group col-12">
                         <label for="">New Password</label>
                         <input
-                          type="password"
+                          type={type}
                           className="form-control"
                           placeholder="**********"
                           name="password"
@@ -69,6 +84,12 @@ function ClinicianResetPassword() {
                             },
                           })}
                         />
+                        <i
+                          className={`fa eyepassword2 fa-eye${
+                            type === "password" ? "" : "-slash"
+                          }`}
+                          onClick={() => typeChange()}
+                        ></i>
                         {errors?.password && (
                           <p className="form-error mt-1">
                             {errors?.password?.message}
@@ -78,7 +99,7 @@ function ClinicianResetPassword() {
                       <div className="form-group col-12">
                         <label for="">Confirm New Password</label>
                         <input
-                          type="password"
+                          type={type2}
                           className="form-control"
                           placeholder="**********"
                           name="confirmpassword"
@@ -93,6 +114,12 @@ function ClinicianResetPassword() {
                             },
                           })}
                         />
+                        <i
+                          className={`fa eyepassword2 fa-eye${
+                            type2 === "password" ? "" : "-slash"
+                          }`}
+                          onClick={() => typeChange2()}
+                        ></i>
 
                         {errors?.confirmpassword && (
                           <p className="form-error mt-1">

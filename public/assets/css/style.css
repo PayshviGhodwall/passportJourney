@@ -370,6 +370,7 @@ h6 {
 }
 .form-design .form-group {
   margin-bottom: 22px;
+  position: relative;
 }
 .form-design .for_got {
   font-size: 14px;
@@ -1679,6 +1680,7 @@ li.select2-search.select2-search--inline {
 }
 .form-design .form-group {
   margin-bottom: 22px;
+  position: relative;
 }
 .form-design .for_got {
   font-size: 14px;
@@ -6348,4 +6350,20 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .documentation_box_data ul li p {
   margin-bottom: 5px;
+}
+
+.eyepassword {
+  position: absolute;
+  top: 45px !important;
+  right: 13px !important;
+  font-size: 14px !important;
+  cursor: pointer;
+}
+
+.eyepassword2 {
+  position: absolute;
+  top: 45px !important;
+  right: 25px !important;
+  font-size: 14px !important;
+  cursor: pointer;
 }

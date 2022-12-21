@@ -12,6 +12,7 @@ import { MultiSelect } from "react-multi-select-component";
 import moment from "moment";
 import ReactTimeslotCalendar from "../../../src/timeslots/js/react-timeslot-calendar";
 import { MDBDataTable } from "mdbreact";
+import UserAssignListing from "./userAssignListing";
 
 const options = [
   { value: "Social Worker (LCSW)", label: "Social Worker (LCSW)" },
@@ -400,6 +401,7 @@ function ViewClinician() {
                   </div>
                 </div>
               </div>
+              <UserAssignListing clinicianId={id} />
             </div>
           </div>
         </div>

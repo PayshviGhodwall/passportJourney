@@ -95,3 +95,18 @@ export async function getClinicianSessionHistory(formData) {
     return { error };
   }
 }
+
+export async function getAssignedUser(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getAssignedUser`,
+      formData
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}

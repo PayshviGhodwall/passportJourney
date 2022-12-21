@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { verifyOTP } from "../../apiServices/adminHttpService/adminLoginHttpService";
+import {
+  forgotPassword,
+  verifyOTP,
+} from "../../apiServices/adminHttpService/adminLoginHttpService";
+import OtpTimer from "otp-timer";
 
 function AdminOtpVerify() {
   const {
@@ -46,6 +50,12 @@ function AdminOtpVerify() {
       if (field.value.length >= field.maxLength) {
         nextField.focus();
       }
+    }
+  };
+
+  const resendOtp = async () => {
+    const response = await forgotPassword({ email: location.state.email });
+    if (!response.data.error) {
     }
   };
 
@@ -124,13 +134,14 @@ function AdminOtpVerify() {
                         />
                       </div>
                       <div className="form-group col-12 text-center">
-                        <span className="count_Sec">00:30</span>
+                        <OtpTimer
+                          seconds={30}
+                          minutes={0}
+                          style={{ marginTop: "-100px" }}
+                          resend={() => resendOtp()}
+                        />
                       </div>
-                      <div className="form-group col-12 text-center">
-                        <label className="text-center" for="">
-                          Didn't received the OTP? <a href="">Request again</a>
-                        </label>
-                      </div>
+                     
                     </form>
                   </div>
                 </div>

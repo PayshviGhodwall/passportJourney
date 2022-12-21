@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import AdminHeader from "./adminHeader";
 import AdminSidebar from "./adminSidebar";
@@ -7,6 +7,10 @@ import { toast } from "react-toastify";
 import { changePassword } from "../../apiServices/adminHttpService/adminLoginHttpService";
 
 function ChangePassword() {
+  const [type, setType] = useState("password");
+  const [type2, setType2] = useState("password");
+  const [type3, setType3] = useState("password");
+
   const {
     register,
     handleSubmit,
@@ -24,6 +28,26 @@ function ChangePassword() {
       }
     } else {
       toast.error("New password should be equal to Confirm password");
+    }
+  };
+
+  const typeChange = () => {
+    if (type === "password") setType("text");
+    else {
+      setType("password");
+    }
+  };
+  const typeChange2 = () => {
+    if (type2 === "password") setType2("text");
+    else {
+      setType2("password");
+    }
+  };
+
+  const typeChange3 = () => {
+    if (type3 === "password") setType3("text");
+    else {
+      setType3("password");
     }
   };
 
@@ -52,7 +76,7 @@ function ChangePassword() {
                       <div className="form-group col-12">
                         <label for="">Old Password</label>
                         <input
-                          type="password"
+                          type={type}
                           className="form-control"
                           name="oldPassword"
                           id="oldPassword"
@@ -67,6 +91,12 @@ function ChangePassword() {
                             },
                           })}
                         />
+                        <i
+                          className={`fa eyepassword2 fa-eye${
+                            type === "password" ? "" : "-slash"
+                          }`}
+                          onClick={() => typeChange()}
+                        ></i>
                         {errors?.oldPassword && (
                           <p className="form-error mt-1">
                             {errors?.oldPassword?.message}
@@ -76,7 +106,7 @@ function ChangePassword() {
                       <div className="form-group col-12">
                         <label for="">New Password</label>
                         <input
-                          type="password"
+                          type={type2}
                           className="form-control"
                           name="newPassword"
                           id="newPassword"
@@ -91,6 +121,12 @@ function ChangePassword() {
                             },
                           })}
                         />
+                        <i
+                          className={`fa eyepassword2 fa-eye${
+                            type2 === "password" ? "" : "-slash"
+                          }`}
+                          onClick={() => typeChange2()}
+                        ></i>
                         {errors?.newPassword && (
                           <p className="form-error mt-1">
                             {errors?.newPassword?.message}
@@ -100,7 +136,7 @@ function ChangePassword() {
                       <div className="form-group col-12">
                         <label for="">Confirm New Password</label>
                         <input
-                          type="password"
+                          type={type3}
                           className="form-control"
                           name="confirmPassword"
                           id="confirmPassword"
@@ -115,6 +151,12 @@ function ChangePassword() {
                             },
                           })}
                         />
+                        <i
+                          className={`fa eyepassword2 fa-eye${
+                            type3 === "password" ? "" : "-slash"
+                          }`}
+                          onClick={() => typeChange3()}
+                        ></i>
                         {errors?.confirmPassword && (
                           <p className="form-error mt-1">
                             {errors?.confirmPassword?.message}

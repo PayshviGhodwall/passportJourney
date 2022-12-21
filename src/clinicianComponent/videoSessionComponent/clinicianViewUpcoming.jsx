@@ -4,14 +4,26 @@ import { Link, useParams } from "react-router-dom";
 import {
   cancelSession,
   getSessionData,
+  markAsComplete,
 } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 import ClinicianHeader from "../commonComponent/clinicianHeader";
 import ClinicianSidebar from "../commonComponent/clinicianSidebar";
 import { useNavigate } from "react-router-dom";
+import { MultiSelect } from "react-multi-select-component";
+
+const options = [
+  { value: "User", label: "User" },
+  {
+    value: "Clinician",
+    label: "Clinician",
+  },
+];
 
 function ClinicianViewUpcoming() {
   const [upcomingData, setUpcomingData] = useState("");
   const [reason, setReason] = useState("");
+  const [join, setJoin] = useState(true);
+  const [notJoin, setNotJoin] = useState("");
   let { id } = useParams();
 
   const navigate = useNavigate();
@@ -43,6 +55,26 @@ function ClinicianViewUpcoming() {
 
   const onButtonClick = () => {
     document.getElementById("textInput").className = "show mt-4";
+    document.getElementById("textInput2").className = "hide mt-4";
+  };
+
+  const onButtonClick2 = () => {
+    document.getElementById("textInput2").className = "show mt-4";
+    document.getElementById("textInput").className = "hide mt-4";
+  };
+
+  console.log(join);
+
+  const submitResponse = async () => {
+    const formData = {
+      sessionId: id,
+      not_joined_by: notJoin,
+      isCompleted: join,
+    };
+    const { data } = await markAsComplete(formData);
+    if (!data.error) {
+      navigate("/clinician/video-session-management");
+    }
   };
 
   return (
@@ -198,28 +230,30 @@ function ClinicianViewUpcoming() {
                     />
                   </div>
                   <div class="form-group col-12 text-center mt-4 mb-0 show_cancel">
-                    {upcomingData.canStartSession ? (
-                      <a
-                        href={upcomingData.joinURL}
-                        class=" me-3"
-                        target="_blank"
-                      >
-                        <div class="comman_btn2 me-3">Video Session</div>
-                      </a>
-                    ) : (
-                      ""
-                    )}
-                    {upcomingData.canReschedule ? (
-                      <button
-                        type="button"
-                        class="comman_btn"
-                        onClick={() => onButtonClick()}
-                      >
-                        Cancel
-                      </button>
-                    ) : (
-                      ""
-                    )}
+                    <a
+                      href={upcomingData.joinURL}
+                      class=" me-3"
+                      target="_blank"
+                    >
+                      <div class="comman_btn2 me-3">Video Session</div>
+                    </a>
+
+                    <button
+                      type="button"
+                      class="comman_btn me-3"
+                      onClick={() => onButtonClick()}
+                    >
+                      Cancel
+                    </button>
+
+                    <button
+                      type="button"
+                      class="comman_btn"
+                      onClick={() => onButtonClick2()}
+                    >
+                      Mark as complete
+                    </button>
+
                     <div class="row hide" id="textInput">
                       <div class="col-5 pe-4">
                         <input
@@ -239,6 +273,59 @@ function ClinicianViewUpcoming() {
                           Submit
                         </a>
                       </div>
+                    </div>
+
+                    <div class="row hide" id="textInput2">
+                      <form class="row">
+                        <div class="form-group col-4 text-end custom_radio mt-3">
+                          <input
+                            type="radio"
+                            id="radio1"
+                            name="radio1"
+                            class="d-none"
+                            onClick={() => setJoin(true)}
+                          />
+                          <label for="radio1">Yes</label>
+                        </div>
+                        <div class="form-group col-4 text-start custom_radio mt-3">
+                          <input
+                            type="radio"
+                            id="radio2"
+                            name="radio1"
+                            class="d-none"
+                            onClick={() => setJoin(false)}
+                          />
+                          <label for="radio2">No</label>
+                        </div>
+
+                        <div class="col-4">
+                          <Link
+                            to=""
+                            onClick={() => submitResponse()}
+                            class="comman_btn"
+                          >
+                            Submit
+                          </Link>
+                        </div>
+
+                        {!join ? (
+                          <div class="form-group col-12 multiple_select_design">
+                            <label for="">Not Joined By?</label>
+                            <select
+                              class="form-select"
+                              onChange={(e) => setNotJoin(e.target.value)}
+                            >
+                              <option value="0" selected>
+                                Select
+                              </option>
+                              <option value="User">User</option>
+                              <option value="Clinician">Clinician</option>
+                            </select>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </form>
                     </div>
                   </div>
                 </form>

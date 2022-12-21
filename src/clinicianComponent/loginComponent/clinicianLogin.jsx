@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { clinicianLogin } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 
 function ClinicianLogin() {
+  const [type, setType] = useState("password");
+  const [password, setPassword] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -27,6 +30,19 @@ function ClinicianLogin() {
       navigate("/clinician/dashboard");
     }
   };
+
+  const typeChange = () => {
+    if (type === "password") setType("text");
+    else {
+      setType("password");
+    }
+  };
+
+  const getPasswordValue = (value) => {
+    console.log(value);
+    setPassword(value);
+  };
+
   return (
     <>
       {" "}
@@ -73,13 +89,29 @@ function ClinicianLogin() {
                       <div className="form-group col-12">
                         <label for="">Password</label>
                         <input
-                          type="password"
+                          type={type}
                           className="form-control"
                           placeholder="**********"
                           name="password"
                           id="password"
-                          {...register("password", { required: true })}
+                          {...register("password", {
+                            required: true,
+                            onChange: (e) => {
+                              getPasswordValue(e.target.value);
+                            },
+                          })}
                         />
+
+                        {password ? (
+                          <i
+                            className={`fa eyepassword2 fa-eye${
+                              type === "password" ? "" : "-slash"
+                            }`}
+                            onClick={() => typeChange()}
+                          ></i>
+                        ) : (
+                          ""
+                        )}
 
                         {errors?.password && (
                           <p className="form-error mt-1">

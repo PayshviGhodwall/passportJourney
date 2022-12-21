@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { verifyOTP } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
+import OtpTimer from "otp-timer";
+import {
+  forgotPassword,
+  verifyOTP,
+} from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 
 function ClinicianOtpVerify() {
   const {
@@ -46,6 +50,12 @@ function ClinicianOtpVerify() {
       if (field.value.length >= field.maxLength) {
         nextField.focus();
       }
+    }
+  };
+
+  const resendOtp = async () => {
+    const response = await forgotPassword({ email: location.state.email });
+    if (!response.data.error) {
     }
   };
 
@@ -125,13 +135,12 @@ function ClinicianOtpVerify() {
                         />
                       </div>
                       <div className="form-group col-12 text-center">
-                        <span className="count_Sec">00:30</span>
-                      </div>
-                      <div className="form-group col-12 text-center">
-                        <label className="text-center" for="">
-                          Didn't received the OTP?{" "}
-                          <a href="javscript:;">Request again</a>
-                        </label>
+                        <OtpTimer
+                          seconds={30}
+                          minutes={0}
+                          style={{ marginTop: "-100px" }}
+                          resend={() => resendOtp()}
+                        />
                       </div>
                     </form>
                   </div>
