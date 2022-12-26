@@ -28,7 +28,7 @@ function AdminHeader() {
           <div className="col-auto d-flex align-items-center">
             <Link className="notification_icon" to="/admin/notifications">
               <i className="fas fa-bell"></i>
-              <span>1</span>
+              <span> {adminData?.notification_count ?? 0}</span>
             </Link>
             <div className="dropdown Profile_dropdown">
               <button

@@ -25,6 +25,8 @@ function ClinicianLogin() {
   const onSubmit = async (data) => {
     console.log(data);
 
+    data.time_zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
     const response = await clinicianLogin(data);
     if (!response.data.error) {
       navigate("/clinician/dashboard");

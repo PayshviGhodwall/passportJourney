@@ -29,7 +29,7 @@ function ClinicianHeader() {
           <div class="col-auto d-flex align-items-center">
             <Link class="notification_icon" to="/clinician/notifications">
               <i class="fas fa-bell"></i>
-              <span>1</span>
+              <span> {clinicianData?.notification_count ?? 0}</span>
             </Link>
             <div class="dropdown Profile_dropdown">
               <button
