@@ -30,11 +30,7 @@ function PaymentSuccessSubscription() {
                           </div>
 
                           <h1 className="my-3">Success!</h1>
-                          <p>
-                            Congrats!
-                            <br />
-                            Your Plan is activated
-                          </p>
+                          <p>Congrats! Your plan has been activated.</p>
                           <span class="change"></span>
                         </div>
                       </div>
