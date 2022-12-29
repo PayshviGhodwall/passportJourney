@@ -39,7 +39,6 @@ function Subscription() {
                           data-bs-toggle="modal"
                           data-bs-target="#staticBackdrop"
                           className="edit_form"
-                          href="javascript:;"
                         >
                           <i className="fas fa-edit"></i>
                         </a>

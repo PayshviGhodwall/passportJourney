@@ -232,9 +232,12 @@ function Dashboard() {
                                 <td>{list.phone_number}</td>
                                 <td>{list.email}</td>
                                 <td>{moment(list.createdAt).format("L")}</td>
-                                <td>{list?.planId?.plan_name}Silver</td>
-                                <td>{list?.planId?.plan_price}100</td>
-                                <td>{list?.planId?.plan_duration}3 Months</td>
+                                <td>{list?.planId?.plan_name}</td>
+                                <td>{list?.planId?.plan_price}</td>
+                                <td>
+                                  {list?.planId?.plan_duration}{" "}
+                                  {list?.planId?.plan_duration ? "Months" : ""}
+                                </td>
                                 <td>
                                   <div className="check_toggle">
                                     <input

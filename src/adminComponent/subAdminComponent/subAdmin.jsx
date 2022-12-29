@@ -26,6 +26,9 @@ const options = [
   { label: "Help & Support Management", value: 8 },
   { label: "Content Management", value: 9 },
   { label: "Query Management", value: 10 },
+  { label: "Activity Management", value: 11 },
+  { label: "Journal Management", value: 12 },
+  { label: "Worksheet Management", value: 13 },
 ];
 
 function SubAdmin() {

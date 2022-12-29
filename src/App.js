@@ -67,6 +67,9 @@ import PaymentErrorSubscription from "./websiteComponent/commonComponent/payment
 import ViewCompleted from "./adminComponent/videoSessionComponent/viewCompleted";
 import ProtectedAdminRoutes from "./adminComponent/dashboardComponent/ProtectedAdminRoutes";
 import ProtectedClinicianRoutes from "./clinicianComponent/dashboardComponent/ProtectedClinicianRoutes";
+import AdminActivity from "./adminComponent/adminActivity/adminactivity";
+import AdminJournal from "./adminComponent/adminActivity/adminJournal";
+import AdminWorksheet from "./adminComponent/adminActivity/adminWorksheet";
 
 function App() {
   const [subAdmin, setSubAdmin] = useState("");
@@ -235,6 +238,18 @@ function App() {
             <Route path="/admin/notifications" element={<Notifications />} />
             <Route path="/admin/edit-profile" element={<EditProfile />} />
             <Route path="/admin/change-password" element={<ChangePassword />} />
+            <Route
+              path="/admin/activity-management"
+              element={<AdminActivity />}
+            />
+            <Route
+              path="/admin/journal-management"
+              element={<AdminJournal />}
+            />
+            <Route
+              path="/admin/worksheet-management"
+              element={<AdminWorksheet />}
+            />
             <Route path="/admin/logout" element={<AdminLogout />} />
           </Route>
 

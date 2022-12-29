@@ -10,23 +10,118 @@ import {
   assignWorksheet,
   assignWorksheety,
   downloadFiles,
+  getActivitiess,
+  getJournals,
   getSessionData,
   getSessionHistory,
+  getWorksheets,
   saveSessionDocumentation,
 } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 import moment from "moment";
 import { useForm } from "react-hook-form";
+import { getClinicianList } from "../../apiServices/clinicianHttpService/adminClinicianHttpService";
+import { MDBDataTable } from "mdbreact";
 
 function ClinicianViewComplete() {
   const [completedData, setCompletedData] = useState("");
-  const [getSession, setGetSession] = useState("");
+  const [getSession, setGetSession] = useState([]);
   const [monthIndex, setMonthIndex] = useState(0);
   const [sessionIndex, setSessionIndex] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [activityMsg, setActivityMsg] = useState("");
-  const [journalTopic, setJournalTopic] = useState("");
-  const [selectedFile1, setSelectedFile1] = useState(null);
-  const [worksheetMsg, setWorksheetMsg] = useState("");
+  const [sessionId, setSessionId] = useState("");
+
+  const [activity, setActivity] = useState({
+    columns: [
+      {
+        label: "S.No.",
+        field: "sn",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Title",
+        field: "title",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Message",
+        field: "description",
+        sort: "asc",
+        width: 150,
+      },
+
+      {
+        label: "Image",
+        field: "image",
+        sort: "asc",
+        width: 100,
+      },
+
+      {
+        label: "Action",
+        field: "action",
+        sort: "asc",
+        width: 100,
+      },
+    ],
+    rows: [],
+  });
+
+  const [journal, setJournal] = useState({
+    columns: [
+      {
+        label: "S.No.",
+        field: "sn",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Topic",
+        field: "topic",
+        sort: "asc",
+        width: 150,
+      },
+
+      {
+        label: "Action",
+        field: "action",
+        sort: "asc",
+        width: 100,
+      },
+    ],
+    rows: [],
+  });
+
+  const [worksheet, setWorksheet] = useState({
+    columns: [
+      {
+        label: "S.No.",
+        field: "sn",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Message",
+        field: "description",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Pdf",
+        field: "pdf",
+        sort: "asc",
+        width: 150,
+      },
+
+      {
+        label: "Action",
+        field: "action",
+        sort: "asc",
+        width: 100,
+      },
+    ],
+    rows: [],
+  });
 
   let { id } = useParams();
   const {
@@ -40,7 +135,112 @@ function ClinicianViewComplete() {
     getDetail();
     getSessionDetail();
     setSessionIndex(0);
-  }, [monthIndex]);
+    getActListing();
+    getJourListing();
+    getWorkListing();
+  }, [monthIndex, sessionId]);
+
+  const getActListing = async () => {
+    const { data } = await getActivitiess({ type: "In-person" });
+    if (!data.error) {
+      const newRows = [];
+      console.log(data);
+      data.results.activities.map((list, index) => {
+        const returnData = {};
+
+        returnData.sn = index + 1;
+        returnData.title = list.title;
+        returnData.description = list.message;
+        returnData.image = (
+          <div className="header-imgg">
+            <img src={list.image} alt="" />
+          </div>
+        );
+        returnData.action = (
+          <>
+            <button
+              class="comman_btn table_viewbtn"
+              to=""
+              onClick={() => assignedActivity(list._id)}
+            >
+              Send
+            </button>
+          </>
+        );
+
+        newRows.push(returnData);
+      });
+      setActivity({ ...activity, rows: newRows });
+    }
+  };
+
+  const getJourListing = async () => {
+    const { data } = await getJournals();
+    if (!data.error) {
+      const newRows = [];
+      console.log(data);
+      data.results.journals.map((list, index) => {
+        const returnData = {};
+
+        returnData.sn = index + 1;
+        returnData.topic = list.topic;
+
+        returnData.action = (
+          <>
+            <button
+              class="comman_btn table_viewbtn"
+              to=""
+              onClick={() => assignedJournal(list._id)}
+            >
+              Send
+            </button>
+          </>
+        );
+
+        newRows.push(returnData);
+      });
+      setJournal({ ...journal, rows: newRows });
+    }
+  };
+
+  const getWorkListing = async () => {
+    const { data } = await getWorksheets();
+    if (!data.error) {
+      const newRows = [];
+      console.log(data);
+      data.results.worksheets.map((list, index) => {
+        const returnData = {};
+
+        returnData.sn = index + 1;
+        returnData.description = list.message;
+        returnData.pdf = (
+          <div className="header-imgg">
+            <a href={list.pdf} target="_blank">
+              <i
+                className="fa fa-file-pdf-o"
+                style={{ fontSize: "20px", color: "#000" }}
+              ></i>
+            </a>
+          </div>
+        );
+
+        returnData.action = (
+          <>
+            <button
+              class="comman_btn table_viewbtn"
+              to=""
+              onClick={() => assignedWorksheet(list._id)}
+            >
+              Send
+            </button>
+          </>
+        );
+
+        newRows.push(returnData);
+      });
+      setWorksheet({ ...worksheet, rows: newRows });
+    }
+  };
 
   const getDetail = async () => {
     const { data } = await getSessionData(id);
@@ -67,73 +267,53 @@ function ClinicianViewComplete() {
     }
   };
 
-  const onFileSelection = (event) => {
-    console.log(event);
-    let file = event.target.files[0];
-
-    setSelectedFile(file);
-  };
-
-  const onFileSelection2 = (event) => {
-    console.log(event);
-    let file = event.target.files[0];
-
-    setSelectedFile1(file);
-  };
-
-  const assignedActivity = async () => {
+  const assignedActivity = async (id) => {
     const Data = {
-      sessionId: getSession[monthIndex].sessions[sessionIndex]._id,
-      message: activityMsg,
+      sessionId: sessionId,
+      activityId: id,
     };
-    const formData = new FormData();
-    for (const item in Data) {
-      formData.append(item, Data[item]);
-      console.log(Data[item]);
-    }
+
     console.log(Data);
 
-    if (selectedFile) {
-      formData.append("image", selectedFile, selectedFile.name);
-    }
-
-    const { data } = await assignActivity(formData);
+    const { data } = await assignActivity(Data);
     if (!data.error) {
       console.log(data);
+      await getSessionDetail();
+      const link = document.getElementById("close");
+      link.click();
     }
   };
 
-  const assignedJournal = async () => {
+  console.log(getSession);
+
+  const assignedJournal = async (id) => {
+    console.log(getSession, "hbjh", monthIndex);
     const formData = {
-      sessionId: getSession[monthIndex].sessions[sessionIndex]._id,
-      topic: journalTopic,
+      sessionId: sessionId,
+      journalId: id,
     };
 
     const { data } = await assignJournal(formData);
     if (!data.error) {
       console.log(data);
+      await getSessionDetail();
+      const link = document.getElementById("close2");
+      link.click();
     }
   };
 
-  const assignedWorksheet = async () => {
+  const assignedWorksheet = async (id) => {
     const Data = {
-      sessionId: getSession[monthIndex].sessions[sessionIndex]._id,
-      message: worksheetMsg,
+      sessionId: sessionId,
+      worksheetId: id,
     };
-    const formData = new FormData();
-    for (const item in Data) {
-      formData.append(item, Data[item]);
-      console.log(Data[item]);
-    }
-    console.log(Data);
 
-    if (selectedFile1) {
-      formData.append("pdf", selectedFile1, selectedFile1.name);
-    }
-
-    const { data } = await assignWorksheet(formData);
+    const { data } = await assignWorksheet(Data);
     if (!data.error) {
       console.log(data);
+      await getSessionDetail();
+      const link = document.getElementById("close3");
+      link.click();
     }
   };
 
@@ -403,12 +583,10 @@ function ClinicianViewComplete() {
                                 </div>
                                 <form class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between">
                                   <div class="form-group col mb-0 choose_file position-relative">
-                                    <span>Upload Image</span>
-
                                     {getActivities(
                                       getSession[monthIndex]?.activities,
                                       "Activity"
-                                    ).image ? (
+                                    ).activity?.image ? (
                                       <div class="user_response_box me-3">
                                         <img
                                           src={
@@ -416,61 +594,54 @@ function ClinicianViewComplete() {
                                               getSession[monthIndex]
                                                 ?.activities,
                                               "Activity"
-                                            ).image
+                                            ).activity?.image
                                           }
                                           alt=""
                                         />
                                       </div>
                                     ) : (
                                       <>
-                                        <label for="input-file">
-                                          <i class="fal fa-camera me-1"></i>
-                                          Choose File
-                                        </label>
-                                        <input
-                                          class="form-control"
-                                          type="file"
-                                          accept="image/*"
-                                          id="input-file"
-                                          onChange={(e) => onFileSelection(e)}
-                                        />{" "}
+                                        <Link
+                                          class="comman_btn"
+                                          to=""
+                                          data-bs-toggle="modal"
+                                          data-bs-target="#staticBackdrop07"
+                                          onClick={() =>
+                                            setSessionId(
+                                              getSession[monthIndex].sessions[
+                                                sessionIndex
+                                              ]._id
+                                            )
+                                          }
+                                        >
+                                          Select Activity
+                                        </Link>
                                       </>
                                     )}
                                   </div>
-                                  <div class="form-group col mb-0">
-                                    <label for="">Message</label>
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      value={
-                                        getActivities(
-                                          getSession[monthIndex]?.activities,
-                                          "Activity"
-                                        ).message
-                                      }
-                                      name="name"
-                                      id="name"
-                                      onChange={(e) =>
-                                        setActivityMsg(e.target.value)
-                                      }
-                                    />
-                                  </div>
-                                  <div class="form-group mb-0 col-auto">
-                                    {getActivities(
-                                      getSession[monthIndex]?.activities,
-                                      "Activity"
-                                    ).message ? (
-                                      ""
-                                    ) : (
-                                      <Link
-                                        class="comman_btn"
-                                        to=""
-                                        onClick={() => assignedActivity()}
-                                      >
-                                        Send
-                                      </Link>
-                                    )}
-                                  </div>
+                                  {getActivities(
+                                    getSession[monthIndex]?.activities,
+                                    "Activity"
+                                  ).activity?.message ? (
+                                    <div class="form-group col ">
+                                      <label for="">Message</label>
+
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        value={
+                                          getActivities(
+                                            getSession[monthIndex]?.activities,
+                                            "Activity"
+                                          ).activity?.message
+                                        }
+                                        name="name"
+                                        id="name"
+                                      />
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
                                 </form>
                                 <div class="row mx-0 user_response text-center pb-4">
                                   <div className="col-6">
@@ -581,39 +752,47 @@ function ClinicianViewComplete() {
                                 </div>
                                 <form class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between">
                                   <div class="form-group col-10">
-                                    <label for="">Journal Topic</label>
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      value={
-                                        getActivities(
-                                          getSession[monthIndex]?.activities,
-                                          "Journal"
-                                        ).topic
-                                      }
-                                      name="name"
-                                      id="name"
-                                      onChange={(e) =>
-                                        setJournalTopic(e.target.value)
-                                      }
-                                    />
-                                  </div>
-                                  <div class="form-group col-2">
                                     {getActivities(
                                       getSession[monthIndex]?.activities,
                                       "Journal"
-                                    ).topic ? (
-                                      ""
+                                    ).journal?.topic ? (
+                                      <>
+                                        <label for="">Journal Topic</label>
+                                        <input
+                                          type="text"
+                                          class="form-control"
+                                          value={
+                                            getActivities(
+                                              getSession[monthIndex]
+                                                ?.activities,
+                                              "Journal"
+                                            ).journal?.topic
+                                          }
+                                          name="name"
+                                          id="name"
+                                        />
+                                      </>
                                     ) : (
-                                      <Link
-                                        to=""
-                                        class="comman_btn"
-                                        onClick={() => assignedJournal()}
-                                      >
-                                        Send
-                                      </Link>
+                                      <>
+                                        <Link
+                                          class="comman_btn"
+                                          to=""
+                                          data-bs-toggle="modal"
+                                          data-bs-target="#staticBackdrop08"
+                                          onClick={() =>
+                                            setSessionId(
+                                              getSession[monthIndex].sessions[
+                                                sessionIndex
+                                              ]._id
+                                            )
+                                          }
+                                        >
+                                          Select Journal
+                                        </Link>
+                                      </>
                                     )}
                                   </div>
+
                                   <div class="form-group col-12 mb-0">
                                     <label for="">Mother's Response</label>
                                   </div>
@@ -691,55 +870,77 @@ function ClinicianViewComplete() {
                                   </div>
                                 </div>
                                 <form class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between">
-                                  <div class="form-group col mb-0 choose_file position-relative">
-                                    <span>Upload Pdf</span>
-                                    <label for="upload_video">
-                                      <i class="fal fa-file me-1"></i>Choose
-                                      File
-                                    </label>
-                                    <input
-                                      type="file"
-                                      class="form-control"
-                                      value=""
-                                      name="upload_video"
-                                      id="upload_video"
-                                      onChange={(e) => onFileSelection2(e)}
-                                    />
-                                  </div>
-                                  <div class="form-group col mb-0">
-                                    <label for="">Message</label>
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      value={
-                                        getActivities(
-                                          getSession[monthIndex]?.activities,
-                                          "Worksheet"
-                                        ).message
-                                      }
-                                      name="name"
-                                      id="name"
-                                      onChange={(e) =>
-                                        setWorksheetMsg(e.target.value)
-                                      }
-                                    />
-                                  </div>
-                                  <div class="form-group mb-0 col-auto">
+                                  <div class="form-group col  choose_file position-relative">
                                     {getActivities(
                                       getSession[monthIndex]?.activities,
                                       "Worksheet"
-                                    ).message ? (
-                                      ""
+                                    ).worksheet?.pdf ? (
+                                      <>
+                                        <a
+                                          href={
+                                            getActivities(
+                                              getSession[monthIndex]
+                                                ?.activities,
+                                              "Worksheet"
+                                            ).worksheet?.pdf
+                                          }
+                                          target="_blank"
+                                        >
+                                          <i
+                                            className="fa fa-file-pdf-o"
+                                            style={{
+                                              fontSize: "65px",
+                                              color: "#000",
+                                              marginBottom: "-10px",
+                                            }}
+                                          ></i>
+                                        </a>
+                                      </>
                                     ) : (
                                       <Link
                                         class="comman_btn"
                                         to=""
-                                        onClick={() => assignedWorksheet()}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop09"
+                                        onClick={() =>
+                                          setSessionId(
+                                            getSession[monthIndex].sessions[
+                                              sessionIndex
+                                            ]._id
+                                          )
+                                        }
+
+                                        // onClick={() => assignedActivity()}
                                       >
-                                        Send
+                                        Select Worksheet
                                       </Link>
                                     )}
                                   </div>
+                                  {getActivities(
+                                    getSession[monthIndex]?.activities,
+                                    "Worksheet"
+                                  ).worksheet?.message ? (
+                                    <>
+                                      <div class="form-group col ">
+                                        <label for="">Message</label>
+                                        <input
+                                          type="text"
+                                          class="form-control"
+                                          value={
+                                            getActivities(
+                                              getSession[monthIndex]
+                                                ?.activities,
+                                              "Worksheet"
+                                            ).worksheet?.message
+                                          }
+                                          name="name"
+                                          id="name"
+                                        />
+                                      </div>{" "}
+                                    </>
+                                  ) : (
+                                    ""
+                                  )}
                                 </form>
                               </div>
                               <div class="col-12 design_outter_comman border rounded mb-4">
@@ -870,6 +1071,132 @@ function ClinicianViewComplete() {
                       </div>
                     </div>
                   </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade assign_clinician comman_modal"
+        id="staticBackdrop07"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Select Activity
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                id="close"
+              ></button>
+            </div>
+            <div class="modal-body py-0">
+              <div class="row">
+                <div class="col-12 comman_table_design px-0">
+                  <div class="table-responsive">
+                    <MDBDataTable
+                      bordered
+                      hover
+                      data={activity}
+                      noBottomColumns
+                      sortable
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade assign_clinician comman_modal"
+        id="staticBackdrop08"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Select Journal
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                id="close2"
+              ></button>
+            </div>
+            <div class="modal-body py-0">
+              <div class="row">
+                <div class="col-12 comman_table_design px-0">
+                  <div class="table-responsive">
+                    <MDBDataTable
+                      bordered
+                      hover
+                      data={journal}
+                      noBottomColumns
+                      sortable
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade assign_clinician comman_modal"
+        id="staticBackdrop09"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Select Worksheet
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                id="close3"
+              ></button>
+            </div>
+            <div class="modal-body py-0">
+              <div class="row">
+                <div class="col-12 comman_table_design px-0">
+                  <div class="table-responsive">
+                    <MDBDataTable
+                      bordered
+                      hover
+                      data={worksheet}
+                      noBottomColumns
+                      sortable
+                    />
+                  </div>
                 </div>
               </div>
             </div>

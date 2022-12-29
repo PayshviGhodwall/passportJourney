@@ -293,3 +293,294 @@ export async function success(formData) {
     return { error };
   }
 }
+
+export async function addActivity(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/addActivity`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function editActivity(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/editActivity`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function getActivities() {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getActivities`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function changeActivityStatus(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/changeActivityStatus/${id}`
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function deleteActivity(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/deleteActivity/${id}`
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+export async function getActivityDetail(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getActivityDetail/${id}`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function addJournal(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/addJournal`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function editJournal(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/editJournal`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function getJournals() {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getJournals`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function changeJournalStatus(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/changeJournalStatus/${id}`
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function deleteJournal(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/deleteJournal/${id}`
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+export async function getJournalDetail(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getJournalDetail/${id}`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function addWorksheet(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/addWorksheet`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function editWorksheet(formData) {
+  try {
+    const { data } = await adminhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/editWorksheet`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function getWorksheets() {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getWorksheets`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function changeWorksheetStatus(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/changeWorksheetStatus/${id}`
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function deleteWorksheet(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/deleteWorksheet/${id}`
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+export async function getWorksheetDetail(id) {
+  try {
+    const { data } = await adminhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/admin/getWorksheetDetail/${id}`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}

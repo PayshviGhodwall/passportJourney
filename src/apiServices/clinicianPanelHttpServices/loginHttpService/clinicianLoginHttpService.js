@@ -333,3 +333,45 @@ export async function markAsComplete(formData) {
     return { error };
   }
 }
+
+export async function getActivitiess(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/getActivities`,
+      formData
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+export async function getJournals() {
+  try {
+    const { data } = await clinicianhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/getJournals`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function getWorksheets() {
+  try {
+    const { data } = await clinicianhttpService.get(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/getWorksheets`
+    );
+    console.log(data);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}

@@ -101,6 +101,58 @@ function AdminSidebar() {
               ) : (
                 ""
               )}
+              {!subAdmin.length || subAdmin.includes(11) ? (
+                <li>
+                  <Link
+                    className={
+                      window.location.href.includes(
+                        "/admin/activity-management"
+                      )
+                        ? "active"
+                        : ""
+                    }
+                    to="/admin/activity-management"
+                  >
+                    <i className="far fa-tasks"></i>Activity Management
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {!subAdmin.length || subAdmin.includes(12) ? (
+                <li>
+                  <Link
+                    className={
+                      window.location.href.includes("/admin/journal-management")
+                        ? "active"
+                        : ""
+                    }
+                    to="/admin/journal-management"
+                  >
+                    <i className="far fa-tasks"></i>Journal Management
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {!subAdmin.length || subAdmin.includes(13) ? (
+                <li>
+                  <Link
+                    className={
+                      window.location.href.includes(
+                        "/admin/worksheet-management"
+                      )
+                        ? "active"
+                        : ""
+                    }
+                    to="/admin/worksheet-management"
+                  >
+                    <i className="far fa-tasks"></i>Worksheet Management
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
               {!subAdmin.length || subAdmin.includes(5) ? (
                 <li>
                   <Link
