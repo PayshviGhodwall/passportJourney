@@ -541,6 +541,7 @@ div#google_translate_element {
   overflow: hidden;
   border-radius: 6px;
   background-color: #fff;
+  position: relative;
 }
 .design_outter_comman .comman_header .form-design .form-control {
   height: 38px;
@@ -549,6 +550,7 @@ div#google_translate_element {
   box-shadow: unset !important;
   border: 0;
   font-size: 13px;
+  display: none;
 }
 .design_outter_comman .comman_header .icons_set i {
   position: absolute;
@@ -1867,6 +1869,7 @@ div#google_translate_element {
   overflow: hidden;
   border-radius: 6px;
   background-color: #fff;
+  position: relative;
 }
 .design_outter_comman .comman_header .form-design .form-control {
   height: 38px;
@@ -1875,6 +1878,7 @@ div#google_translate_element {
   box-shadow: unset !important;
   border: 0;
   font-size: 13px;
+  display: none;
 }
 .design_outter_comman .comman_header .icons_set i {
   position: absolute;
@@ -3225,7 +3229,18 @@ li.select2-search.select2-search--inline {
   display: none !important;
 }
 [data-test="datatable-search"] {
-  display: none !important;
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+
+.form-control-sm {
+  height: 38px !important;
+  border-radius: 6px;
+  padding: 0 17px;
+  box-shadow: unset !important;
+  border: 0;
+  font-size: 13px;
 }
 [data-test="datatable-info"] {
   padding-left: 25px;

@@ -44,7 +44,7 @@ function ClinicianDashboard() {
                       </div>
                       <div className="col pe-0">
                         <div className="dashboard_boxcontent">
-                          <h2>Upcoming Video Session</h2>
+                          <h2>Upcoming Video Sessions</h2>
                           <span>{dashboard.upcomingSessionCount}</span>
                         </div>
                       </div>
@@ -62,7 +62,7 @@ function ClinicianDashboard() {
                       </div>
                       <div className="col pe-0">
                         <div className="dashboard_boxcontent">
-                          <h2>Assigned Video Session</h2>
+                          <h2>Assigned Video Sessions</h2>
                           <span>0</span>
                         </div>
                       </div>
@@ -80,7 +80,7 @@ function ClinicianDashboard() {
                       </div>
                       <div className="col pe-0">
                         <div className="dashboard_boxcontent">
-                          <h2>Completed Video Session</h2>
+                          <h2>Completed Video Sessions</h2>
                           <span>{dashboard.completedSessionCount}</span>
                         </div>
                       </div>
