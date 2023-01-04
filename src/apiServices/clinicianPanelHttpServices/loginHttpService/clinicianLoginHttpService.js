@@ -216,10 +216,45 @@ export async function assignActivity(formData) {
   }
 }
 
+export async function editActivityy(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/editActivity`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
 export async function assignJournal(formData) {
   try {
     const { data } = await clinicianhttpService.post(
       `${process.env.REACT_APP_APIENDPOINT}/clinician/assignJournal`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+export async function editJournall(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/editJournal`,
       formData
     );
     console.log(data);
@@ -238,6 +273,24 @@ export async function assignWorksheet(formData) {
   try {
     const { data } = await clinicianhttpService.post(
       `${process.env.REACT_APP_APIENDPOINT}/clinician/assignWorksheet`,
+      formData
+    );
+    console.log(data);
+    if (!data.error) {
+      toast.success(data.message);
+    } else toast.error(data.message);
+
+    return { data };
+  } catch (error) {
+    if (error.response) toast.error(error.response.data.message);
+    return { error };
+  }
+}
+
+export async function editWorksheett(formData) {
+  try {
+    const { data } = await clinicianhttpService.post(
+      `${process.env.REACT_APP_APIENDPOINT}/clinician/editWorksheet`,
       formData
     );
     console.log(data);

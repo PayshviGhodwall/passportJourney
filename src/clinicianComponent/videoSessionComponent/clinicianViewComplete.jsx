@@ -10,6 +10,9 @@ import {
   assignWorksheet,
   assignWorksheety,
   downloadFiles,
+  editActivityy,
+  editJournall,
+  editWorksheett,
   getActivitiess,
   getJournals,
   getSessionData,
@@ -21,6 +24,7 @@ import moment from "moment";
 import { useForm } from "react-hook-form";
 import { getClinicianList } from "../../apiServices/clinicianHttpService/adminClinicianHttpService";
 import { MDBDataTable } from "mdbreact";
+import { toast } from "react-toastify";
 
 function ClinicianViewComplete() {
   const [completedData, setCompletedData] = useState("");
@@ -28,6 +32,10 @@ function ClinicianViewComplete() {
   const [monthIndex, setMonthIndex] = useState(0);
   const [sessionIndex, setSessionIndex] = useState(0);
   const [sessionId, setSessionId] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [editActivity, setEditActivity] = useState(false);
+  const [editJournal, setEditJournal] = useState(false);
+  const [editWorksheet, setEditWorksheet] = useState(false);
 
   const [activity, setActivity] = useState({
     columns: [
@@ -138,10 +146,11 @@ function ClinicianViewComplete() {
     getActListing();
     getJourListing();
     getWorkListing();
-  }, [monthIndex, sessionId]);
+  }, [monthIndex, sessionId, editActivity, editJournal, editWorksheet]);
 
   const getActListing = async () => {
     const { data } = await getActivitiess({ type: "In-person" });
+
     if (!data.error) {
       const newRows = [];
       console.log(data);
@@ -275,30 +284,36 @@ function ClinicianViewComplete() {
 
     console.log(Data);
 
-    const { data } = await assignActivity(Data);
+    const { data } = editActivity
+      ? await editActivityy(Data)
+      : await assignActivity(Data);
     if (!data.error) {
       console.log(data);
       await getSessionDetail();
       const link = document.getElementById("close");
       link.click();
+      setEditActivity(false);
     }
   };
 
   console.log(getSession);
 
   const assignedJournal = async (id) => {
-    console.log(getSession, "hbjh", monthIndex);
+    console.log(getSession, "hbjh", monthIndex, editJournal);
     const formData = {
       sessionId: sessionId,
       journalId: id,
     };
 
-    const { data } = await assignJournal(formData);
+    const { data } = editJournal
+      ? await editJournall(formData)
+      : await assignJournal(formData);
     if (!data.error) {
       console.log(data);
       await getSessionDetail();
       const link = document.getElementById("close2");
       link.click();
+      setEditJournal(false);
     }
   };
 
@@ -308,21 +323,49 @@ function ClinicianViewComplete() {
       worksheetId: id,
     };
 
-    const { data } = await assignWorksheet(Data);
+    const { data } = editWorksheet
+      ? await editWorksheett(Data)
+      : await assignWorksheet(Data);
     if (!data.error) {
       console.log(data);
       await getSessionDetail();
       const link = document.getElementById("close3");
       link.click();
+      setEditWorksheet(false);
     }
   };
 
   const onSubmit = async (dataa) => {
     dataa.sessionId = getSession[monthIndex].sessions[sessionIndex]._id;
 
-    const { data } = await saveSessionDocumentation(dataa);
+    const formData = new FormData();
+    for (const item in dataa) {
+      formData.append(item, dataa[item]);
+      console.log(dataa[item]);
+    }
+
+    if (selectedFile) {
+      formData.append("signature", selectedFile, selectedFile.name);
+    }
+
+    const { data } = await saveSessionDocumentation(formData);
     if (!data.error) {
       console.log(data);
+    }
+  };
+
+  const onFileSelection = (event) => {
+    let file = event[0];
+
+    if (file && file.size < 2880) {
+      toast.error("Minimum File size should be 1MB.");
+      return;
+    } else if (file && file.size > 5242880) {
+      toast.error("File size exceeded. Max size should be 5MB.");
+      return;
+    } else {
+      // Update the state
+      setSelectedFile(event[0]);
     }
   };
 
@@ -580,6 +623,23 @@ function ClinicianViewComplete() {
                                   <div class="col-auto">
                                     <h2>Assigned Activity</h2>
                                   </div>
+                                  <div className="col-auto">
+                                    <a
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#staticBackdrop07"
+                                      className="edit_form"
+                                      onClick={() => {
+                                        setEditActivity(true);
+                                        setSessionId(
+                                          getSession[monthIndex].sessions[
+                                            sessionIndex
+                                          ]._id
+                                        );
+                                      }}
+                                    >
+                                      <i className="fas fa-edit"></i>
+                                    </a>
+                                  </div>
                                 </div>
                                 <form class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between">
                                   <div class="form-group col mb-0 choose_file position-relative">
@@ -749,6 +809,23 @@ function ClinicianViewComplete() {
                                   <div class="col-auto">
                                     <h2>Suggest A Journal</h2>
                                   </div>
+                                  <div className="col-auto">
+                                    <a
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#staticBackdrop08"
+                                      className="edit_form"
+                                      onClick={() => {
+                                        setEditJournal(true);
+                                        setSessionId(
+                                          getSession[monthIndex].sessions[
+                                            sessionIndex
+                                          ]._id
+                                        );
+                                      }}
+                                    >
+                                      <i className="fas fa-edit"></i>
+                                    </a>
+                                  </div>
                                 </div>
                                 <form class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between">
                                   <div class="form-group col-10">
@@ -867,6 +944,23 @@ function ClinicianViewComplete() {
                                 <div class="row comman_header justify-content-between">
                                   <div class="col-auto">
                                     <h2>Assigned Worksheet</h2>
+                                  </div>
+                                  <div className="col-auto">
+                                    <a
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#staticBackdrop09"
+                                      className="edit_form"
+                                      onClick={() => {
+                                        setEditWorksheet(true);
+                                        setSessionId(
+                                          getSession[monthIndex].sessions[
+                                            sessionIndex
+                                          ]._id
+                                        );
+                                      }}
+                                    >
+                                      <i className="fas fa-edit"></i>
+                                    </a>
                                   </div>
                                 </div>
                                 <form class="form-design py-4 px-3 help-support-form row align-items-end justify-content-between">
@@ -1037,7 +1131,8 @@ function ClinicianViewComplete() {
                                       </p>
                                     )}
                                   </div>
-                                  <div class="form-group col mb-0 clinical_documentation">
+
+                                  <div class="form-group col-6 mb-0 clinical_documentation">
                                     <label for="">Plan</label>
                                     <textarea
                                       class="form-control"
@@ -1058,7 +1153,42 @@ function ClinicianViewComplete() {
                                       </p>
                                     )}
                                   </div>
-                                  <div class="form-group mb-0 col-auto">
+                                  <div class="form-group col-6 mb-0 choose_file position-relative">
+                                    {getSession[monthIndex]?.sessions[
+                                      sessionIndex
+                                    ].clinician_signature ? (
+                                      <div class="user_response_box me-3">
+                                        <img
+                                          src={
+                                            getSession[monthIndex]?.sessions[
+                                              sessionIndex
+                                            ].clinician_signature
+                                          }
+                                          alt=""
+                                        />
+                                      </div>
+                                    ) : (
+                                      <>
+                                        {" "}
+                                        <span>Upload Signature </span>
+                                        <label for="upload_video">
+                                          <i class="fal fa-camera me-1"></i>
+                                          Choose File
+                                        </label>
+                                        <input
+                                          type="file"
+                                          accept=".png, .jpg, .jpeg"
+                                          class="form-control"
+                                          name="upload_video"
+                                          id="upload_video"
+                                          onChange={(e) =>
+                                            onFileSelection(e.target.files)
+                                          }
+                                        />{" "}
+                                      </>
+                                    )}
+                                  </div>
+                                  <div class="form-group mb-0 mt-4 col-auto">
                                     <button class="comman_btn " type="submit">
                                       Save
                                     </button>

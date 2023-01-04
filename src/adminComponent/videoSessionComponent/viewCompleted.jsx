@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSessionData } from "../../apiServices/userHttpService/adminUserHttpService";
@@ -76,6 +77,25 @@ function ViewCompleted() {
                       <span class="headerrr">Plan</span>
                       <div class="documentation_box_data">
                         <p>{completedData.plan}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mb-4 px-0 mt-3">
+                    <div class="clinician_documentation_box border">
+                      <span class="headerrr"> Completion Date</span>
+                      <div class="documentation_box_data">
+                        <p>
+                          {moment(completedData.completion_date).format("LLL")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mb-4 px-0 mt-3">
+                    <div class="clinician_documentation_box border">
+                      <span class="headerrr">Clinician Signature</span>
+
+                      <div class="user_response_box me-3">
+                        <img src={completedData.clinician_signature} alt="" />
                       </div>
                     </div>
                   </div>

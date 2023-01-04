@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import {
   getSubscriptionList,
   updateSubscription,
@@ -34,6 +35,24 @@ function EditSubscription({ listing }) {
 
   const onSubmit = async (data) => {
     console.log(data);
+    if (
+      !data.features0 ||
+      !data.features1 ||
+      !data.features2 ||
+      !data.features3
+    ) {
+      toast.error("Please add all features");
+      return;
+    }
+    const features = [
+      data.features0,
+      data.features1,
+      data.features2,
+      data.features3,
+    ];
+
+    data.plan_features = features;
+
     const response = await updateSubscription(data);
     if (!response.data.error) {
       const button = document.getElementById("close");
@@ -64,7 +83,7 @@ function EditSubscription({ listing }) {
               className="row form-design align-items-end px-2 py-2"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className="form-group mb-3 col-4">
+              <div className="form-group mb-3 col-6">
                 <label for="">Plan Name</label>
                 <input
                   type="text"
@@ -78,7 +97,7 @@ function EditSubscription({ listing }) {
                   <p className="form-error mt-1">This field is required</p>
                 )}
               </div>
-              <div className="form-group mb-3 col-4">
+              <div className="form-group mb-3 col-6">
                 <label for="">Plan Price</label>
                 <input
                   type="text"
@@ -92,20 +111,35 @@ function EditSubscription({ listing }) {
                   <p className="form-error mt-1">This field is required</p>
                 )}
               </div>
-              <div className="form-group mb-3 col-4">
-                <label for="">Plan Duration (Month)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="plan_duration"
-                  id="plan_duration"
-                  {...register("plan_duration", { required: true })}
-                />
-
-                {errors?.plan_duration && (
-                  <p className="form-error mt-1">This field is required</p>
-                )}
+              <div className="form-group mb-0">
+                <label for="" className="mb-0">
+                  Features{" "}
+                </label>
               </div>
+
+              {subscription?.plan_features?.map((item, index) => {
+                return (
+                  <div className="form-group mb-3 col-6">
+                    <input
+                      type="text"
+                      className={
+                        index === 0 ? "form-control mt-0" : "form-control mt-3"
+                      }
+                      name={`features${index}`}
+                      id={`features${index}`}
+                      defaultValue={item}
+                      {...register(`features${index}`, {
+                        required: true,
+                      })}
+                    />
+                  </div>
+                );
+              })}
+
+              {/* {errors?.plan_duration && (
+                  <p className="form-error mt-1">This field is required</p>
+                )} */}
+
               <div className="form-group mb-0 mt-3 col-12 text-center">
                 <button className="comman_btn" type="submit">
                   Save

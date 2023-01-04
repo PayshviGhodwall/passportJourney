@@ -111,7 +111,7 @@ function App() {
             element={<AdminResetPassword />}
           />
 
-          <Route exact path="/" element={<ProtectedAdminRoutes />}>
+          <Route exact path="/admin" element={<ProtectedAdminRoutes />}>
             <Route path="/admin/dashboard" element={<Dashboard />} />
             {!subAdmin.length || subAdmin.includes(2) ? (
               <>
@@ -269,7 +269,7 @@ function App() {
             element={<ClinicianResetPassword />}
           />
 
-          <Route exact path="/" element={<ProtectedClinicianRoutes />}>
+          <Route exact path="/clinician" element={<ProtectedClinicianRoutes />}>
             <Route
               path="/clinician/dashboard"
               element={<ClinicianDashboard />}

@@ -3230,7 +3230,7 @@ li.select2-search.select2-search--inline {
 }
 [data-test="datatable-search"] {
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 0;
 }
 
