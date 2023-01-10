@@ -231,17 +231,18 @@ function ClinicianViewUpcoming() {
                   </div>
 
                   <div class="form-group col-12 text-center mt-4 mb-0 show_cancel">
-                    {upcomingData.canStartSession ? (
-                      <a
-                        href={upcomingData.joinURL}
-                        class=" me-3"
-                        target="_blank"
-                      >
-                        <div class="comman_btn2 me-3">Video Session</div>
-                      </a>
-                    ) : (
-                      ""
-                    )}
+                    <a
+                      href={upcomingData.joinURL}
+                      class={
+                        upcomingData.canStartSession
+                          ? "me-3"
+                          : " a_disable me-3"
+                      }
+                      target="_blank"
+                    >
+                      <div class="comman_btn2 me-3">Video Session</div>
+                    </a>
+
                     {upcomingData.canReschedule ? (
                       <button
                         type="button"

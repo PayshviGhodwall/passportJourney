@@ -706,7 +706,7 @@ function ClinicianViewComplete() {
                                 <div class="row mx-0 user_response text-center pb-4">
                                   <div className="col-6">
                                     <div class="col-12 mb-2">
-                                      <label for="">Mother's Response</label>
+                                      <label for="">User's Response</label>
                                     </div>
                                     <div class="col-5">
                                       <div class="d-flex align-items-center justify-content-start">
@@ -753,7 +753,7 @@ function ClinicianViewComplete() {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="col-6">
+                                  {/* <div className="col-6">
                                     <div class="col-12 mb-2">
                                       <label for="">Daughter's Response</label>
                                     </div>
@@ -801,7 +801,7 @@ function ClinicianViewComplete() {
                                         )}
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                               <div class="col-12 design_outter_comman border rounded mb-4">
@@ -888,7 +888,7 @@ function ClinicianViewComplete() {
                                     />
                                   </div>
 
-                                  <div class="form-group col-4 mb-0 ">
+                                  {/* <div class="form-group col-4 mb-0 ">
                                     <div class="row  align-items-center">
                                       <audio controls>
                                         <source
@@ -903,8 +903,8 @@ function ClinicianViewComplete() {
                                         element.
                                       </audio>
                                     </div>
-                                  </div>
-                                  <div class="form-group col-12 mb-0 mt-4">
+                                  </div> */}
+                                  <div class="form-group col-12 mb-0 ">
                                     <label for="">Daughter's Response</label>
                                   </div>
                                   <div class="form-group col-10">
@@ -922,7 +922,7 @@ function ClinicianViewComplete() {
                                     />
                                   </div>
 
-                                  <div class="form-group col-4 mb-0">
+                                  {/* <div class="form-group col-4 mb-0">
                                     <div class="row  align-items-center">
                                       <audio controls>
                                         <source
@@ -937,7 +937,7 @@ function ClinicianViewComplete() {
                                         element.
                                       </audio>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </form>
                               </div>
                               <div class="col-12 design_outter_comman border rounded mb-4">

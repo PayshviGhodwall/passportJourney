@@ -6382,3 +6382,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 14px !important;
   cursor: pointer;
 }
+.a_disable{
+  pointer-events: none;
+  cursor: default;
+}
