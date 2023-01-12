@@ -72,7 +72,7 @@ function Notifications() {
                       <div className="col-12 p-5 pb-4">
                         {noti.map((item, index) => (
                           <Link
-                            to=""
+                            to={`/admin/user-details/${item._id}`}
                             className="row notification-box shadow mb-4"
                           >
                             <div className="col-auto">

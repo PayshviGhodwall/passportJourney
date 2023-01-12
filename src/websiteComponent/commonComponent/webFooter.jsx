@@ -37,6 +37,9 @@ function WebFooter() {
                   <li>
                     <Link to="/contact-us">Connect</Link>
                   </li>
+                  <li>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
+                  </li>
                 </ul>
               </div>
             </div>

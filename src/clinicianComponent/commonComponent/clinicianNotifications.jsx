@@ -1,21 +1,26 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getNotificationList } from "../../apiServices/clinicianPanelHttpServices/loginHttpService/clinicianLoginHttpService";
 import ClinicianHeader from "./clinicianHeader";
 import ClinicianSidebar from "./clinicianSidebar";
 
 function ClinicianNotifications() {
   const [noti, setNoti] = useState([]);
+  const [nav, setNav] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     getNotiInfo();
-  }, []);
+    if (nav) {
+      navigate(nav);
+    }
+  }, [nav]);
 
   const getNotiInfo = async () => {
     const { data } = await getNotificationList();
     if (!data.error) {
-      for (const notification of data.results.users) {
+      for (const notification of data.results.notifications) {
         const date1 = new Date(notification.createdAt);
         const date2 = Date.now();
         const diffTime = Math.abs(date2 - date1);
@@ -47,7 +52,30 @@ function ClinicianNotifications() {
         notification.time = diff;
       }
 
-      setNoti(data.results.users);
+      setNoti(data.results.notifications);
+    }
+  };
+
+  const redirectTo = async (type, s_id) => {
+    console.log(type);
+    if (type === "Update Profile") {
+      setNav("/clinician/my-profile");
+    } else if (type === "Clinician Session") {
+      setNav(`/clinician/view-upcoming/${s_id}`);
+    } else if (type === "Cancel Session User") {
+      setNav(`/clinician/view-cancel/${s_id}`);
+    } else if (type === "Cancel Session Clinician") {
+      setNav(`/clinician/view-cancel/${s_id}`);
+    } else if (type === "Reschedule Session User") {
+      setNav(`/clinician/view-upcoming/${s_id}`);
+    } else if (type === "Response") {
+      setNav(`/clinician/view-complete/${s_id}`);
+    } else if (type === "Journal Response") {
+      setNav(`/clinician/view-complete/${s_id}`);
+    } else if (type === "Worksheet Response") {
+      setNav(`/clinician/view-complete/${s_id}`);
+    } else {
+      setNav("/admin/dashboard");
     }
   };
 
@@ -73,6 +101,7 @@ function ClinicianNotifications() {
                         {noti.map((item, index) => (
                           <Link
                             to=""
+                            onClick={() => redirectTo(item.type, item.id)}
                             className="row notification-box shadow mb-4"
                           >
                             <div className="col-auto">
@@ -82,7 +111,7 @@ function ClinicianNotifications() {
                             </div>
                             <div className="col">
                               <div className="notification-box-content">
-                                <h2>{item.full_name} created a new account</h2>
+                                <h2>{item.description}</h2>
                                 <span className="">{item.time}</span>
                                 <p>
                                   {moment(item.createdAt).format("DD MMM yy")}

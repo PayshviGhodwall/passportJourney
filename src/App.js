@@ -70,6 +70,7 @@ import ProtectedClinicianRoutes from "./clinicianComponent/dashboardComponent/Pr
 import AdminActivity from "./adminComponent/adminActivity/adminactivity";
 import AdminJournal from "./adminComponent/adminActivity/adminJournal";
 import AdminWorksheet from "./adminComponent/adminActivity/adminWorksheet";
+import WebPrivacyPolicy from "./websiteComponent/webPolicy";
 
 function App() {
   const [subAdmin, setSubAdmin] = useState("");
@@ -338,6 +339,7 @@ function App() {
             path="/cancel-subscription"
             element={<PaymentErrorSubscription />}
           />
+          <Route path="/privacy-policy" element={<WebPrivacyPolicy />} />
         </Routes>
       </BrowserRouter>
     </>
